@@ -26,6 +26,7 @@ section{
 .writeButton{
 	margin-top:5px;
 	color: white;
+	border: 1px solid #95B3D7;
 	background-color: #95B3D7;
 	margin-right: 1%;
 	width: 7%;
@@ -36,9 +37,18 @@ section{
 	float: right;
 	display: inline-block;
 	cursor: pointer;
+	-webkit-transition: color 1s, background-color 1s; /* For Safari 3.1 to 6.0 */
+	transition: color 1s, background-color 1s;
 }
+
+.writeButton:hover{
+	border: 1px solid #95B3D7;
+	color: blue;
+	background-color: white;
+}
+
 #delete{
-	color: red;
+	color: #FF5A5A;
 }
 
 #Contents img{
