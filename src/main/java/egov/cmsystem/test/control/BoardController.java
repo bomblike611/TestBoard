@@ -16,9 +16,7 @@ public class BoardController {
 	
 	@RequestMapping(value = "/index.do")
 	public ModelAndView selectOne() throws Exception {
-		String title=boardService.selectOne();
 		ModelAndView view=new ModelAndView();
-		view.addObject("title", title);
 		view.setViewName("test/test");
 
 		return view;
