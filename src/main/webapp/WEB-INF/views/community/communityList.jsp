@@ -6,7 +6,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link type="text/css" rel="stylesheet" href="<c:url value='/css/community/communityList.css'/>"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <title>Insert title here</title>
+<script type="text/javascript">
+$(function(){
+	$(".writeButton").click(function(){
+		location.href="./communityWrite.do";
+	});
+});
+</script>
 </head>
 <body>
 	<section>

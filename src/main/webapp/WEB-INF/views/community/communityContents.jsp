@@ -8,14 +8,22 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link type="text/css" rel="stylesheet"
 	href="<c:url value='/css/community/communityContents.css'/>" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <title>Insert title here</title>
+<script type="text/javascript">
+	$(function() {
+		$("#update").click(function() {
+		});
+	});
+</script>
 </head>
 <body>
 	<section>
 		<div id="Contents">
 			<div id="contentsHeader">
 				<p>자유게시판</p>
-				<div class="writeButton">수정</div>
+				<div class="writeButton" id="update">수정</div>
 				<div class="writeButton" id="delete">삭제</div>
 			</div>
 			<ul id="ulContents">
@@ -27,8 +35,8 @@
 						</div>
 						<div>
 							<span>2019-03-10 </span> <span id="count">조회수 1 </span>
-							<div id="contentForm">알바하면서 살고있는 대학생입니다. 40만원대의 사양 좋은 노트북을 구하고 있습니다. 간단한
-								문서작업과 인터넷서핑정도만 하니 좋은 노트북있으면 추천 부탁드려요!!</div>
+							<div id="contentForm">알바하면서 살고있는 대학생입니다. 40만원대의 사양 좋은 노트북을
+								구하고 있습니다. 간단한 문서작업과 인터넷서핑정도만 하니 좋은 노트북있으면 추천 부탁드려요!!</div>
 						</div>
 					</div></li>
 			</ul>
