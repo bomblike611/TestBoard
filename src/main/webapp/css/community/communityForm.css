@@ -1,0 +1,107 @@
+@CHARSET "UTF-8";
+
+section{
+	margin: 0;
+	width: 100%;
+}
+
+
+#writeForm{
+	width: 80%;
+	margin: 0 auto;
+}
+
+#listHeader{
+	border-bottom: 2px solid #4A7EBB;
+}
+#listHeader h1{
+	font-size: 32px;
+	margin: 0 0 1% 0;
+}
+
+#formArea{
+	height: 600px;
+	width: 100%;
+}
+
+#formArea p{
+	font-size: 15px;
+	font-weight: bold;
+	border-bottom: 1px solid #7F7F7F;
+	height: 40px;
+	line-height: 40px;
+	margin: 0;
+}
+
+#formArea input{
+	border: 1px solid #EAEAEA;
+	width: 70%;
+	margin-left: 5%;
+	height: 25px;
+}
+
+#formArea #textarea{
+	margin-top: 10px;
+	width: 100%;
+	height: 400px;
+}
+
+#textarea textarea{
+	width: 100%;
+	height: 400px;
+}
+
+#fileContents{
+	height: 50px;
+	line-height: 50px;
+	width: 80%;
+	border-top: 1px solid gray;
+	margin: 2% auto;
+}
+.fileText{
+	margin: 20px 20px;
+	height: 30px;
+	line-height: 30px;
+}
+
+#fileContents li{
+	list-style: none;
+	float: left;
+}
+
+#filesName{
+	line-height: 30px;
+	height: 30px;
+	width: 60%;
+	border: 1px solid #EAEAEA;
+	margin: 20px 20px;
+}
+
+
+#fileButton{
+	border: 1px solid gray;
+	height: 30px;
+	line-height: 30px;
+}
+
+.titles{
+	margin-left: 3%;
+	width: 30px;
+}
+
+#buttons{
+	width: 20%;
+	margin: 0 auto;
+}
+
+#buttons li{
+	list-style: none;
+	float: left;
+	width: 39%;
+	margin: 5%;
+	text-align: center;
+	height: 40px;
+	line-height: 40px;
+	border: 1px solid gray;
+}
+

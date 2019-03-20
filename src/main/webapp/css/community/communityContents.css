@@ -12,14 +12,14 @@ section{
 
 #contentsHeader{
 	width: 100%;
-border-bottom: 2px solid #4A7EBB;
+	border-bottom: 2px solid #4A7EBB;
 }
 
 #contentsHeader p {
 	font-size: 32px;
 	font-weight: bold;
 	width: 50%;
-	margin: 0;
+	margin: 0 0 1% 0;
 	display: inline-block;
 }
 
@@ -48,7 +48,9 @@ border-bottom: 2px solid #4A7EBB;
 }
 
 #comContents{
-	height: 400px;
+	height: 500px;
+	margin-left: 5%;
+	border-bottom: 2px solid gray;
 }
 
 #ulContents li{
@@ -63,6 +65,20 @@ border-bottom: 2px solid #4A7EBB;
 }
 #contentTitle p{
 	width: 80%;
+	display: inline-block;
+	margin-left: 10%;
+}
+
+#contentTitle b{
+	color: #7F7F7F;
+}
+
+#count{
+	float: right;
+}
+
+#contentForm{
+	margin-top: 5%;
 }
 
 
