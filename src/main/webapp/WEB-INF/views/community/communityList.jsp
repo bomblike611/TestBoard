@@ -32,7 +32,7 @@
 				<p>자유롭게 게시물을 작성할 수 있는 게시판입니다.</p>
 				<div class="writeButton">글쓰기</div>
 				<input type="hidden" name="firstIndex" value="${vo.firstIndex}">
-				<input type="hidden" name="lastIndex" value="${vo.lastIndex }">
+				<input type="hidden" name="lastIndex" value="${vo.lastIndex}">
 			</div>
 			<ul id="listContents">
 				<c:forEach items="${list}" var="contents">

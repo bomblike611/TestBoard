@@ -27,7 +27,6 @@ public class CommunityController {
 		ModelAndView view=new ModelAndView();
 		List<?> ar=communityService.selectList(vo);
 		view.addObject("list", ar);
-		view.addObject("vo", vo);
 		view.setViewName("community/communityList");
 		return view;
 	}

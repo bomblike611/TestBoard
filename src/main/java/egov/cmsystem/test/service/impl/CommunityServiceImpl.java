@@ -35,7 +35,6 @@ public class CommunityServiceImpl implements BoardService {
 
 	@Override
 	public BoardDTO selectContents(BoardDTO boardDTO) throws Exception {
-		// TODO Auto-generated method stub
 		return communityDAO.selectContents(boardDTO);
 	}
 
