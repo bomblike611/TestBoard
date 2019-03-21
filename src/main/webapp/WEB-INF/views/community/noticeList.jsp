@@ -16,12 +16,40 @@ $(function(){
 	});
 });
 </script>
+<style>
+.img2{
+	 width:100%;
+	 hegiht:200px;
+}
+.img2 img{
+	width:100%;
+	height:200px;
+}
+.img_text_center {
+	padding: 0px 0px;
+	text-align: center;
+	position: absolute;
+	top: 25%;
+	left: 3%;
+	line-height: 40%;
+
+}
+#font1{
+	font-size:40pt;
+	color:white;
+}
+</style>
 </head>
 <body>
 <section>
 	<div>
 	    <c:import url="banner.jsp" />
 	</div>
+	<div class="img2">
+	   <img src="./images/office.jpg" alt="cm">
+	   <div class="img_text_center"><p id="font1">알림마당</p>
+	   </div>
+	 </div>
 <div id="noticeList">
 			<div id="listHeader">
 				<h1>공지사항</h1>

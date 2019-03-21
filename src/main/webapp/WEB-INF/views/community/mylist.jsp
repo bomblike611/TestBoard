@@ -14,11 +14,6 @@ $(function(){
 </script>
 </head>
 <body>
-<div id="communityList">
-			<div id="listHeader">
-				<h1>공지사항</h1>
-				<p>반드시 읽어 봐야 할 내용입니다.</p>
-				<div class="writeButton">글쓰기</div>
-			</div>
+
 </body>
 </html>
