@@ -4,11 +4,11 @@ import java.util.List;
 
 public interface BoardService {
 
-	int insertContents() throws Exception;
+	int insertContents(BoardDTO boardDTO) throws Exception;
 	
-	int updateContents() throws Exception;
+	int updateContents(BoardDTO boardDTO) throws Exception;
 	
-	int deleteContents() throws Exception;
+	int deleteContents(BoardDTO boardDTO) throws Exception;
 	
 	BoardDTO selectContents(BoardDTO boardDTO) throws Exception;
 	
