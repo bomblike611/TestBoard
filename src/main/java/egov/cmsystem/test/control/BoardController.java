@@ -17,31 +17,14 @@ public class BoardController {
 	@RequestMapping(value = "/index.do")
 	public ModelAndView selectOne() throws Exception {
 		ModelAndView view=new ModelAndView();
+		String title=boardService.selectOne();
+		view.addObject("title", title);
 		view.setViewName("test/test");
-
+		
 		return view;
 	}
 	
-	@RequestMapping(value = "/communityList.do")
-	public ModelAndView communityList() throws Exception {
-		ModelAndView view=new ModelAndView();
-		view.setViewName("community/communityList");
-		return view;
-	}
-	
-	@RequestMapping(value = "/communityContents.do")
-	public ModelAndView communityContents() throws Exception {
-		ModelAndView view=new ModelAndView();
-		view.setViewName("community/communityContents");
-		return view;
-	}
 
-	@RequestMapping(value = "/mylist.do")
-	public ModelAndView mylist() throws Exception {
-		ModelAndView view=new ModelAndView();
-		view.setViewName("community/mylist");
-		return view;
-	}
 	
 	@RequestMapping(value = "/main.do")
 	public ModelAndView mainview() throws Exception {
