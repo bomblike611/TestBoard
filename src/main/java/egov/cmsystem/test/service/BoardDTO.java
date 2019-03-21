@@ -1,5 +1,6 @@
 package egov.cmsystem.test.service;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 public class BoardDTO {
@@ -7,6 +8,7 @@ public class BoardDTO {
 	private int boardNum;
 	private int code;
 	private String boardTitle;
+	private String boardPw;
 	private String boardContents;
 	private LocalDate boardDate;
 	private LocalDate deleteDate;
@@ -33,6 +35,12 @@ public class BoardDTO {
 	public void setBoardTitle(String boardTitle) {
 		this.boardTitle = boardTitle;
 	}
+	public String getBoardPw() {
+		return boardPw;
+	}
+	public void setBoardPw(String boardPw) {
+		this.boardPw = boardPw;
+	}
 	public String getBoardContents() {
 		return boardContents;
 	}
@@ -42,14 +50,14 @@ public class BoardDTO {
 	public LocalDate getBoardDate() {
 		return boardDate;
 	}
-	public void setBoardDate(LocalDate boardDate) {
-		this.boardDate = boardDate;
+	public void setBoardDate(Date boardDate) {
+		this.boardDate = boardDate.toLocalDate();
 	}
 	public LocalDate getDeleteDate() {
 		return deleteDate;
 	}
-	public void setDeleteDate(LocalDate deleteDate) {
-		this.deleteDate = deleteDate;
+	public void setDeleteDate(Date deleteDate) {
+		this.deleteDate = deleteDate.toLocalDate();
 	}
 	public int getBoardHits() {
 		return boardHits;

@@ -11,8 +11,8 @@
 	
 	<!-- DAO로 처리할 경우 안전하지 않기때문에 Mapper로 처리할 수 있도록 함 -->
 	<!-- MapperConfigurer setup for MyBatis Database Layer with @Mapper("deptMapper") in DeptMapper Interface -->
- 	<bean class="egovframework.rte.psl.dataaccess.mapper.MapperConfigurer">
+ 	<!-- <bean class="egovframework.rte.psl.dataaccess.mapper.MapperConfigurer">
 		<property name="basePackage" value="egovframework.example.sample.service.impl" />
-	</bean>
+	</bean> -->
     
 </beans>

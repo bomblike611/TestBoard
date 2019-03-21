@@ -13,6 +13,12 @@ $(function(){
 	$(".writeButton").click(function(){
 		location.href="./communityWrite.do";
 	});
+	
+	$(".detail").click(function(){
+		var boardNum=$(this).attr("title");
+		location.href="communityContents.do?boardNum="+boardNum;
+	});
+	
 });
 </script>
 </head>
@@ -25,8 +31,8 @@ $(function(){
 				<div class="writeButton">글쓰기</div>
 			</div>
 			<ul id="listContents">
-			<c:forEach begin="1" end="10" var="text">
-			<li class="listContent"><img alt="image" src="./images/cat.jpg"><p>${text}okok</p></li>
+			<c:forEach items="${list}" var="contents">
+			<li class="listContent"><img alt="image" src="./images/cat.jpg" class="detail" title="${contents.boardNum}"><p class="detail" title="${contents.boardNum}">${contents.boardTitle}</p></li>
 			</c:forEach>
 			</ul>
 		</div>

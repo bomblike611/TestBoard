@@ -31,12 +31,11 @@
 				<li><div id="comContents">
 						<div id="contentTitle">
 							<b>제목</b>
-							<p>노트북 추천 부탁드립니다</p>
+							<p>${contents.boardTitle}</p>
 						</div>
 						<div>
-							<span>2019-03-10 </span> <span id="count">조회수 1 </span>
-							<div id="contentForm">알바하면서 살고있는 대학생입니다. 40만원대의 사양 좋은 노트북을
-								구하고 있습니다. 간단한 문서작업과 인터넷서핑정도만 하니 좋은 노트북있으면 추천 부탁드려요!!</div>
+							<span>${contents.boardDate}</span> <span id="count">${contents.boardHits}</span>
+							<div id="contentForm">${contents.boardContents}</div>
 						</div>
 					</div></li>
 			</ul>

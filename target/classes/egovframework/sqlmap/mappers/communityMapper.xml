@@ -3,24 +3,50 @@
 <mapper namespace="egovframework.sqlmap.mappers.communityMapper">
 
 
-<insert id="insertContents" parameterType="boardDTO">
-</insert>
+	<insert id="insertContents" parameterType="boardDTO">
+		<selectKey keyProperty="boardNum" resultType="int" order="BEFORE">
+			select test_seq.nextval from dual
+		</selectKey>
+		insert into board values
+		(#{boardNum},2,#{boardTitle},#{boardContents},sysdate,sysdate,#{boardHits},#{boardRef},#{adminDelete},#{fileSaveName},#{fileOriginalName})
+	</insert>
 
-<update id="updateContents" parameterType="boardDTO">
+	<update id="updateContents" parameterType="boardDTO">
+		update board
+		<set>
+			<if test="boardTitle != null">boardTitle=#{boardTitle},</if>
+			<if test="boardContents != null">boardContents=#{boardContents},</if>
+			<if test="fileSaveName != null">fileSaveName=#{fileSaveName},</if>
+			<if test="fileOriginalName != null">fileOriginalName=#{fileOriginalName}</if>
+		</set>
+		where boardNum=#{boardNum}
+	</update>
 
-</update>
+	<update id="plusHits">
+		update board set boardHits=boardHits+1 where boardNum=#{boardNum}
+	</update>
 
 
-<delete id="deleteContents" parameterType="boardDTO">
+	<update id="deleteContents" parameterType="boardDTO">
+		update board
+		<set>
+		<if test="boardTitle != null">boardTitle=#{boardTitle}</if>
+		<if test="adminDelete!=null">adminDelete=#{adminDelete}</if>
+		</set>
+	</update>
 
-</delete>
+	<select id="selectContents" parameterType="boardDTO" resultType="boardDTO">
+	select * from board where boardNum=#{boardNum}
+	</select>
 
-<select id="selectContents" parameterType="boardDTO" resultType="boardDTO"></select>
-
-<select id="selectList" >
-</select>
-<select id="selectTotalCount">
-</select>
+	<select id="selectList" parameterType="boardVO" resultType="boardDTO">
+	select * from (select rownum R,b.* from board b where code=2) where R between 1 and 1
+	</select>
+	
+	
+	<select id="selectTotalCount" resultType="int">
+	select nvl(count(boardnum),0) totalindex from board where code=2
+	</select>
 
 
 </mapper>

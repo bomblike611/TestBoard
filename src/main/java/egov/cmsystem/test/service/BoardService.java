@@ -13,8 +13,7 @@ public interface BoardService {
 	BoardDTO selectContents(BoardDTO boardDTO) throws Exception;
 	
 	List<?> selectList(BoardVO vo) throws Exception;
-	
-	int selectTotalCount(BoardVO vo) throws Exception;
+
 	
 	
 	
