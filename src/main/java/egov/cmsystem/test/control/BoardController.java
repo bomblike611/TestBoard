@@ -22,24 +22,5 @@ public class BoardController {
 		return view;
 	}
 	
-	@RequestMapping(value = "/communityList.do")
-	public ModelAndView communityList() throws Exception {
-		ModelAndView view=new ModelAndView();
-		view.setViewName("community/communityList");
-		return view;
-	}
-	
-	@RequestMapping(value = "/communityContents.do")
-	public ModelAndView communityContents() throws Exception {
-		ModelAndView view=new ModelAndView();
-		view.setViewName("community/communityContents");
-		return view;
-	}
-	@RequestMapping(value = "/communityWrite.do")
-	public ModelAndView communityFrom() throws Exception {
-		ModelAndView view=new ModelAndView();
-		view.setViewName("community/communityForm");
-		return view;
-	}
 	
 }
