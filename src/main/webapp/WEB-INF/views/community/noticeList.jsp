@@ -16,23 +16,12 @@ $(function(){
 	});
 });
 </script>
-<style>
-.img2{
-	 width:100%;
-	 hegiht:20px;
-}
-</style>
 </head>
 <body>
 <section>
 	<div>
 	    <c:import url="banner.jsp" />
 	</div>
-	<div>
-	   <img class="img2" src="./images/office.jpg" alt="cm">
-	   <div class="img_text_center"><p id="font1">항상 고객을 생각하는</p>
-	   </div>
-	 </div>
 <div id="noticeList">
 			<div id="listHeader">
 				<h1>공지사항</h1>
