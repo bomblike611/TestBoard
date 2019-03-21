@@ -23,7 +23,7 @@ public class BoardVO {
 	private int firstIndex = 1;
 
 	/****** lastIndex  ******/
-	private int lastIndex = 1;
+	private int lastIndex = 10;
 
 	public String getSearchKeyword() {
 		return searchKeyword;
