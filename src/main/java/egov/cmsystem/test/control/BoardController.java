@@ -36,5 +36,12 @@ public class BoardController {
 		return view;
 	}
 	
+	@RequestMapping(value = "/main.do")
+	public ModelAndView mainview() throws Exception {
+		ModelAndView view=new ModelAndView();
+		view.setViewName("main/Main");
+		return view;
+	}
+	
 	
 }
