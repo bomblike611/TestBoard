@@ -35,11 +35,21 @@ public class BoardController {
 		view.setViewName("community/communityContents");
 		return view;
 	}
-	@RequestMapping(value = "/communityWrite.do")
-	public ModelAndView communityFrom() throws Exception {
+
+	@RequestMapping(value = "/mylist.do")
+	public ModelAndView mylist() throws Exception {
 		ModelAndView view=new ModelAndView();
-		view.setViewName("community/communityForm");
+		view.setViewName("community/mylist");
 		return view;
 	}
+	
+	@RequestMapping(value = "/main.do")
+	public ModelAndView mainview() throws Exception {
+		ModelAndView view=new ModelAndView();
+		view.setViewName("main/Main");
+		return view;
+	}
+	
+
 	
 }

@@ -41,6 +41,7 @@ $(function(){
 </style>
 </head>
 <body>
+<section>
 	<div>
 	    <c:import url="banner.jsp" />
 	</div>
@@ -49,7 +50,7 @@ $(function(){
 	   <div class="img_text_center"><p id="font1">알림마당</p>
 	   </div>
 	 </div>
-
+<div id="noticeList">
 			<div id="listHeader">
 				<h1>공지사항</h1>
 				<p>반드시 읽어 봐야 할 내용입니다.</p>
@@ -72,7 +73,7 @@ $(function(){
 				</c:forEach>
 				</table>
 				
-
+					</div>
 					<p>
        <div class="list_n_menu"> 
         	<span> ◀  </span>
@@ -85,7 +86,7 @@ $(function(){
 
 
 
-
+</section>
 </body>
 </html>
 
