@@ -47,7 +47,7 @@ $(function(){
 	</div>
 	<div class="img2">
 	   <img src="./images/office.jpg" alt="cm">
-	   <div class="img_text_center"><p id="font1">알림마당</p>
+	   <div class="img_text_center"><p id="font1">${text}</p>
 	   </div>
 	 </div>
 <div id="noticeList">
