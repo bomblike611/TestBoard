@@ -42,7 +42,7 @@
 					<p class="detail" title="${contents.boardNum}">${contents.boardTitle}</p>
 					</c:if>
 						<c:if test="${contents.adminDelete=='y'}">
-						<p class="detail" title="${contents.boardNum}" style="color: red;">부적절한 콘텐츠입니다.</p>
+						<p class="detail" title="${contents.boardNum}" style="color: red;">부적절한 콘텐츠입니다..</p>
 						</c:if>
 					</li>
 				</c:forEach>
