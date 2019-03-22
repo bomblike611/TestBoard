@@ -64,7 +64,6 @@ public class CommunityController {
 		boardDTO.setAdminDelete("n");
 		boardDTO.setFileOriginalName("");
 		boardDTO.setFileSaveName("");
-		System.out.println("======");
 		//파일업로드파트
 		MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest)request;
 		MultipartFile file=multipartHttpServletRequest.getFile("file");
@@ -83,8 +82,6 @@ public class CommunityController {
 		File f = new File(uploadPath, fileName);
 		file.transferTo(f);
 		boardDTO.setFileSaveName(fileName);
-		System.out.println(boardDTO.getFileOriginalName());
-		System.out.println(boardDTO.getFileSaveName());
 		int result=communityService.insertContents(boardDTO);
 		String resultText="";
 		if(result>0){

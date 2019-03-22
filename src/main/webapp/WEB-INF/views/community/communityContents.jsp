@@ -33,7 +33,14 @@
 				<div class="writeButton" id="delete">삭제</div>
 			</div>
 			<ul id="ulContents">
-				<li><img alt="" src="/upload/${contents.fileSaveName}"></li>
+				<li>
+				<c:if test="${not empty contents.fileSaveName}">
+				<img alt="" src="/upload/${contents.fileSaveName}">
+				</c:if>
+				<c:if test="${empty contents.fileSaveName}">
+				<img alt="" src="./images/office.jpg">
+				</c:if>
+				</li>
 				<li><div id="comContents">
 						<div id="contentTitle">
 							<b>제목</b>
