@@ -36,8 +36,15 @@
 			</div>
 			<ul id="listContents">
 				<c:forEach items="${list}" var="contents">
-					<li class="listContent"><img alt="image"
-						src="/upload/${contents.fileSaveName}" class="detail" title="${contents.boardNum}">
+					<li class="listContent">
+					<c:if test="${not empty contents.fileSaveName}">
+					<img alt="image"
+						src="/upload/${contents.fileSaveName}" class="detail" title="${contents.boardNum}">						
+					</c:if>
+					<c:if test="${empty contents.fileSaveName}">
+					<img alt="image"
+						src="../images/그림1.png" class="detail" title="${contents.boardNum}">
+					</c:if>
 						<c:if test="${contents.adminDelete=='n'}">
 					<p class="detail" title="${contents.boardNum}">${contents.boardTitle}</p>
 					</c:if>
