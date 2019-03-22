@@ -28,7 +28,7 @@ $(function(){
 				<h1>자유게시판</h1>
 			</div>
 			<div id="formArea">
-			<form id="form" action="communityWrite.do" method="post">
+			<form id="form" action="communityWrite.do" method="post" enctype="multipart/form-date">
 				<p>
 					<span class="titles">제목</span> <input type="text"
 						placeholder="게시글 제목을 작성해 주세요." name="boardTitle">
@@ -43,7 +43,7 @@ $(function(){
 				<ul id="fileContents">
 					<li class="fileText">파일 첨부</li>
 					<li id="filesName">
-						<div></div>
+						<div><input type="file" name="file"></div>
 					</li>
 					<li class="fileText"><div id="fileButton">파일 첨부하기</div></li>
 				</ul>

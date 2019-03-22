@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -46,7 +47,7 @@ public class CommunityController {
 		return view;
 	}
 	@RequestMapping(value = "/communityWrite.do", method=RequestMethod.POST)
-	public String communityFrom(BoardDTO boardDTO) throws Exception {
+	public String communityFrom(BoardDTO boardDTO,MultipartFile file) throws Exception {
 		boardDTO.setAdminDelete("n");
 		boardDTO.setFileOriginalName("");
 		boardDTO.setFileSaveName("");
