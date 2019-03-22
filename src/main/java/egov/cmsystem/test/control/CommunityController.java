@@ -67,9 +67,9 @@ public class CommunityController {
 		//파일업로드파트
 		MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest)request;
 		MultipartFile file=multipartHttpServletRequest.getFile("file");
+		//이거 안먹힘 ㅠ,,
 		/*String uploadPath=session.getServletContext().getRealPath("resources/upload");*/
 		String uploadPath = fileUploadProperties.getProperty("file.upload.path");
-		System.out.println(uploadPath);
 		File saveFolder = new File(uploadPath);
 		 
 		if (!saveFolder.exists() || saveFolder.isFile()) {
@@ -102,7 +102,6 @@ public class CommunityController {
 	}
 	@RequestMapping(value = "/communityUpdate.do",method=RequestMethod.POST)
 	public String communityUpdatePOST(BoardDTO boardDTO) throws Exception{
-		System.out.println(boardDTO.getBoardTitle());
 		int result=communityService.updateContents(boardDTO);
 		String resultText="";
 		if(result>0){
@@ -127,4 +126,14 @@ public class CommunityController {
 		System.out.println(resultText);
 		return "redirect:/communityList.do";
 	}
+	
+	@RequestMapping(value="/moreContents.do")
+	public ModelAndView moreContents(BoardVO vo)throws Exception{
+		ModelAndView mv=new ModelAndView();
+		List<?> ar=communityService.selectList(vo);
+		mv.addObject("list", ar);
+		mv.setViewName("community/moreContents");
+		return mv;
+	}
+	
 }

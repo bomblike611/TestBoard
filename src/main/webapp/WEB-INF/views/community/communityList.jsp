@@ -20,7 +20,24 @@
 			var boardNum = $(this).attr("title");
 			location.href = "communityContents.do?boardNum=" + boardNum;
 		});
-
+		var first=1;
+		var last=10;
+		$("#nextPage").click(function(){
+			first=first+10;
+			last=last+10;
+			$.post("./moreContents.do",
+					  {
+					firstIndex: first,
+					lastIndex: last
+					  },
+					  function(data){
+						  $("#listContents").append(data);
+						  $(".detail").click(function() {
+								var boardNum = $(this).attr("title");
+								location.href = "communityContents.do?boardNum=" + boardNum;
+							});
+					  });
+		});
 	});
 </script>
 </head>
@@ -36,22 +53,19 @@
 			</div>
 			<ul id="listContents">
 				<c:forEach items="${list}" var="contents">
-					<li class="listContent">
-					<c:if test="${not empty contents.fileSaveName}">
-					<img alt="image"
-						src="/upload/${contents.fileSaveName}" class="detail" title="${contents.boardNum}">						
-					</c:if>
-					<c:if test="${empty contents.fileSaveName}">
-					<img alt="image"
-						src="./images/office.jpg" class="detail" title="${contents.boardNum}">
-					</c:if>
-						<c:if test="${contents.adminDelete=='n'}">
-					<p class="detail" title="${contents.boardNum}">${contents.boardTitle}</p>
-					</c:if>
-						<c:if test="${contents.adminDelete=='y'}">
-						<p class="detail" title="${contents.boardNum}" style="color: red;">부적절한 콘텐츠입니다..</p>
-						</c:if>
-					</li>
+					<li class="listContent"><c:if
+							test="${not empty contents.fileSaveName}">
+							<img alt="image" src="/upload/${contents.fileSaveName}"
+								class="detail" title="${contents.boardNum}">
+						</c:if> <c:if test="${empty contents.fileSaveName}">
+							<img alt="image" src="./images/office.jpg" class="detail"
+								title="${contents.boardNum}">
+						</c:if> <c:if test="${contents.adminDelete=='n'}">
+							<p class="detail" title="${contents.boardNum}">${contents.boardTitle}</p>
+						</c:if> <c:if test="${contents.adminDelete=='y'}">
+							<p class="detail" title="${contents.boardNum}"
+								style="color: red;">부적절한 콘텐츠입니다..</p>
+						</c:if></li>
 				</c:forEach>
 			</ul>
 		</div>
