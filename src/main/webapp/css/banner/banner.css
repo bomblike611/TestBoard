@@ -1,6 +1,6 @@
 @CHARSET "UTF-8";
 
-ul {
+.bannerdg {
 
   list-style-type: none;
   margin: 0;
@@ -10,13 +10,13 @@ ul {
   font-weight: bold;
 }
 
-li {
+.bannermn {
   float: right;
     padding-right: 70px;
     padding-left: 10px;
 }
 
-li a, .dropbtn {
+.bannermn a, .dropbtn {
   display: inline-block;
   color: white;
   text-align: center;
@@ -26,7 +26,7 @@ li a, .dropbtn {
 
 
 
-li.dropdown {
+.bannermn , .dropdown {
   display: inline-block;
 }
 .drop{

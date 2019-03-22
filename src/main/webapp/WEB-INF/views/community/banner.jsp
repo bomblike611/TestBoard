@@ -13,16 +13,16 @@
 </head>
 <body>
 
-<ul>
-  <li style="float:left"><a href="#about"><img src="./images/cm_logo_han.png"></a></li>
-  <li class="dropdown"><a href="./communityList.do">커뮤니티</a>
+<ul class="bannerdg">
+  <li class="bannermn" style="float:left"><a href="#about"><img src="./images/cm_logo_han.png"></a></li>
+  <li class="bannermn dropdown"><a href="./communityList.do">커뮤니티</a>
   <div class="dropdown-content">
       <a href="./communityList.do">자유게시판</a>
       <a href="#">Q&A</a>
     </div>
     </li>
-   <li><a href="#news">알림마당</a></li>
-  <li class="dropdown">
+   <li class="bannermn"><a href="#news">알림마당</a></li>
+  <li class="bannermn dropdown">
     <a href="javascript:void(0)" class="dropbtn">회사 소개</a>
     <div class="dropdown-content">
       <a href="#">소개</a>
