@@ -29,7 +29,7 @@ public class CommunityServiceImpl implements BoardService {
 
 	@Override
 	public int deleteContents(BoardDTO boardDTO) throws Exception {
-		// TODO Auto-generated method stub
+		boardDTO.setAdminDelete("y");
 		return communityDAO.updateContents(boardDTO);
 	}
 

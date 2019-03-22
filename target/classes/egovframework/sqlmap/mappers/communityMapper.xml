@@ -17,7 +17,8 @@
 			<if test="boardTitle != null">boardTitle=#{boardTitle},</if>
 			<if test="boardContents != null">boardContents=#{boardContents},</if>
 			<if test="fileSaveName != null">fileSaveName=#{fileSaveName},</if>
-			<if test="fileOriginalName != null">fileOriginalName=#{fileOriginalName}</if>
+			<if test="fileOriginalName != null">fileOriginalName=#{fileOriginalName},</if>
+			code=#{code}
 		</set>
 		where boardNum=#{boardNum}
 	</update>
@@ -30,9 +31,10 @@
 	<update id="deleteContents" parameterType="boardDTO">
 		update board
 		<set>
-		<if test="boardTitle != null">boardTitle=#{boardTitle}</if>
 		<if test="adminDelete!=null">adminDelete=#{adminDelete}</if>
+		code=#{code}
 		</set>
+		where boardNum=#{boardNum}
 	</update>
 
 	<select id="selectContents" parameterType="boardDTO" resultType="boardDTO">
@@ -40,7 +42,7 @@
 	</select>
 
 	<select id="selectList" parameterType="boardVO" resultType="boardDTO">
-	select * from (select rownum R,b.* from board b where code=2) where R between #{firstIndex} and #{lastIndex}
+	select * from (select rownum R,b.* from board b where code=2) where R between #{firstIndex} and #{lastIndex} order by R desc
 	</select>
 	
 	

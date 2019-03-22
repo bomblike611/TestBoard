@@ -16,7 +16,8 @@ $(function(){
 		$("#form").submit();
 	});
 	$("#backList").click(function(){
-		location.href="./communityList.do";
+		var num=${contents.boardNum}
+		location.href="./communityContents.do?boardNum="+num;
 	});
 });
 </script>
@@ -28,17 +29,19 @@ $(function(){
 				<h1>자유게시판</h1>
 			</div>
 			<div id="formArea">
-			<form id="form" action="communityWrite.do" method="post">
+			<form id="form" action="communityUpdate.do" method="post">
+			<input type="hidden" name="boardNum" value="${contents.boardNum}">
+			<input type="hidden" name="code" value="${contents.code}">
 				<p>
 					<span class="titles">제목</span> <input type="text"
-						placeholder="게시글 제목을 작성해 주세요." name="boardTitle">
+						placeholder="게시글 제목을 작성해 주세요." name="boardTitle" value="${contents.boardTitle}">
 				</p>
 				<p>
 					<span class="titles">PW</span> <input type="text"
-						placeholder="비밀번호를 입력해주세요." name="boardPw">
+						placeholder="비밀번호를 입력해주세요." name="boardPw" value="${contents.boardPw}">
 				</p>
 				<div id="textarea">
-					<textarea name="boardContents"></textarea>
+					<textarea name="boardContents">${contents.boardContents}</textarea>
 				</div>
 				<ul id="fileContents">
 					<li class="fileText">파일 첨부</li>

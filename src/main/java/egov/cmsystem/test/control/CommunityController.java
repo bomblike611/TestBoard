@@ -47,8 +47,6 @@ public class CommunityController {
 	}
 	@RequestMapping(value = "/communityWrite.do", method=RequestMethod.POST)
 	public String communityFrom(BoardDTO boardDTO) throws Exception {
-		
-		System.out.println(boardDTO.getBoardTitle());
 		boardDTO.setAdminDelete("n");
 		boardDTO.setFileOriginalName("");
 		boardDTO.setFileSaveName("");
@@ -59,6 +57,42 @@ public class CommunityController {
 		}else{
 			resultText="실패";
 		}
+		return "redirect:/communityList.do";
+	}
+	
+	@RequestMapping(value = "/communityUpdate.do",method=RequestMethod.GET)
+	public ModelAndView communityUpdate(BoardDTO boardDTO) throws Exception{
+		ModelAndView mv=new ModelAndView();
+		BoardDTO dto=communityService.selectContents(boardDTO);
+		mv.addObject("contents", dto);
+		mv.setViewName("community/communityUpdate");
+		return mv;
+	}
+	@RequestMapping(value = "/communityUpdate.do",method=RequestMethod.POST)
+	public String communityUpdatePOST(BoardDTO boardDTO) throws Exception{
+		System.out.println(boardDTO.getBoardTitle());
+		int result=communityService.updateContents(boardDTO);
+		String resultText="";
+		if(result>0){
+			resultText="성공";
+		}else{
+			resultText="실패";
+		}
+		System.out.println(resultText);
+		return "redirect:/communityContents.do?boardNum="+boardDTO.getBoardNum();
+	}
+	
+	@RequestMapping(value="/communityDelete.do")
+	public String communityDelete(BoardDTO boardDTO) throws Exception{
+		BoardDTO dto=communityService.selectContents(boardDTO);
+		int result=communityService.deleteContents(dto);
+		String resultText="";
+		if(result>0){
+			resultText="성공";
+		}else{
+			resultText="실패";
+		}
+		System.out.println(resultText);
 		return "redirect:/communityList.do";
 	}
 }

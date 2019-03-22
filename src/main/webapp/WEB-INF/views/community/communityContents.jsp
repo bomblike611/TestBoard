@@ -14,7 +14,12 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 	$(function() {
+			var num=${contents.boardNum}
 		$("#update").click(function() {
+			location.href="./communityUpdate.do?boardNum="+num;
+		});
+		$("#delete").click(function(){
+			location.href="./communityDelete.do?boardNum="+num;			
 		});
 	});
 </script>
