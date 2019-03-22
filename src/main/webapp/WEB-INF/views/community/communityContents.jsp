@@ -6,44 +6,41 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
 <link type="text/css" rel="stylesheet"
-	href="<c:url value='/css/community/communityContents.css'/>" />
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	href="<c:url value='/css/community/communityForm.css'/>" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <title>Insert title here</title>
 <script type="text/javascript">
-	$(function() {
-		$("#update").click(function() {
-		});
+$(function(){
+	$("#formSubmit").click(function(){
+		$("#form").submit();
 	});
+});
 </script>
 </head>
 <body>
 	<section>
-		<div id="Contents">
-			<div id="contentsHeader">
-				<p>자유게시판</p>
-				<div class="writeButton" id="update">수정</div>
-				<div class="writeButton" id="delete">삭제</div>
+		<div id="writeForm">
+			<div id="listHeader">
+				<h1>공지사항</h1>
 			</div>
-			<ul id="ulContents">
-				<li><img alt="" src="./images/cat.jpg"></li>
-				<li><div id="comContents">
-						<div id="contentTitle">
-							<b>제목</b>
-							<p>${contents.boardTitle}</p>
-						</div>
-						<div>
-							<span>${contents.boardDate}</span> <span id="count">${contents.boardHits}</span>
-							<div id="contentForm">${contents.boardContents}</div>
-						</div>
-					</div></li>
+			<div id="formArea">
+			<form id="form" action="communityWrite.do" method="post">
+				<p>
+					<span class="titles">제목</span> <input type="text"
+						placeholder="게시글 제목을 작성해 주세요." name="boardTitle">
+				</p>
+				<div id="textarea">
+					<textarea name="boardContents"></textarea>
+				</div>
+				<p>
+			<ul id="buttons">
+			<li id="formSubmit">등록</li>
+			<li id="backList">취소</li>
 			</ul>
+			</form></div>
+			
 		</div>
 	</section>
-
 </body>
 </html>
-
-

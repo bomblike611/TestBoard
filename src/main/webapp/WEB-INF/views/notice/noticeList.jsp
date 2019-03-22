@@ -43,7 +43,7 @@ $(function(){
 <body>
 <section>
 	<div>
-	    <c:import url="banner.jsp" />
+	    <c:import url="../main/banner.jsp" />
 	</div>
 	<div class="img2">
 	   <img src="./images/office.jpg" alt="cm">
