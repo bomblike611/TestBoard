@@ -30,7 +30,7 @@ public class CommunityServiceImpl implements BoardService {
 	@Override
 	public int deleteContents(BoardDTO boardDTO) throws Exception {
 		boardDTO.setAdminDelete("y");
-		return communityDAO.updateContents(boardDTO);
+		return communityDAO.deleteContents(boardDTO);
 	}
 
 	@Override
@@ -47,7 +47,7 @@ public class CommunityServiceImpl implements BoardService {
 		}
 		return communityDAO.selectList(vo);
 	}
-
+	
 
 
 }

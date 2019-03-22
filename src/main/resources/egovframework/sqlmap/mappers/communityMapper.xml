@@ -31,7 +31,7 @@
 	<update id="deleteContents" parameterType="boardDTO">
 		update board
 		<set>
-		<if test="adminDelete!=null">adminDelete=#{adminDelete}</if>
+		<if test="adminDelete!=null">adminDelete=#{adminDelete},</if>
 		code=#{code}
 		</set>
 		where boardNum=#{boardNum}
