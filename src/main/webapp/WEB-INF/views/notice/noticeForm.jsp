@@ -25,17 +25,13 @@ $(function(){
 	<section>
 		<div id="writeForm">
 			<div id="listHeader">
-				<h1>Q&A</h1>
+				<h1>공지사항</h1>
 			</div>
 			<div id="formArea">
 			<form id="form" action="communityWrite.do" method="post">
 				<p>
 					<span class="titles">제목</span> <input type="text"
 						placeholder="게시글 제목을 작성해 주세요." name="boardTitle">
-				</p>
-				<p>
-					<span class="titles">PW</span> <input type="text"
-						placeholder="비밀번호를 입력해주세요." name="boardPw">
 				</p>
 				<div id="textarea">
 					<textarea name="boardContents"></textarea>
