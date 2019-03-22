@@ -1,10 +1,14 @@
 package egov.cmsystem.test.control;
 
+import java.io.File;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Properties;
+import java.util.UUID;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +25,9 @@ import egov.cmsystem.test.service.impl.CommunityServiceImpl;
 
 @Controller
 public class CommunityController {
+	
+	/*@Resource(name = "fileUploadProperties")
+	Properties fileUploadProperties;*/
 	
 	@Resource(name = "multipartResolver")
 	CommonsMultipartResolver multipartResolver;
@@ -53,12 +60,31 @@ public class CommunityController {
 		return view;
 	}
 	@RequestMapping(value = "/communityWrite.do", method=RequestMethod.POST)
-	public String communityForm(BoardDTO boardDTO,HttpServletRequest request) throws Exception {
+	public String communityForm(BoardDTO boardDTO,HttpServletRequest request,HttpSession session) throws Exception {
 		boardDTO.setAdminDelete("n");
 		boardDTO.setFileOriginalName("");
 		boardDTO.setFileSaveName("");
+		System.out.println("======");
+		//파일업로드파트
 		MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest)request;
 		MultipartFile file=multipartHttpServletRequest.getFile("file");
+		String uploadPath=session.getServletContext().getRealPath("resources/upload");
+		/*String uploadPath = fileUploadProperties.getProperty("file.upload.path");*/
+		System.out.println(uploadPath);
+		File saveFolder = new File(uploadPath);
+		 
+		if (!saveFolder.exists() || saveFolder.isFile()) {
+			saveFolder.mkdirs();
+		}
+		boardDTO.setFileOriginalName(file.getOriginalFilename());
+		String fileName= file.getOriginalFilename();
+		fileName=fileName.substring(fileName.lastIndexOf("."));
+		fileName=UUID.randomUUID().toString()+fileName;
+		File f = new File(uploadPath, fileName);
+		file.transferTo(f);
+		boardDTO.setFileSaveName(fileName);
+		System.out.println(boardDTO.getFileOriginalName());
+		System.out.println(boardDTO.getFileSaveName());
 		int result=communityService.insertContents(boardDTO);
 		String resultText="";
 		if(result>0){

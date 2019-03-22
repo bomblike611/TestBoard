@@ -53,19 +53,18 @@
 	<bean class="org.springframework.web.servlet.view.UrlBasedViewResolver"
 		p:order="1" p:viewClass="org.springframework.web.servlet.view.JstlView"
 		p:prefix="/WEB-INF/views/" p:suffix=".jsp" />
-
-
 	<bean
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
 		id="multipartResolver">
 		<property name="defaultEncoding" value="UTF-8" />
 		<property name="maxUploadSize" value="10485760" />
 	</bean>
-<bean id="spring.RegularCommonsMultipartResolver"
-     class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-        <property name="maxUploadSize" value="100000000" />
-        <property name="maxInMemorySize" value="100000000" />
-    </bean>
+	<bean id="spring.RegularCommonsMultipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="100000000" />
+		<property name="maxInMemorySize" value="100000000" />
+	</bean>
+	<mvc:resources mapping="/resources/**" location="/resources/" />
 
 	<mvc:view-controller path="/cmmn/validator.do"
 		view-name="cmmn/validator" />
