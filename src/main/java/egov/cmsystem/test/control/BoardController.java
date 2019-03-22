@@ -29,6 +29,13 @@ public class BoardController {
 	@RequestMapping(value = "/main.do")
 	public ModelAndView mainview() throws Exception {
 		ModelAndView view=new ModelAndView();
+		view.setViewName("main/banner");
+		return view;
+	}
+	
+	@RequestMapping(value = "/List.do")
+	public ModelAndView List() throws Exception {
+		ModelAndView view=new ModelAndView();
 		view.setViewName("notice/noticeList");
 		return view;
 	}
