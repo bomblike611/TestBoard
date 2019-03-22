@@ -37,7 +37,7 @@
 			<ul id="listContents">
 				<c:forEach items="${list}" var="contents">
 					<li class="listContent"><img alt="image"
-						src="../resources/upload/${contents.fileSaveName}" class="detail" title="${contents.boardNum}">
+						src="/upload/${contents.fileSaveName}" class="detail" title="${contents.boardNum}">
 						<c:if test="${contents.adminDelete=='n'}">
 					<p class="detail" title="${contents.boardNum}">${contents.boardTitle}</p>
 					</c:if>

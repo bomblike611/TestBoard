@@ -64,10 +64,8 @@
 		<property name="maxUploadSize" value="100000000" />
 		<property name="maxInMemorySize" value="100000000" />
 	</bean>
-	<mvc:resources mapping="/resources/**" location="/resources/" />
 
 	<mvc:view-controller path="/cmmn/validator.do"
 		view-name="cmmn/validator" />
-
 
 </beans>

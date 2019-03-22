@@ -33,7 +33,7 @@
 				<div class="writeButton" id="delete">삭제</div>
 			</div>
 			<ul id="ulContents">
-				<li><img alt="" src="./images/cat.jpg"></li>
+				<li><img alt="" src="/upload/${contents.fileSaveName}"></li>
 				<li><div id="comContents">
 						<div id="contentTitle">
 							<b>제목</b>

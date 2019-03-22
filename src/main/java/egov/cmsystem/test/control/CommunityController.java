@@ -26,8 +26,8 @@ import egov.cmsystem.test.service.impl.CommunityServiceImpl;
 @Controller
 public class CommunityController {
 	
-	/*@Resource(name = "fileUploadProperties")
-	Properties fileUploadProperties;*/
+	@Resource(name = "fileUploadProperties")
+	Properties fileUploadProperties;
 	
 	@Resource(name = "multipartResolver")
 	CommonsMultipartResolver multipartResolver;
@@ -68,8 +68,8 @@ public class CommunityController {
 		//파일업로드파트
 		MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest)request;
 		MultipartFile file=multipartHttpServletRequest.getFile("file");
-		String uploadPath=session.getServletContext().getRealPath("resources/upload");
-		/*String uploadPath = fileUploadProperties.getProperty("file.upload.path");*/
+		/*String uploadPath=session.getServletContext().getRealPath("resources/upload");*/
+		String uploadPath = fileUploadProperties.getProperty("file.upload.path");
 		System.out.println(uploadPath);
 		File saveFolder = new File(uploadPath);
 		 
