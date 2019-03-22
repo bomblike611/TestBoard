@@ -1,5 +1,6 @@
 package egov.cmsystem.test.control;
 
+import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -9,8 +10,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 
 import egov.cmsystem.test.service.BoardDTO;
 import egov.cmsystem.test.service.BoardVO;
@@ -18,6 +21,9 @@ import egov.cmsystem.test.service.impl.CommunityServiceImpl;
 
 @Controller
 public class CommunityController {
+	
+	@Resource(name = "multipartResolver")
+	CommonsMultipartResolver multipartResolver;
 	
 	@Resource(name="communityService")
 	private CommunityServiceImpl communityService;
@@ -41,16 +47,18 @@ public class CommunityController {
 		return view;
 	}
 	@RequestMapping(value = "/communityWrite.do",method=RequestMethod.GET)
-	public ModelAndView communityFrom() throws Exception {
+	public ModelAndView communityForm() throws Exception {
 		ModelAndView view=new ModelAndView();
 		view.setViewName("community/communityForm");
 		return view;
 	}
 	@RequestMapping(value = "/communityWrite.do", method=RequestMethod.POST)
-	public String communityFrom(BoardDTO boardDTO,MultipartFile file) throws Exception {
+	public String communityForm(BoardDTO boardDTO,HttpServletRequest request) throws Exception {
 		boardDTO.setAdminDelete("n");
 		boardDTO.setFileOriginalName("");
 		boardDTO.setFileSaveName("");
+		MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest)request;
+		MultipartFile file=multipartHttpServletRequest.getFile("file");
 		int result=communityService.insertContents(boardDTO);
 		String resultText="";
 		if(result>0){

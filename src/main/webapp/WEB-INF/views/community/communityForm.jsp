@@ -28,7 +28,7 @@ $(function(){
 				<h1>자유게시판</h1>
 			</div>
 			<div id="formArea">
-			<form id="form" action="communityWrite.do" method="post" enctype="multipart/form-date">
+			<form id="form" action="communityWrite.do" method="post" enctype="multipart/form-data">
 				<p>
 					<span class="titles">제목</span> <input type="text"
 						placeholder="게시글 제목을 작성해 주세요." name="boardTitle">
