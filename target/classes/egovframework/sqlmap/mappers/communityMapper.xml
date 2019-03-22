@@ -23,7 +23,7 @@
 		where boardNum=#{boardNum}
 	</update>
 
-	<update id="plusHits">
+	<update id="updateHits" parameterType="boardDTO">
 		update board set boardHits=boardHits+1 where boardNum=#{boardNum}
 	</update>
 

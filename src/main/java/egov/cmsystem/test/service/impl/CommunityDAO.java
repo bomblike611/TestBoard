@@ -21,6 +21,9 @@ public class CommunityDAO extends EgovAbstractMapper{
     public int updateContents(BoardDTO boardDTO) throws Exception{
     	return getSqlSession().update(namespace+"updateContents", boardDTO);
     }
+    public int updateHits(BoardDTO boardDTO)throws Exception{
+    	return getSqlSession().update(namespace+"updateHits", boardDTO);
+    }
 	
     public int deleteContents(BoardDTO boardDTO) throws Exception{
     	return getSqlSession().delete(namespace+"deleteContents", boardDTO);

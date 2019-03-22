@@ -35,6 +35,7 @@ public class CommunityServiceImpl implements BoardService {
 
 	@Override
 	public BoardDTO selectContents(BoardDTO boardDTO) throws Exception {
+		communityDAO.updateHits(boardDTO);
 		return communityDAO.selectContents(boardDTO);
 	}
 
