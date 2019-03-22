@@ -29,7 +29,7 @@ public class BoardController {
 	@RequestMapping(value = "/main.do")
 	public ModelAndView mainview() throws Exception {
 		ModelAndView view=new ModelAndView();
-		view.setViewName("main/mainView");
+		view.setViewName("notice/noticeList");
 		return view;
 	}
 
