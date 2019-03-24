@@ -41,6 +41,7 @@ $(function(){
 </style>
 </head>
 <body>
+<!-- ******* ************** 관리자 삭제시 , 게시글번호 , 검색 ********************* -->
 <section>
 	<div>
 	    <c:import url="../main/banner.jsp" />
@@ -68,7 +69,7 @@ $(function(){
 				<c:forEach items="${list}" var="contents">
 					<tr id="tbl_nt_col">
 						<td>${contents.boardNum}</td>
-						<td>${contents.boardTitle}</td>
+						<td><a href="qnaContents.do?boardNum=${contents.boardNum}" id="ahref">${contents.boardTitle}</a></td>
 						<td>${contents.boardWriter}</td>
 						<td>날자</td>
 					</tr>
@@ -79,18 +80,24 @@ $(function(){
 					<p>
        <div class="list_n_menu"> 
         	<c:if test="${page.prev}">
-        	<a href="#"> ◀ 이전  </a>
+        	<a href="qnaList.do?pageIndex=${page.firstIndex -1}"> ◀ 이전  </a>
         	</c:if>
         	
 	       <c:forEach begin="${page.firstIndex}" end="${page.lastIndex}" var="text" step="1">
-	        <a href="#">${text}</a>
+		        <c:choose>
+			        <c:when test="${page.pageIndex == text }">
+			        	${text}
+			        </c:when>
+			        <c:otherwise>
+			        	<a href="qnaList.do?pageIndex=${text}">${text}</a>
+			        </c:otherwise>
+		        </c:choose>
 	        </c:forEach> 
 	        
 	        <c:if test="${page.next}">
-        	<a href="#"> 다음 ▶ </a>
+        	 <a href="qnaList.do?pageIndex=${page.lastIndex +1}"> 다음 ▶ </a>
         	</c:if>
-	       
-	        
+
 	        <div class="writeButton">글쓰기</div>
 </div>
 

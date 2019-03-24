@@ -16,7 +16,8 @@ $(function(){
 		$("#form").submit();
 	});
 	$("#backList").click(function(){
-		location.href="./qnaContents.do?boardNum="+num;
+		var num=${contents.boardNum}
+		location.href="./communityContents.do?boardNum="+num;
 	});
 });
 </script>
@@ -25,27 +26,35 @@ $(function(){
 	<section>
 		<div id="writeForm">
 			<div id="listHeader">
-				<h1>Q&A</h1>
+				<h1>자유게시판</h1>
 			</div>
 			<div id="formArea">
-			<form id="form" action="communityWrite.do" method="post">
+			<form id="form" action="communityUpdate.do" method="post">
+			<input type="hidden" name="boardNum" value="${contents.boardNum}">
+			<input type="hidden" name="code" value="${contents.code}">
 				<p>
 					<span class="titles">제목</span> <input type="text"
-						placeholder="게시글 제목을 작성해 주세요." name="boardTitle">
+						placeholder="게시글 제목을 작성해 주세요." name="boardTitle" value="${contents.boardTitle}">
 				</p>
 				<p>
 					<span class="titles">PW</span> <input type="text"
-						placeholder="비밀번호를 입력해주세요." name="boardPw">
+						placeholder="비밀번호를 입력해주세요." name="boardPw" value="${contents.boardPw}">
 				</p>
 				<div id="textarea">
-					<textarea name="boardContents"></textarea>
+					<textarea name="boardContents">${contents.boardContents}</textarea>
 				</div>
-				<br><ul id="buttons">
+				<ul id="fileContents">
+					<li class="fileText">파일 첨부</li>
+					<li id="filesName">
+						<div></div>
+					</li>
+					<li class="fileText"><div id="fileButton">파일 첨부하기</div></li>
+				</ul>
+			</form></div>
+			<ul id="buttons">
 			<li id="formSubmit">등록</li>
 			<li id="backList">취소</li>
 			</ul>
-			</form></div>
-			
 		</div>
 	</section>
 </body>

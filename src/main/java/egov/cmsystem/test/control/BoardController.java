@@ -33,13 +33,18 @@ public class BoardController {
 		ModelAndView view=new ModelAndView();
 		List<?> ar=boardService.selectList(vo);
 		view.addObject("list", ar);
-		
 		view.addObject("page", vo);
-
-		
 		view.setViewName("qna/qnaList");
 		return view;
 	}
-
+	
+	@RequestMapping(value = "/qnaContents.do")
+	public ModelAndView qnaContents(BoardDTO boardDTO) throws Exception {
+		ModelAndView view=new ModelAndView();
+		BoardDTO dto=boardService.selectContents(boardDTO);
+		view.addObject("contents", dto);
+		view.setViewName("qna/qnaContents");
+		return view;
+	}
 	
 }

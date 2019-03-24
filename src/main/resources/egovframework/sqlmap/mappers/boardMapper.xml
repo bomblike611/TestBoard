@@ -3,13 +3,15 @@
 <mapper namespace="egovframework.sqlmap.mappers.boardMapper">
 
 	<select id="selectList" parameterType="boardVO" resultType="boardDTO">
-
 	select * from (select rownum R,b.* from board b where b.code=3 order by b.boardnum desc) where R between #{startPage} and #{lastPage}
 	</select>
 	
-	
 	<select id="selectTotalCount" resultType="int">
 	select nvl(count(boardnum),0) totalindex from board where code=3
+	</select>
+	
+	<select id="selectContents" parameterType="boardDTO" resultType="boardDTO">
+	select * from board where boardNum=#{boardNum}
 	</select>
 	
 </mapper>

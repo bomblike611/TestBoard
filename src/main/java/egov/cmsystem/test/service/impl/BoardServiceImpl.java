@@ -37,8 +37,7 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public BoardDTO selectContents(BoardDTO boardDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return boardDAO.selectContents(boardDTO);
 	}
 
 	@Override

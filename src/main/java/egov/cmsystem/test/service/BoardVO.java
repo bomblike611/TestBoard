@@ -87,19 +87,24 @@ public class BoardVO {
 	
 	private void calcData() {
 		
-		totalIndex =(int) Math.ceil(totalrecord/pageUnit);
+		totalIndex =(int)Math.ceil(totalrecord/(double)pageUnit);
 	
 		startPage=pageUnit*(pageIndex-1);
+		lastPage=pageUnit*pageIndex;
 		
-		totalSize = totalIndex/pageSize+1;
+		if(pageIndex>=totalIndex){
+			lastPage=totalrecord;
+		}
 		
-		sizeIndex = pageIndex/pageSize +1;
+		totalSize = (int)Math.ceil(totalIndex/(double)pageSize);
+		
+		sizeIndex = (int)Math.ceil(pageIndex/(double)pageSize);
 		
 		firstIndex=sizeIndex*pageSize-4;
 		lastIndex=sizeIndex*pageSize;
 		
 		if(sizeIndex>=totalSize){
-			lastIndex=totalSize;
+			lastIndex=totalIndex;
 		}
 		prev = sizeIndex > 1 ? true : false; 
 		next = sizeIndex < totalSize ? true : false; 
