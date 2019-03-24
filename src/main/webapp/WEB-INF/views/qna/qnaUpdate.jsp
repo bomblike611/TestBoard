@@ -17,7 +17,7 @@ $(function(){
 	});
 	$("#backList").click(function(){
 		var num=${contents.boardNum}
-		location.href="./communityContents.do?boardNum="+num;
+		location.href="./qnaContents.do?boardNum="+num;
 	});
 });
 </script>
@@ -26,10 +26,10 @@ $(function(){
 	<section>
 		<div id="writeForm">
 			<div id="listHeader">
-				<h1>자유게시판</h1>
+				<h1>Q&A</h1>
 			</div>
 			<div id="formArea">
-			<form id="form" action="communityUpdate.do" method="post">
+			<form id="form" action="qnaUpdate.do" method="post">
 			<input type="hidden" name="boardNum" value="${contents.boardNum}">
 			<input type="hidden" name="code" value="${contents.code}">
 				<p>
@@ -43,13 +43,6 @@ $(function(){
 				<div id="textarea">
 					<textarea name="boardContents">${contents.boardContents}</textarea>
 				</div>
-				<ul id="fileContents">
-					<li class="fileText">파일 첨부</li>
-					<li id="filesName">
-						<div></div>
-					</li>
-					<li class="fileText"><div id="fileButton">파일 첨부하기</div></li>
-				</ul>
 			</form></div>
 			<ul id="buttons">
 			<li id="formSubmit">등록</li>

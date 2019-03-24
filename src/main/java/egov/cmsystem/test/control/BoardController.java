@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import egov.cmsystem.test.service.BoardDTO;
@@ -46,5 +47,28 @@ public class BoardController {
 		view.setViewName("qna/qnaContents");
 		return view;
 	}
+	
+	@RequestMapping(value = "/qnaUpdate.do",method=RequestMethod.GET)
+	public ModelAndView qnaUpdate(BoardDTO boardDTO) throws Exception{
+		ModelAndView mv=new ModelAndView();
+		BoardDTO dto=boardService.selectContents(boardDTO);
+		mv.addObject("contents", dto);
+		mv.setViewName("qna/qnaUpdate");
+		return mv;
+	}
+	@RequestMapping(value = "/qnaUpdate.do",method=RequestMethod.POST)
+	public String qnaUpdatePOST(BoardDTO boardDTO) throws Exception{
+		System.out.println(boardDTO.getBoardTitle());
+		int result=boardService.updateContents(boardDTO);
+		String resultText="";
+		if(result>0){
+			resultText="성공";
+		}else{
+			resultText="실패";
+		}
+		System.out.println(resultText);
+		return "redirect:/qnaContents.do?boardNum="+boardDTO.getBoardNum();
+	}
+	
 	
 }

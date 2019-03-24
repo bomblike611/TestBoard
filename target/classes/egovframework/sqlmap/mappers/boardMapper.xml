@@ -14,4 +14,17 @@
 	select * from board where boardNum=#{boardNum}
 	</select>
 	
+	<update id="updateContents" parameterType="boardDTO">
+		update board
+		<set>
+			<if test="boardTitle != null">boardTitle=#{boardTitle},</if>
+			<if test="boardContents != null">boardContents=#{boardContents},</if>
+			<if test="fileSaveName != null">fileSaveName=#{fileSaveName},</if>
+			<if test="fileOriginalName != null">fileOriginalName=#{fileOriginalName},</if>
+			code=#{code}
+		</set>
+		where boardNum=#{boardNum}
+	</update>
+	
+	
 </mapper>

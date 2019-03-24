@@ -16,10 +16,10 @@
 	$(function() {
 			var num=${contents.boardNum}
 		$("#update").click(function() {
-			location.href="./communityUpdate.do?boardNum="+num;
+			location.href="./qnaUpdate.do?boardNum="+num;
 		});
 		$("#delete").click(function(){
-			location.href="./communityDelete.do?boardNum="+num;			
+			location.href="./qnaDelete.do?boardNum="+num;			
 		});
 	});
 </script>
@@ -39,7 +39,7 @@
 							<p>${contents.boardTitle}</p>
 						</div>
 						<div>
-							<span>${contents.boardDate}</span> <span id="count">${contents.boardHits}</span>
+							<span>${contents.boardDate}</span>
 							<div id="contentForm">${contents.boardContents}</div>
 						</div>
 					</div></li>

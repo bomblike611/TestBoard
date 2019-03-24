@@ -16,7 +16,7 @@ $(function(){
 		$("#form").submit();
 	});
 	$("#backList").click(function(){
-		location.href="./qnaContents.do?boardNum="+num;
+		location.href="./qnaList.do";
 	});
 });
 </script>

@@ -25,8 +25,7 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public int updateContents(BoardDTO boardDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		return boardDAO.updateContents(boardDTO);
 	}
 
 	@Override

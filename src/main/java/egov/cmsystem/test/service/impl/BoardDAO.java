@@ -25,5 +25,8 @@ public class BoardDAO extends EgovAbstractMapper{
     public BoardDTO selectContents(BoardDTO boardDTO) throws Exception{
     	return getSqlSession().selectOne(namespace+"selectContents", boardDTO);
     }
-	
+    
+    public int updateContents(BoardDTO boardDTO) throws Exception{
+    	return getSqlSession().update(namespace+"updateContents", boardDTO);
+    }
 }
