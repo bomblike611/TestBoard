@@ -56,7 +56,7 @@ public class BoardController {
 	@RequestMapping(value = "/main.do")
 	public ModelAndView mainview() throws Exception {
 		ModelAndView view=new ModelAndView();
-		view.setViewName("main/miniMenu");
+		view.setViewName("main/mainView2");
 		return view;
 	}
 	

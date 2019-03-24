@@ -41,7 +41,7 @@
 <body>
 <div>
 	<div>
-	   <%--  <c:import url="banner.jsp" /> --%>
+<c:import url="banner.jsp" />
 	</div>
 	<div>
 	   <img src="./images/office.jpg" alt="cm" style="width:100%">
