@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link type="text/css" rel="stylesheet" href="<c:url value='/css/community/notice.css'/>"/>
+<link type="text/css" rel="stylesheet" href="<c:url value='/css/notice/notice.css'/>"/>
 
 <title>Insert title here</title>
 <script type="text/javascript">
@@ -43,11 +43,11 @@ $(function(){
 <body>
 <section>
 	<div>
-	    <c:import url="banner.jsp" />
+	    <c:import url="../main/banner.jsp" />
 	</div>
 	<div class="img2">
 	   <img src="./images/office.jpg" alt="cm">
-	   <div class="img_text_center"><p id="font1">알림마당</p>
+	   <div class="img_text_center"><p id="font1">${text}</p>
 	   </div>
 	 </div>
 <div id="noticeList">

@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <link type="text/css" rel="stylesheet"
-	href="<c:url value='/css/community/communityContents.css'/>" />
+	href="<c:url value='/css/qna/qnaContents.css'/>" />
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <title>Insert title here</title>
@@ -28,20 +28,11 @@
 	<section>
 		<div id="Contents">
 			<div id="contentsHeader">
-				<p>자유게시판</p>
+				<p>Q&A</p>
 				<div class="writeButton" id="update">수정</div>
 				<div class="writeButton" id="delete">삭제</div>
 			</div>
 			<ul id="ulContents">
-				<li>
-				<c:if test="${not empty contents.fileSaveName}">
-				<img alt="" src="/upload/${contents.fileSaveName}">
-				</c:if>
-				<c:if test="${empty contents.fileSaveName}">
-				<img alt="" src="./images/office.jpg">
-				</c:if>
-				</li>
-
 				<li><div id="comContents">
 						<div id="contentTitle">
 							<b>제목</b>
@@ -54,6 +45,7 @@
 					</div></li>
 			</ul>
 		</div>
+		<div id="nextPage">답변 달기 </div>
 	</section>
 
 </body>
