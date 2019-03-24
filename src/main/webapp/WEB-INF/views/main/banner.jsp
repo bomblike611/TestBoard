@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<link type="text/css" rel="stylesheet"
-	href="<c:url value='/css/banner/banner.css'/>" />
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	<head>
+<link type="text/css" rel="stylesheet" href="<c:url value='/css/banner/banner.css'/>"/>
+	</head>
 
 <ul class="bannerdg">
   <li class="bannermn" style="float:left"><a href="#about"><img src="./images/cm_logo_han.png"></a></li>

@@ -1,2 +1,50 @@
 @CHARSET "UTF-8";
 
+#bannerImg {
+	width: 100%;
+}
+
+#miniMenubar {
+	list-style: none;
+	width: 100%;
+	height: 50px;
+	padding: 0;
+	border: 1px solid #EAEAEA;
+	margin: 0;
+}
+#imgDivText{
+	position: absolute;
+	top: 150px;
+	left: 50px;
+	color: white;
+	font-size: 35px;
+	font-weight: bold;
+}
+
+#miniMenubar li {
+	float: left;
+	color: #4A7EBB;
+	border-right: 1px solid #EAEAEA;
+	font-size: 20px;
+	font-weight: bold;
+	cursor: pointer;
+}
+#miniMenubar li:hover{
+	background-color: #EAEAEA;
+}
+
+#home {
+	height: 50px;
+	line-height: 50px;
+	width: 5%;
+	text-align: center;
+}
+#home img{
+	margin: 0 auto;
+}
+
+.menus {
+	height: 50px;
+	line-height: 50px;
+	width: 15%;
+}

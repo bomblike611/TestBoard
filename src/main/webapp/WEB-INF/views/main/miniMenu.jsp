@@ -5,12 +5,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link type="text/css" rel="stylesheet" href="<c:url value='/css/banner/miniMenu.css'/>"/>
 <title>Insert title here</title>
 </head>
 <body>
 <c:import url="./banner.jsp"/>
 <div id="miniMenu">
-<img src="./images/banner.png">
+<div id="imgDiv">
+<img src="./images/bannerImg.png" id="bannerImg">
+<p id="imgDivText">알림마당</p>
+</div>
 <ul id="miniMenubar">
 <li id="home"><img alt="home" src="./images/homes.png"></li>
 <li class="menus">▶   소개</li>
