@@ -42,6 +42,7 @@
 </script>
 </head>
 <body>
+<c:import url="../main/miniMenu.jsp" />
 	<section>
 		<div id="communityList">
 			<div id="listHeader">

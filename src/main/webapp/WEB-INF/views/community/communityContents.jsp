@@ -30,6 +30,7 @@
 </script>
 </head>
 <body>
+<c:import url="../main/miniMenu.jsp" />
 	<section>
 		<div id="Contents">
 			<div id="contentsHeader">

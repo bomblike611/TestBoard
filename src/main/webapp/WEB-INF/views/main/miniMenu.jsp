@@ -4,7 +4,7 @@
 
 <link type="text/css" rel="stylesheet"
 	href="<c:url value='/css/banner/miniMenu.css'/>" />
-<c:import url="./banner.jsp" />
+<c:import url="../main/banner.jsp" />
 <div id="miniMenu">
 	<div id="imgDiv">
 		<img src="./images/bannerImg.png" id="bannerImg">
