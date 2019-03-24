@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="egovframework.sqlmap.mappers.boardMapper">
+
+	<select id="selectList" parameterType="boardVO" resultType="boardDTO">
+
+	select * from (select rownum R,b.* from board b where b.code=3 order by b.boardnum desc) where R between #{startPage} and #{lastPage}
+	</select>
+	
+	
+	<select id="selectTotalCount" resultType="int">
+	select nvl(count(boardnum),0) totalindex from board where code=3
+	</select>
+	
+</mapper>

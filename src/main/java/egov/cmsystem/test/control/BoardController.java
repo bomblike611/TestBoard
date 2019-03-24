@@ -1,11 +1,15 @@
 package egov.cmsystem.test.control;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import egov.cmsystem.test.service.BoardDTO;
+import egov.cmsystem.test.service.BoardVO;
 import egov.cmsystem.test.service.impl.BoardServiceImpl;
 
 @Controller
@@ -14,17 +18,6 @@ public class BoardController {
 	@Resource(name="boardService")
 	private BoardServiceImpl boardService;
 	
-	@RequestMapping(value = "/index.do")
-	public ModelAndView selectOne() throws Exception {
-		ModelAndView view=new ModelAndView();
-		String title=boardService.selectOne();
-		view.addObject("title", title);
-		view.setViewName("test/test");
-		
-		return view;
-	}
-	
-
 	
 	@RequestMapping(value = "/main.do")
 	public ModelAndView mainview() throws Exception {
@@ -32,14 +25,21 @@ public class BoardController {
 		view.setViewName("main/banner");
 		return view;
 	}
+
+	//추가절 ****************************************
 	
-	@RequestMapping(value = "/List.do")
-	public ModelAndView List() throws Exception {
+	@RequestMapping(value = "/qnaList.do")
+	public ModelAndView qnaList(BoardVO vo) throws Exception {
 		ModelAndView view=new ModelAndView();
-		view.setViewName("notice/noticeList");
+		List<?> ar=boardService.selectList(vo);
+		view.addObject("list", ar);
+		
+		view.addObject("page", vo);
+
+		
+		view.setViewName("qna/qnaList");
 		return view;
 	}
-
 
 	
 }

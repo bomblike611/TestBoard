@@ -64,12 +64,13 @@ $(function(){
 						<th class="tbl_col3">작성자</th>
 						<th class="tbl_col4">작성일</th>
 					</tr>
-				<c:forEach begin="1" end="10" var="text" step="1">
+					
+				<c:forEach items="${list}" var="contents">
 					<tr id="tbl_nt_col">
-						<td>${text}</td>
-						<td>제목</td>
-						<td>작성자</td>
-						<td>작성일</td>
+						<td>${contents.boardNum}</td>
+						<td>${contents.boardTitle}</td>
+						<td>${contents.boardWriter}</td>
+						<td>날자</td>
 					</tr>
 				</c:forEach>
 				</table>
@@ -77,11 +78,19 @@ $(function(){
 					</div>
 					<p>
        <div class="list_n_menu"> 
-        	<span> ◀  </span>
-	        <c:forEach begin="1" end="5" var="text" step="1">
-	        <a href="#?page='${text}'">${text}</a>
-	        </c:forEach>
-	        <a href="#?page=2"> ▶ </a>
+        	<c:if test="${page.prev}">
+        	<a href="#"> ◀ 이전  </a>
+        	</c:if>
+        	
+	       <c:forEach begin="${page.firstIndex}" end="${page.lastIndex}" var="text" step="1">
+	        <a href="#">${text}</a>
+	        </c:forEach> 
+	        
+	        <c:if test="${page.next}">
+        	<a href="#"> 다음 ▶ </a>
+        	</c:if>
+	       
+	        
 	        <div class="writeButton">글쓰기</div>
 </div>
 

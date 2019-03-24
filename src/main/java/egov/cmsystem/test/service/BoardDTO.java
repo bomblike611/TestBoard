@@ -3,13 +3,14 @@ package egov.cmsystem.test.service;
 import java.sql.Date;
 import java.time.LocalDate;
 
-public class BoardDTO {
+public class BoardDTO{
 
 	private int boardNum;
 	private int code;
 	private String boardTitle;
 	private String boardPw;
 	private String boardContents;
+	private String boardWriter;
 	private LocalDate boardDate;
 	private LocalDate deleteDate;
 	private int boardHits;
@@ -88,6 +89,12 @@ public class BoardDTO {
 	}
 	public void setFileOriginalName(String fileOriginalName) {
 		this.fileOriginalName = fileOriginalName;
+	}
+	public String getBoardWriter() {
+		return boardWriter;
+	}
+	public void setBoardWriter(String boardWriter) {
+		this.boardWriter = boardWriter;
 	}
 	
 	
