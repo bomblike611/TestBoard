@@ -19,7 +19,12 @@
 			location.href="./communityUpdate.do?boardNum="+num;
 		});
 		$("#delete").click(function(){
-			location.href="./communityDelete.do?boardNum="+num;			
+			/* location.href="./communityDelete.do?boardNum="+num;	 */	
+			$("#myModal").css("display","block");
+		});
+		$("#close").click(function(){
+			/* location.href="./communityDelete.do?boardNum="+num;	 */	
+			$("#myModal").css("display","none");
 		});
 	});
 </script>
@@ -55,7 +60,15 @@
 			</ul>
 		</div>
 	</section>
-
+<div id="myModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span id="close">&times;</span>
+    <p> ▶ 비밀번호</p>
+    <p><input type="text" name="boardPw" placeholder="비밀번호를 입력해주세요"></p>
+    <div class="writeButton" id="deleted">삭제</div>
+  </div>
+</div>
 </body>
 </html>
 
