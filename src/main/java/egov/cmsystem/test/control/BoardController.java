@@ -86,19 +86,6 @@ public class BoardController {
 		return "redirect:/admin0327Main.do";
 	}
 	
-	@RequestMapping(value = "/List.do")
-	public ModelAndView List() throws Exception {
-		ModelAndView view=new ModelAndView();
-		view.setViewName("notice/noticeList");
-		return view;
-	}
-	
-	@RequestMapping(value="/noticeContents.do")
-	public ModelAndView noticeContents()throws Exception{
-		ModelAndView mv=new ModelAndView();
-		mv.setViewName("notice/noticeContents");
-		return mv;
-	}
 
 
 	

@@ -1,0 +1,182 @@
+@CHARSET "UTF-8";
+
+section{
+	width: 100%;
+	margin: 0;
+}
+.noticeContainer{
+	width:80%;
+	margin: 0 10% 0 10%;
+	height: 900px;
+}
+
+.noticeHeader{
+	height: 60px;
+}
+.noticeContainer li{
+	list-style: none;
+}
+
+#contentsHeader li{
+	float: left;
+	height: 50px;
+}
+#notice{
+	width: 80%;
+}
+
+.prev{
+	width: 20%;
+	text-align: center;
+	line-height: 50px;
+}
+.prev span{
+	margin-right: 50px;
+}
+
+#titles{
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	border-top: 2px solid #1F497D;
+	border-bottom: 1px solid #EAEAEA;
+	margin-bottom: 1%;
+}
+
+#titles li{
+	float: left;
+}
+
+#title{
+	width: 5%;
+}
+#boardTitle{
+	width: 75%;
+}
+.date{
+	float: right;
+}
+
+#contentForm{
+	padding-top: 50px;
+	height: 400px;
+}
+
+
+
+/**********버튼***********/
+.writeButton{
+	margin-top:5px;
+	color: white;
+	border: 1px solid #95B3D7;
+	background-color: #95B3D7;
+	margin-right: 1%;
+	width: 7%;
+	text-align: center;
+	font-size: 14px;
+	height: 25px;
+	line-height: 25px;
+	float: right;
+	cursor: pointer;
+	-webkit-transition: color 1s, background-color 1s; /* For Safari 3.1 to 6.0 */
+	transition: color 1s, background-color 1s;
+}
+
+.writeButton:hover{
+	border: 1px solid #95B3D7;
+	color: blue;
+	background-color: white;
+}
+
+
+/************* 댓글다는 곳 ****************/
+#replyContainer{
+	border-top: 2px solid #1F497D;
+}
+
+#replyContainer li{
+	float: left;
+}
+
+#replyContent{
+	width: 100%;
+	height: 70px;
+	line-height: 70px;
+	padding: 0;
+	margin: 2%;
+}
+#textArea{
+	width: 70%;
+}
+#textArea textarea{
+	height: 60px;
+	width: 100%;
+}
+
+#replyList div{
+	height:30px;
+	line-height:30px;
+	border-bottom: 1px solid #7F7F7F;
+}
+
+#replyList div b{
+margin-right: 30px;	
+}
+/******* Modal Part ***********/
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+ /*  overflow: auto; Enable scroll if needed
+  background-color: rgb(0,0,0); Fallback color
+  background-color: rgba(0,0,0,0.4); Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 20%;
+  height: 150px;
+}
+
+/* The Close Button */
+#close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+#close:hover,
+#close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-content p{
+	color: #4A7EBB;
+	font-weight: bold;
+	font-size: 18px;
+	margin: 3% 0;
+}
+.modal-content input{
+	border: 1px solid #EAEAEA;
+	width: 100%;
+	margin: 0 auto;
+}
+
+#deleted{
+	display: block;
+	margin: 0 50%;
+	width: 20%;
+}
