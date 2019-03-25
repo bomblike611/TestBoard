@@ -14,7 +14,15 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 	$(function() {
-			var num=${contents.boardNum}
+		var admin="${admin}";
+		var num=${contents.boardNum};
+		
+		if(admin=="관리자"){
+			$("#delete").click(function(){
+				alert("bb");
+				location.href="./communityDelete.do?boardNum="+num;
+			});
+		}else{
 		$("#update").click(function() {
 			$("#deleted").html("수정");
 			$("#myModal").css("display","block");
@@ -43,6 +51,7 @@
 				alert("비밀번호가 다릅니다.");
 			}
 		});
+		}
 		
 		
 	});

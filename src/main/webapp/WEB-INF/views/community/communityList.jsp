@@ -12,6 +12,7 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 	$(function() {
+		var admin="${admin}";
 		$(".writeButton").click(function() {
 			location.href = "./communityWrite.do";
 		});
@@ -20,7 +21,11 @@
 			var boardNum = $(this).attr("title");
 			var adminDelete=$(this).attr("name");
 			if(adminDelete=='y'){
-				alert("접근이 제한된 게시물입니다.");
+				if(admin=="관리자"){
+					location.href = "communityContents.do?boardNum=" + boardNum;
+				}else{
+					alert("접근이 제한된 게시물입니다.");
+				}
 			}else{
 			location.href = "communityContents.do?boardNum=" + boardNum;
 			}
