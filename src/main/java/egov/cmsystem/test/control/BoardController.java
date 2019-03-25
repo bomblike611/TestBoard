@@ -164,10 +164,10 @@ public ModelAndView qnaList(BoardVO vo) throws Exception {
 	}
 	@RequestMapping(value = "/qnaAdminForm.do",method=RequestMethod.POST)
 	public String qnaAdminFormPost(BoardDTO boardDTO) throws Exception{
-		int result=boardService.insertContents(boardDTO);
 		boardDTO.setAdminDelete("n");
 		boardDTO.setFileOriginalName("");
 		boardDTO.setFileSaveName("");
+		int result=boardService.replyinsertContents(boardDTO);
 		return "redirect:/qnaContents.do?boardNum="+boardDTO.getBoardNum();
 	}
 	

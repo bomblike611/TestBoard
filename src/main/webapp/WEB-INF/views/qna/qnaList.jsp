@@ -60,7 +60,7 @@ $(function(){
 <div id="noticeList">
 			<div id="listHeader">
 			<form id="form" action="qnaList.do" method="post">
-				<h1>Q&A44</h1>
+				<h1>Q&A</h1>
 				<p>고객의 질문에 성실히 답해드리겠습니다.</p>
 				<span><img alt="" src="./images/search.jpg" id="search">
 				<input type="text" placeholder="검색" name="searchKeyword"></span>
@@ -78,7 +78,14 @@ $(function(){
 					<tr id="tbl_nt_col">
 						 <td>${page.totalrecord - num.index -((page.pageIndex-1)*10)}</td> 
 						<td><a href="qnaContents.do?boardNum=${contents.boardNum}" id="ahref">${contents.boardTitle}</a></td>
-						<td>사용자</td>
+						<c:choose>
+							<c:when test="${contents.boardPw != null}">
+								<td>사용자</td>
+							</c:when>
+							<c:otherwise>
+								<td>관리자</td>
+							</c:otherwise>
+						</c:choose>
 						<td>${contents.boardDate}</td>
 					</tr>
 				</c:forEach>

@@ -30,12 +30,12 @@ $(function(){
 			</div>
 			<div id="formArea">
 			<form id="form" action="qnaAdminForm.do" method="post">
-			<input type="hidden" name="boardRef" value="${contents.boardNum}">
+			<input type="hidden" name="boardRef" value="${contents.boardRef}">
+			<input type="hidden" name="boardPw" value="">
+			<input type="hidden" name="boardTitle" value=" RE : ${contents.boardTitle}">
 				<p>
-					<%-- <span class="titles">제목</span> <input type="text"
-						 name="boardTitle" value="RE : ${contents.boardTitle}" disabled> --%>
-						 <span class="titles">제목</span> <input type="text"
-						 name="boardTitle" value="${contents.boardTitle}">
+					 <span class="titles">제목</span> RE : ${contents.boardTitle} 
+					
 				</p>
 		
 				<div id="textarea">

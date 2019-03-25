@@ -42,4 +42,8 @@ public class BoardDAO extends EgovAbstractMapper{
     public int insertContents(BoardDTO boardDTO) throws Exception{
     	return getSqlSession().insert(namespace+"insertContents", boardDTO);
     }
+    
+    public int replyinsertContents(BoardDTO boardDTO) throws Exception{
+    	return getSqlSession().insert(namespace+"replyinsertContents", boardDTO);
+    }
 }
