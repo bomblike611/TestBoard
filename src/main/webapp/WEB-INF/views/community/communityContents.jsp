@@ -16,16 +16,35 @@
 	$(function() {
 			var num=${contents.boardNum}
 		$("#update").click(function() {
-			location.href="./communityUpdate.do?boardNum="+num;
+			$("#deleted").html("수정");
+			$("#myModal").css("display","block");
 		});
 		$("#delete").click(function(){
 			/* location.href="./communityDelete.do?boardNum="+num;	 */	
 			$("#myModal").css("display","block");
+			$("#deleted").html("삭제");
 		});
 		$("#close").click(function(){
 			/* location.href="./communityDelete.do?boardNum="+num;	 */	
 			$("#myModal").css("display","none");
 		});
+		
+		$(".updated").click(function(){
+			var pw= $("#boardPw").val()+"";
+			var boardPw="${contents.boardPw}";
+			var pageUrl=$("#deleted").text();
+			if(pw == boardPw){
+				if(pageUrl=="수정"){
+					location.href="./communityUpdate.do?boardNum="+num;
+				}else{
+					location.href="./communityDelete.do?boardNum="+num;
+				}
+			}else{
+				alert("비밀번호가 다릅니다.");
+			}
+		});
+		
+		
 	});
 </script>
 </head>
@@ -66,8 +85,8 @@
   <div class="modal-content">
     <span id="close">&times;</span>
     <p> ▶ 비밀번호</p>
-    <p><input type="text" name="boardPw" placeholder="비밀번호를 입력해주세요"></p>
-    <div class="writeButton" id="deleted">삭제</div>
+    <p><input type="password" id="boardPw" name="boardPw" placeholder="비밀번호를 입력해주세요"></p>
+    <div class="writeButton updated" id="deleted">삭제</div>
   </div>
 </div>
 </body>

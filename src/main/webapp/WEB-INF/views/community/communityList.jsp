@@ -18,10 +18,16 @@
 
 		$(".detail").click(function() {
 			var boardNum = $(this).attr("title");
+			var adminDelete=$(this).attr("name");
+			if(adminDelete=='y'){
+				alert("접근이 제한된 게시물입니다.");
+			}else{
 			location.href = "communityContents.do?boardNum=" + boardNum;
+			}
 		});
 		var first=1;
 		var last=10;
+		var height=500;
 		$("#nextPage").click(function(){
 			first=first+10;
 			last=last+10;
@@ -31,7 +37,9 @@
 					lastIndex: last
 					  },
 					  function(data){
+						  height=height+500;
 						  $("#listContents").append(data);
+						  $("#listContents").css("height",height+"px");
 						  $(".detail").click(function() {
 								var boardNum = $(this).attr("title");
 								location.href = "communityContents.do?boardNum=" + boardNum;
@@ -57,20 +65,20 @@
 					<li class="listContent"><c:if
 							test="${not empty contents.fileSaveName}">
 							<img alt="image" src="/upload/${contents.fileSaveName}"
-								class="detail" title="${contents.boardNum}">
+								class="detail" title="${contents.boardNum}" name="${contents.adminDelete}">
 						</c:if> <c:if test="${empty contents.fileSaveName}">
 							<img alt="image" src="./images/office.jpg" class="detail"
-								title="${contents.boardNum}">
+								title="${contents.boardNum}" name="${contents.adminDelete}">
 						</c:if> <c:if test="${contents.adminDelete=='n'}">
-							<p class="detail" title="${contents.boardNum}">${contents.boardTitle}</p>
+							<p class="detail" title="${contents.boardNum}" name="${contents.adminDelete}">${contents.boardTitle}</p>
 						</c:if> <c:if test="${contents.adminDelete=='y'}">
 							<p class="detail" title="${contents.boardNum}"
-								style="color: red;">부적절한 콘텐츠입니다..</p>
+								style="color: red;" name="${contents.adminDelete}">삭제된 게시물입니다.</p>
 						</c:if></li>
 				</c:forEach>
 			</ul>
 		</div>
-		<div id="nextPage">▼</div>
+		<span id="nextPage">▼</span>
 	</section>
 
 </body>

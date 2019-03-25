@@ -19,6 +19,10 @@ $(function(){
 		var num=${contents.boardNum}
 		location.href="./communityContents.do?boardNum="+num;
 	});
+	$("#imgDelete").click(function(){
+		$("#imgForm").html("");
+		$("#imgForm").append('<input type="file" name="file">');
+		});
 });
 </script>
 </head>
@@ -30,7 +34,7 @@ $(function(){
 				<h1>자유게시판</h1>
 			</div>
 			<div id="formArea">
-			<form id="form" action="communityUpdate.do" method="post">
+			<form id="form" action="communityUpdate.do" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="boardNum" value="${contents.boardNum}">
 			<input type="hidden" name="code" value="${contents.code}">
 				<p>
@@ -47,7 +51,7 @@ $(function(){
 				<ul id="fileContents">
 					<li class="fileText">파일 첨부</li>
 					<li id="filesName">
-						<div></div>
+						<div id="imgForm">${contents.fileOriginalName}<span style="color: red;" id="imgDelete">   X</span></div>
 					</li>
 					<li class="fileText"><div id="fileButton">파일 첨부하기</div></li>
 				</ul>

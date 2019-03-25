@@ -15,6 +15,7 @@
 		update board
 		<set>
 			<if test="boardTitle != null">boardTitle=#{boardTitle},</if>
+			<if test="boardPw != null">boardPw=#{boardPw},</if>
 			<if test="boardContents != null">boardContents=#{boardContents},</if>
 			<if test="fileSaveName != null">fileSaveName=#{fileSaveName},</if>
 			<if test="fileOriginalName != null">fileOriginalName=#{fileOriginalName},</if>
@@ -32,6 +33,7 @@
 		update board
 		<set>
 		<if test="adminDelete!=null">adminDelete=#{adminDelete},</if>
+		deleteDate=sysdate,
 		code=#{code}
 		</set>
 		where boardNum=#{boardNum}
@@ -42,7 +44,7 @@
 	</select>
 
 	<select id="selectList" parameterType="boardVO" resultType="boardDTO">
-	select * from (select rownum R,b.* from board b where code=2) where R between #{firstIndex} and #{lastIndex} order by R desc
+	select * from (select rownum R,b.* from board b where code=2 order by boardDate) where R between #{firstIndex} and #{lastIndex} order by boardDate desc
 	</select>
 	
 	

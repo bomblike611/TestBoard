@@ -35,7 +35,7 @@ $(function(){
 						placeholder="게시글 제목을 작성해 주세요." name="boardTitle">
 				</p>
 				<p>
-					<span class="titles">PW</span> <input type="text"
+					<span class="titles">PW</span> <input type="password"
 						placeholder="비밀번호를 입력해주세요." name="boardPw">
 				</p>
 				<div id="textarea">

@@ -74,6 +74,8 @@ public class CommunityController {
 		MultipartFile file=multipartHttpServletRequest.getFile("file");
 		//이거 안먹힘 ㅠ,,
 		/*String uploadPath=session.getServletContext().getRealPath("resources/upload");*/
+		System.out.println(file.getOriginalFilename());
+		if(file.getOriginalFilename()!=""){
 		String uploadPath = fileUploadProperties.getProperty("file.upload.path");
 		File saveFolder = new File(uploadPath);
 		 
@@ -87,6 +89,7 @@ public class CommunityController {
 		File f = new File(uploadPath, fileName);
 		file.transferTo(f);
 		boardDTO.setFileSaveName(fileName);
+		}
 		int result=communityService.insertContents(boardDTO);
 		String resultText="";
 		if(result>0){
@@ -107,7 +110,29 @@ public class CommunityController {
 		return mv;
 	}
 	@RequestMapping(value = "/communityUpdate.do",method=RequestMethod.POST)
-	public String communityUpdatePOST(BoardDTO boardDTO) throws Exception{
+	public String communityUpdatePOST(BoardDTO boardDTO,HttpServletRequest request,HttpSession session) throws Exception{
+		MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest)request;
+		MultipartFile file=multipartHttpServletRequest.getFile("file");
+		//이거 안먹힘 ㅠ,,
+		/*String uploadPath=session.getServletContext().getRealPath("resources/upload");*/
+		if(file.getOriginalFilename()!=""){
+		String uploadPath = fileUploadProperties.getProperty("file.upload.path");
+		File saveFolder = new File(uploadPath);
+		 
+		if (!saveFolder.exists() || saveFolder.isFile()) {
+			saveFolder.mkdirs();
+		}
+		boardDTO.setFileOriginalName(file.getOriginalFilename());
+		String fileName= file.getOriginalFilename();
+		fileName=fileName.substring(fileName.lastIndexOf("."));
+		fileName=UUID.randomUUID().toString()+fileName;
+		File f = new File(uploadPath, fileName);
+		file.transferTo(f);
+		boardDTO.setFileSaveName(fileName);
+		}else{
+			boardDTO.setFileOriginalName("");
+			boardDTO.setFileSaveName("");
+		}
 		int result=communityService.updateContents(boardDTO);
 		String resultText="";
 		if(result>0){
