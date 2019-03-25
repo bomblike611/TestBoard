@@ -32,7 +32,8 @@ public class NoticeServiceImpl implements BoardService{
 	}
 	@Override
 	public List<?> selectList(BoardVO vo) throws Exception {
-		// TODO Auto-generated method stub
+		int totalCount=noticeDAO.selectTotalCount();
+		vo.setTotalrecord(totalCount);
 		return noticeDAO.selectList(vo);
 	}
 	@Override

@@ -8,6 +8,20 @@
 <title>Insert title here</title>
 <link type="text/css" rel="stylesheet"
 	href="<c:url value='/css/notice/noticeContents.css'/>" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		var boardNum=${contents.boardNum};
+		$("#update").click(function(){
+			location.href="./Update.do?boardNum="+boardNum;
+		});
+		$("#delete").click(function(){
+			location.href="./Delete.do?boardNum="+boardNum;			
+		});
+	});
+	
+	</script>
 </head>
 <body>
 	<c:import url="../main/miniMenu.jsp" />
@@ -22,12 +36,12 @@
 			<div class="noticeContents">
 				<ul id="titles">
 					<li id="title"><b>공지</b></li>
-					<li id="boardTitle">제목제목</li>
-					<li class="writeButton">수정</li>
-					<li class="writeButton">삭제</li>
+					<li id="boardTitle">${contents.boardTitle}</li>
+					<li class="writeButton" id="update">수정</li>
+					<li class="writeButton" id="delete">삭제</li>
 				</ul>
-				<span>작성자</span> <span class="date"><b>날짜</b></span>
-				<div id="contentForm">내용</div>
+				<span>관리자</span> <span class="date"><b>${contents.boardDate}</b></span>
+				<div id="contentForm">${contents.boardContents }</div>
 			</div>
 			<div id="replyContainer">
 				<ul id="replyContent">

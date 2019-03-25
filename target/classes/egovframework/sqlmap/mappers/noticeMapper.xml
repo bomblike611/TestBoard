@@ -13,7 +13,6 @@
 		update board
 		<set>
 			<if test="boardTitle != null">boardTitle=#{boardTitle},</if>
-			<if test="boardPw != null">boardPw=#{boardPw},</if>
 			<if test="boardContents != null">boardContents=#{boardContents},</if>
 			code=#{code}
 		</set>
@@ -25,8 +24,7 @@
 		update board
 		<set>
 		<if test="adminDelete!=null">adminDelete=#{adminDelete},</if>
-		deleteDate=sysdate,
-		code=#{code}
+		deleteDate=sysdate
 		</set>
 		where boardNum=#{boardNum}
 	</update>
@@ -36,7 +34,13 @@
 	</select>
 
 	<select id="selectList" parameterType="boardVO" resultType="boardDTO">
-	select * from (select rownum R,b.* from board b where code=1 order by boardDate) where R between #{firstIndex} and #{lastIndex} order by boardDate desc
+	SELECT *
+  	FROM (
+            select row_number() over(order by boardnum desc) as rnum,t.*
+            from board t
+            where t.code=1
+            )
+   WHERE rnum between #{startPage} AND #{lastPage}
 	</select>
 	
 	

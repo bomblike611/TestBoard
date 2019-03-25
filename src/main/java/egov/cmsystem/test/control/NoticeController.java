@@ -15,16 +15,16 @@ import egov.cmsystem.test.service.impl.NoticeServiceImpl;
 
 @Controller
 public class NoticeController {
-	
+
 	@Resource(name="noticeService")
 	private NoticeServiceImpl noticeService;
-	
 
 	@RequestMapping(value = "/List.do")
 	public ModelAndView noticeList(BoardVO vo) throws Exception {
 		ModelAndView view=new ModelAndView();
 		List<?> ar=noticeService.selectList(vo);
 		view.addObject("list", ar);
+		view.addObject("page", vo);
 		view.setViewName("notice/noticeList");
 		return view;
 	}
@@ -45,6 +45,10 @@ public class NoticeController {
 	}
 	@RequestMapping(value = "/Write.do",method=RequestMethod.POST)
 	public String noticeWrite(BoardDTO boardDTO) throws Exception {
+		boardDTO.setBoardPw("");
+		boardDTO.setAdminDelete("n");
+		boardDTO.setFileOriginalName("");
+		boardDTO.setFileSaveName("");
 		ModelAndView view=new ModelAndView();
 		int result=noticeService.insertContents(boardDTO);
 		view.setViewName("notice/noticeForm");

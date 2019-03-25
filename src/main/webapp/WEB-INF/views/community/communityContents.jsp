@@ -19,7 +19,6 @@
 		
 		if(admin=="관리자"){
 			$("#delete").click(function(){
-				alert("bb");
 				location.href="./communityDelete.do?boardNum="+num;
 			});
 		}else{

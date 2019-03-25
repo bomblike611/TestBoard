@@ -28,13 +28,15 @@ $(function(){
 				<h1>공지사항</h1>
 			</div>
 			<div id="formArea">
-			<form id="form" action="Write.do" method="post">
+			<form id="form" action="Update.do" method="post">
+			<input type="hidden" name="boardNum" value="${contents.boardNum}">
+			<input type="hidden" name="code" value="${contents.code}">
 				<p>
 					<span class="titles">제목</span> <input type="text"
-						placeholder="게시글 제목을 작성해 주세요." name="boardTitle">
+						placeholder="게시글 제목을 작성해 주세요." name="boardTitle" value="${contents.boardTitle }">
 				</p>
 				<div id="textarea">
-					<textarea name="boardContents"></textarea>
+					<textarea name="boardContents">${contents.boardContents }</textarea>
 				</div>
 				<br><ul id="buttons">
 			<li id="formSubmit">등록</li>
