@@ -6,7 +6,7 @@
 	</head>
 
 <ul class="bannerdg">
-  <li class="bannermn" style="float:left"><a href="#about"><img src="./images/cm_logo_han.png"></a></li>
+  <li class="bannermn" style="float:left"><a href="/TestBoard/main.do"><img src="./images/cm_logo_han.png"><span style="color: red;"> ${admin}</span></a></li>
   <li class="bannermn dropdown"><a href="communityList.do">커뮤니티</a>
   <div class="dropdown-content">
       <a href="./communityList.do">자유게시판</a>
