@@ -15,7 +15,7 @@ public class BoardVO {
 	/****** 전체 페이지  ******/
 	private int totalIndex=1;
 
-	/****** 페이지갯수  ******/
+	/****** 페이지 내 게시글 갯수  ******/
 	private int pageUnit = 10;
 
 	/****** 블록 사이즈  ******/
@@ -32,7 +32,9 @@ public class BoardVO {
 	private int firstIndex = 1;
 
 	/****** 블록내 끝 페이지  ******/
-	private int lastIndex = 5;
+	private int lastIndex = 10;
+	
+	private int lastIndex2 = 5;
 	
 	/****** 페이지 내 시작 글번호  ******/
 	private int startPage=1;
@@ -89,7 +91,7 @@ public class BoardVO {
 		
 		totalIndex =(int)Math.ceil(totalrecord/(double)pageUnit);
 	
-		startPage=pageUnit*(pageIndex-1);
+		startPage=pageUnit*(pageIndex-1)+1;
 		lastPage=pageUnit*pageIndex;
 		
 		if(pageIndex>=totalIndex){
@@ -101,10 +103,10 @@ public class BoardVO {
 		sizeIndex = (int)Math.ceil(pageIndex/(double)pageSize);
 		
 		firstIndex=sizeIndex*pageSize-4;
-		lastIndex=sizeIndex*pageSize;
+		setLastIndex2(sizeIndex*pageSize);
 		
 		if(sizeIndex>=totalSize){
-			lastIndex=totalIndex;
+			setLastIndex2(totalIndex);
 		}
 		prev = sizeIndex > 1 ? true : false; 
 		next = sizeIndex < totalSize ? true : false; 
@@ -188,6 +190,14 @@ public class BoardVO {
 
 	public void setLastPage(int lastPage) {
 		this.lastPage = lastPage;
+	}
+
+	public int getLastIndex2() {
+		return lastIndex2;
+	}
+
+	public void setLastIndex2(int lastIndex2) {
+		this.lastIndex2 = lastIndex2;
 	}
 
 

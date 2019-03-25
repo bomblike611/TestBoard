@@ -19,8 +19,7 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public int insertContents(BoardDTO boardDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		return boardDAO.insertContents(boardDTO);
 	}
 
 	@Override
@@ -43,10 +42,18 @@ public class BoardServiceImpl implements BoardService{
 	public List<?> selectList(BoardVO vo) throws Exception {
 		
 		int totalrecord=boardDAO.selectTotalCount();
+		
+		vo.setTotalrecord(totalrecord);
+	
+		return boardDAO.selectList(vo);
+	}
+	
+	public List<?> selectListSearch(BoardVO vo) throws Exception {
+	
+		int totalrecord=boardDAO.selectTotalCountSearch(vo);
 		vo.setTotalrecord(totalrecord);
 		
-		
-		return boardDAO.selectList(vo);
+		return boardDAO.selectListSearch(vo);
 	}
 	
 

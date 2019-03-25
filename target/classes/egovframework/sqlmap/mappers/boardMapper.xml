@@ -3,11 +3,31 @@
 <mapper namespace="egovframework.sqlmap.mappers.boardMapper">
 
 	<select id="selectList" parameterType="boardVO" resultType="boardDTO">
-	select * from (select rownum R,b.* from board b where b.code=3 order by b.boardnum desc) where R between #{startPage} and #{lastPage}
+	SELECT *
+  	FROM (
+            select row_number() over(order by boardnum desc) as rnum,t.*
+            from board t
+            where t.code=3
+            )
+   WHERE rnum between #{startPage} AND #{lastPage}
+	</select>
+	
+	<select id="selectListSearch" parameterType="boardVO" resultType="boardDTO">
+	SELECT *
+  	FROM (
+            select row_number() over(order by boardnum desc) as rnum,t.*
+            from board t
+            where t.code=3 and t.boardTitle like '%' || #{searchKeyword} || '%' 
+            )									
+   WHERE rnum between #{startPage} AND #{lastPage}
 	</select>
 	
 	<select id="selectTotalCount" resultType="int">
-	select nvl(count(boardnum),0) totalindex from board where code=3
+	select nvl(count(boardnum),0) from board where code=3
+	</select>
+	
+	<select id="selectTotalCountSearch" resultType="int" parameterType="boardVO">
+	select nvl(count(boardnum),0) from board where code=3 and boardTitle like '%' || #{searchKeyword} || '%' 
 	</select>
 	
 	<select id="selectContents" parameterType="boardDTO" resultType="boardDTO">
@@ -25,6 +45,14 @@
 		</set>
 		where boardNum=#{boardNum}
 	</update>
+	
+	<insert id="insertContents" parameterType="boardDTO">
+		<selectKey keyProperty="boardNum" resultType="int" order="BEFORE">
+			select test_seq.nextval from dual
+		</selectKey>
+		insert into board values 
+		(#{boardNum},3,#{boardTitle},"",#{boardContents},sysdate,sysdate,1,#{boardRef},'n',"","")
+	</insert>
 	
 	
 </mapper>

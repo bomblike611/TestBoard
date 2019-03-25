@@ -21,6 +21,9 @@
 		$("#delete").click(function(){
 			location.href="./qnaDelete.do?boardNum="+num;			
 		});
+		$("#reply").click(function(){
+			location.href="./qnaAdminForm.do?boardNum="+num;			
+		});
 	});
 </script>
 </head>
@@ -45,7 +48,7 @@
 					</div></li>
 			</ul>
 		</div>
-		<div id="nextPage">답변 달기 </div>
+		<div id="reply">답변 달기 </div>
 	</section>
 
 </body>

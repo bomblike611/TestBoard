@@ -16,7 +16,8 @@ $(function(){
 		$("#form").submit();
 	});
 	$("#backList").click(function(){
-		location.href="./qnaList.do";
+		var num=${contents.boardNum}
+		location.href="./qnaContents.do?boardNum="+num;
 	});
 });
 </script>
@@ -28,24 +29,24 @@ $(function(){
 				<h1>Q&A</h1>
 			</div>
 			<div id="formArea">
-			<form id="form" action="qnaWrite.do" method="post">
+			<form id="form" action="qnaAdminForm.do" method="post">
+			<input type="hidden" name="boardRef" value="${contents.boardNum}">
 				<p>
-					<span class="titles">제목</span> <input type="text"
-						placeholder="게시글 제목을 작성해 주세요." name="boardTitle">
+					<%-- <span class="titles">제목</span> <input type="text"
+						 name="boardTitle" value="RE : ${contents.boardTitle}" disabled> --%>
+						 <span class="titles">제목</span> <input type="text"
+						 name="boardTitle" value="${contents.boardTitle}">
 				</p>
-				<p>
-					<span class="titles">PW</span> <input type="text"
-						placeholder="비밀번호를 입력해주세요." name="boardPw">
-				</p>
+		
 				<div id="textarea">
-					<textarea name="boardContents"></textarea>
+					<textarea name="boardContents">${contents.boardContents} &#10; ------------------------------------------------------------------------------------------------------------------------ &#10;</textarea>
 				</div>
-				<br><ul id="buttons">
+			</form></div>
+			<ul id="buttons">
 			<li id="formSubmit">등록</li>
 			<li id="backList">취소</li>
-			</ul>
-			</form></div>
 			
+			</ul>
 		</div>
 	</section>
 </body>

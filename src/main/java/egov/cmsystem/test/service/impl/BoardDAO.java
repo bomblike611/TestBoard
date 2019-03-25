@@ -17,9 +17,18 @@ public class BoardDAO extends EgovAbstractMapper{
     public List<?> selectList(BoardVO vo) throws Exception{
     	return getSqlSession().selectList(namespace+"selectList", vo);
     }
+    
+    public List<?> selectListSearch(BoardVO vo) throws Exception{
+    	System.out.println(vo.getSearchKeyword());
+    	return getSqlSession().selectList(namespace+"selectListSearch", vo);
+    }
 	
     public int selectTotalCount() throws Exception{
     	return getSqlSession().selectOne(namespace+"selectTotalCount");
+    }
+    public int selectTotalCountSearch(BoardVO vo) throws Exception{
+    	
+    	return getSqlSession().selectOne(namespace+"selectTotalCountSearch",vo);
     }
     
     public BoardDTO selectContents(BoardDTO boardDTO) throws Exception{
@@ -28,5 +37,9 @@ public class BoardDAO extends EgovAbstractMapper{
     
     public int updateContents(BoardDTO boardDTO) throws Exception{
     	return getSqlSession().update(namespace+"updateContents", boardDTO);
+    }
+    
+    public int insertContents(BoardDTO boardDTO) throws Exception{
+    	return getSqlSession().insert(namespace+"insertContents", boardDTO);
     }
 }

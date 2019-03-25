@@ -3,7 +3,9 @@ package egov.cmsystem.test.control;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,7 +31,7 @@ public class BoardController {
 
 	//추가절 ****************************************
 	
-	@RequestMapping(value = "/qnaList.do")
+	@RequestMapping(value = "/qnaList.do",method=RequestMethod.GET)
 	public ModelAndView qnaList(BoardVO vo) throws Exception {
 		ModelAndView view=new ModelAndView();
 		List<?> ar=boardService.selectList(vo);
@@ -38,6 +40,16 @@ public class BoardController {
 		view.setViewName("qna/qnaList");
 		return view;
 	}
+	@RequestMapping(value = "/qnaList.do",method=RequestMethod.POST)
+	public ModelAndView qnaListSearch(BoardVO vo) throws Exception {
+		ModelAndView view=new ModelAndView();
+		List<?> ar=boardService.selectListSearch(vo);
+		view.addObject("list", ar);
+		view.addObject("page", vo);
+		view.setViewName("qna/qnaList");
+		return view;
+	}
+	
 	
 	@RequestMapping(value = "/qnaContents.do")
 	public ModelAndView qnaContents(BoardDTO boardDTO) throws Exception {
@@ -58,15 +70,42 @@ public class BoardController {
 	}
 	@RequestMapping(value = "/qnaUpdate.do",method=RequestMethod.POST)
 	public String qnaUpdatePOST(BoardDTO boardDTO) throws Exception{
-		System.out.println(boardDTO.getBoardTitle());
 		int result=boardService.updateContents(boardDTO);
-		String resultText="";
-		if(result>0){
-			resultText="성공";
-		}else{
-			resultText="실패";
-		}
-		System.out.println(resultText);
+
+		return "redirect:/qnaContents.do?boardNum="+boardDTO.getBoardNum();
+	}
+	
+	@RequestMapping(value = "/qnaWrite.do",method=RequestMethod.GET)
+	public ModelAndView qnaFrom() throws Exception {
+		ModelAndView view=new ModelAndView();
+		view.setViewName("qna/qnaForm");
+		return view;
+	}
+	
+	@RequestMapping(value = "/qnaWrite.do", method=RequestMethod.POST)
+	public String qnaFrom(BoardDTO boardDTO) throws Exception {
+		boardDTO.setAdminDelete("n");
+		boardDTO.setFileOriginalName("");
+		boardDTO.setFileSaveName("");
+		int result=boardService.insertContents(boardDTO);
+
+		return "redirect:/qnaList.do";
+	}
+	
+	@RequestMapping(value = "/qnaAdminForm.do",method=RequestMethod.GET)
+	public ModelAndView qnaAdminForm(BoardDTO boardDTO) throws Exception{
+		ModelAndView mv=new ModelAndView();
+		BoardDTO dto=boardService.selectContents(boardDTO);
+		mv.addObject("contents", dto);
+		mv.setViewName("qna/qnaAdminForm");
+		return mv;
+	}
+	@RequestMapping(value = "/qnaAdminForm.do",method=RequestMethod.POST)
+	public String qnaAdminFormPost(BoardDTO boardDTO) throws Exception{
+		int result=boardService.insertContents(boardDTO);
+		boardDTO.setAdminDelete("n");
+		boardDTO.setFileOriginalName("");
+		boardDTO.setFileSaveName("");
 		return "redirect:/qnaContents.do?boardNum="+boardDTO.getBoardNum();
 	}
 	
