@@ -42,6 +42,10 @@ public class CommunityController {
 		List<?> ar=communityService.selectList(vo);
 		view.addObject("list", ar);
 		view.setViewName("community/communityList");
+		/*
+		view.addObject("subject", "커뮤니티");
+		view.addObject("mini1", "자유게시판");
+		view.addObject("mini2", "Q&A");*/
 		return view;
 	}
 	
@@ -57,6 +61,7 @@ public class CommunityController {
 	public ModelAndView communityForm() throws Exception {
 		ModelAndView view=new ModelAndView();
 		view.setViewName("community/communityForm");
+
 		return view;
 	}
 	@RequestMapping(value = "/communityWrite.do", method=RequestMethod.POST)
@@ -98,6 +103,7 @@ public class CommunityController {
 		BoardDTO dto=communityService.selectContents(boardDTO);
 		mv.addObject("contents", dto);
 		mv.setViewName("community/communityUpdate");
+
 		return mv;
 	}
 	@RequestMapping(value = "/communityUpdate.do",method=RequestMethod.POST)
