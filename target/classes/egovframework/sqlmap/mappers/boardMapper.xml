@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="egovframework.sqlmap.mappers.boardMapper">
+
+	<select id="selectList" parameterType="boardVO" resultType="boardDTO">
+	SELECT *
+  	FROM (
+            select row_number() over(order by boardnum desc) as rnum,t.*
+            from board t
+            where t.code=3
+            )
+   WHERE rnum between #{startPage} AND #{lastPage}
+	</select>
+	
+	<select id="selectListSearch" parameterType="boardVO" resultType="boardDTO">
+	SELECT *
+  	FROM (
+            select row_number() over(order by boardnum desc) as rnum,t.*
+            from board t
+            where t.code=3 and t.boardTitle like '%' || #{searchKeyword} || '%' 
+            )									
+   WHERE rnum between #{startPage} AND #{lastPage}
+	</select>
+	
+	<select id="selectTotalCount" resultType="int">
+	select nvl(count(boardnum),0) from board where code=3
+	</select>
+	
+	<select id="selectTotalCountSearch" resultType="int" parameterType="boardVO">
+	select nvl(count(boardnum),0) from board where code=3 and boardTitle like '%' || #{searchKeyword} || '%' 
+	</select>
+	
+	<select id="selectContents" parameterType="boardDTO" resultType="boardDTO">
+	select * from board where boardNum=#{boardNum}
+	</select>
+	
+	<update id="updateContents" parameterType="boardDTO">
+		update board
+		<set>
+			<if test="boardTitle != null">boardTitle=#{boardTitle},</if>
+			<if test="boardContents != null">boardContents=#{boardContents},</if>
+			<if test="fileSaveName != null">fileSaveName=#{fileSaveName},</if>
+			<if test="fileOriginalName != null">fileOriginalName=#{fileOriginalName},</if>
+			code=#{code}
+		</set>
+		where boardNum=#{boardNum}
+	</update>
+	
+	<insert id="insertContents" parameterType="boardDTO">
+		<selectKey keyProperty="boardNum" resultType="int" order="BEFORE">
+			select test_seq.nextval from dual
+		</selectKey>
+		insert into board values 
+		(#{boardNum},3,#{boardTitle},"",#{boardContents},sysdate,sysdate,1,#{boardRef},'n',"","")
+	</insert>
+	
+	
+</mapper>

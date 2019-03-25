@@ -1,5 +1,7 @@
 package egov.cmsystem.test.service;
 
+import org.stringtemplate.v4.compiler.CodeGenerator.list_return;
+
 public class BoardVO {
 
 	/****** 검색Keyword ******/
@@ -10,21 +12,41 @@ public class BoardVO {
 
 	/****** 현재페이지  ******/
 	private int pageIndex = 1;
-	
+	/****** 전체 페이지  ******/
 	private int totalIndex=1;
 
-	/****** 페이지갯수  ******/
+	/****** 페이지 내 게시글 갯수  ******/
 	private int pageUnit = 10;
 
-	/****** 페이지사이즈  ******/
+	/****** 블록 사이즈  ******/
 	private int pageSize = 5;
-
-	/****** firstIndex  ******/
+	/****** 총 블록 사이즈  ******/
+	private int totalSize = 1;
+	/****** 현재 블록  ******/
+	private int sizeIndex = 1;
+	
+	/****** 총 개시글 수   ******/
+	private int totalrecord=1;
+	
+	/****** 블록내 첫 페이지  ******/
 	private int firstIndex = 1;
 
-	/****** lastIndex  ******/
+	/****** 블록내 끝 페이지  ******/
 	private int lastIndex = 10;
+	
+	private int lastIndex2 = 5;
+	
+	/****** 페이지 내 시작 글번호  ******/
+	private int startPage=1;
+	private int lastPage=10;
+	
+	/****** 이전  ******/
+	private boolean prev;
+	/****** 다음  ******/
+	private boolean next;
+	
 
+	
 	public String getSearchKeyword() {
 		return searchKeyword;
 	}
@@ -56,7 +78,40 @@ public class BoardVO {
 	public void setTotalIndex(int totalIndex) {
 		this.totalIndex = totalIndex;
 	}
+	public int getTotalrecord() {
+		return totalrecord;
+	}
 
+	public void setTotalrecord(int totalrecord) {
+		this.totalrecord = totalrecord;
+		calcData();
+	}
+	
+	private void calcData() {
+		
+		totalIndex =(int)Math.ceil(totalrecord/(double)pageUnit);
+	
+		startPage=pageUnit*(pageIndex-1)+1;
+		lastPage=pageUnit*pageIndex;
+		
+		if(pageIndex>=totalIndex){
+			lastPage=totalrecord;
+		}
+		
+		totalSize = (int)Math.ceil(totalIndex/(double)pageSize);
+		
+		sizeIndex = (int)Math.ceil(pageIndex/(double)pageSize);
+		
+		firstIndex=sizeIndex*pageSize-4;
+		setLastIndex2(sizeIndex*pageSize);
+		
+		if(sizeIndex>=totalSize){
+			setLastIndex2(totalIndex);
+		}
+		prev = sizeIndex > 1 ? true : false; 
+		next = sizeIndex < totalSize ? true : false; 
+	}
+	
 	public int getPageUnit() {
 		return pageUnit;
 	}
@@ -88,7 +143,64 @@ public class BoardVO {
 	public void setLastIndex(int lastIndex) {
 		this.lastIndex = lastIndex;
 	}
-	
+
+	public boolean isPrev() {
+		return prev;
+	}
+
+	public void setPrev(boolean prev) {
+		this.prev = prev;
+	}
+
+	public boolean isNext() {
+		return next;
+	}
+
+	public void setNext(boolean next) {
+		this.next = next;
+	}
+
+	public int getTotalSize() {
+		return totalSize;
+	}
+
+	public void setTotalSize(int totalSize) {
+		this.totalSize = totalSize;
+	}
+
+	public int getSizeIndex() {
+		return sizeIndex;
+	}
+
+	public void setSizeIndex(int sizeIndex) {
+		this.sizeIndex = sizeIndex;
+	}
+
+	public int getStartPage() {
+		return startPage;
+	}
+
+	public void setStartPage(int startPage) {
+		this.startPage = startPage;
+	}
+
+	public int getLastPage() {
+		return lastPage;
+	}
+
+	public void setLastPage(int lastPage) {
+		this.lastPage = lastPage;
+	}
+
+	public int getLastIndex2() {
+		return lastIndex2;
+	}
+
+	public void setLastIndex2(int lastIndex2) {
+		this.lastIndex2 = lastIndex2;
+	}
+
+
 	
 	
 	

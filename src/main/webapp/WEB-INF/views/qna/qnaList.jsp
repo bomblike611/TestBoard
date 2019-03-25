@@ -9,10 +9,16 @@
 <link type="text/css" rel="stylesheet" href="<c:url value='/css/qna/qnaList.css'/>"/>
 
 <title>Insert title here</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
 $(function(){
+	$("#search").click(function(){
+		$("#form").submit();
+	});
+	
 	$(".writeButton").click(function(){
-		location.href="./communityWrite.do";
+		location.href="./qnaWrite.do";
 	});
 });
 </script>
@@ -41,6 +47,7 @@ $(function(){
 </style>
 </head>
 <body>
+<!-- ******* ************** 관리자 삭제시 , 검색 ********************* -->
 <section>
 	<div>
 	    <c:import url="../main/banner.jsp" />
@@ -52,10 +59,12 @@ $(function(){
 	 </div>
 <div id="noticeList">
 			<div id="listHeader">
-				<h1>Q&A</h1>
+			<form id="form" action="qnaList.do" method="post">
+				<h1>Q&A44</h1>
 				<p>고객의 질문에 성실히 답해드리겠습니다.</p>
-				<span><img alt="" src="./images/search.jpg">
-				<input type="text" placeholder="검색" name="boardTitle"></span>
+				<span><img alt="" src="./images/search.jpg" id="search">
+				<input type="text" placeholder="검색" name="searchKeyword"></span>
+			</form>	
 			</div>
 				<table class="tbl_nt">
 					<tr id="tbl_nt_head">
@@ -64,30 +73,40 @@ $(function(){
 						<th class="tbl_col3">작성자</th>
 						<th class="tbl_col4">작성일</th>
 					</tr>
-				<c:forEach begin="1" end="10" var="text" step="1">
+					
+				<c:forEach items="${list}" var="contents" varStatus="num">
 					<tr id="tbl_nt_col">
-						<td>${text}</td>
-						<td>제목</td>
-						<td>작성자</td>
-						<td>작성일</td>
+						 <td>${page.totalrecord - num.index -((page.pageIndex-1)*10)}</td> 
+						<td><a href="qnaContents.do?boardNum=${contents.boardNum}" id="ahref">${contents.boardTitle}</a></td>
+						<td>사용자</td>
+						<td>${contents.boardDate}</td>
 					</tr>
 				</c:forEach>
 				</table>
-				
 					</div>
 					<p>
        <div class="list_n_menu"> 
-        	<span> ◀  </span>
-	        <c:forEach begin="1" end="5" var="text" step="1">
-	        <a href="#?page='${text}'">${text}</a>
-	        </c:forEach>
-	        <a href="#?page=2"> ▶ </a>
+        	<c:if test="${page.prev}">
+        	<a href="qnaList.do?pageIndex=${page.firstIndex -1}"> ◀ 이전  </a>
+        	</c:if>
+        	
+	       <c:forEach begin="${page.firstIndex}" end="${page.lastIndex2}" var="text" step="1">
+		        <c:choose>
+			        <c:when test="${page.pageIndex == text }">
+			        	${text}
+			        </c:when>
+			        <c:otherwise>
+			        	<a href="qnaList.do?pageIndex=${text}">${text}</a>
+			        </c:otherwise>
+		        </c:choose>
+	        </c:forEach> 
+	        
+	        <c:if test="${page.next}">
+        	 <a href="qnaList.do?pageIndex=${page.lastIndex2 +1}"> 다음 ▶ </a>
+        	</c:if>
 	        <div class="writeButton">글쓰기</div>
+	        
 </div>
-
-
-
-
 
 </section>
 </body>
