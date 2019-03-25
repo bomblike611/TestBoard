@@ -41,15 +41,9 @@ $(function(){
 </style>
 </head>
 <body>
+	    <c:import url="../main/miniMenu.jsp" />
 <section>
-	<div>
-	    <c:import url="../main/banner.jsp" />
-	</div>
-	<div class="img2">
-	   <img src="./images/office.jpg" alt="cm">
-	   <div class="img_text_center"><p id="font1">${text}</p>
-	   </div>
-	 </div>
+<br>
 <div id="noticeList">
 			<div id="listHeader">
 				<h1>공지사항</h1>

@@ -60,7 +60,6 @@ public class BoardController {
 	public ModelAndView adminMainView(HttpServletRequest request) throws Exception{
 		ModelAndView mv=new ModelAndView();
 		String ip=request.getRemoteAddr();
-		System.out.println(ip);
 		String text="";
 		if(adminIp.equals(ip)){
 			mv.addObject("adminPw", "admin0327");			
@@ -79,6 +78,12 @@ public class BoardController {
 		session.setMaxInactiveInterval(60*10);
 		mv.setViewName("main/mainView2");
 		return mv;
+	}
+	
+	@RequestMapping(value="/logout.do")
+	public String logout(HttpSession session)throws Exception{
+		session.invalidate();
+		return "redirect:/admin0327Main.do";
 	}
 	
 	@RequestMapping(value = "/List.do")

@@ -140,7 +140,9 @@ $(function(){
 function modal(){
 	$("#myModal").css("display","block");
 }
-
+function logout(){
+	location.href="./logout.do";
+}
 </script>
 </head>
 <body>
@@ -157,6 +159,9 @@ function modal(){
 				</p>
 				<c:if test="${not empty adminPw}">
 				<button id="button1" onclick="modal()">> 관리자 모드</button>
+				</c:if>
+				<c:if test="${not empty admin}">
+				<button id="button1" onclick="logout()">> 로그아웃</button>
 				</c:if>
 			</div>
 		</div>
