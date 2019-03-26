@@ -45,7 +45,9 @@
 </script>
 </head>
 <body>
-	<c:import url="../main/miniMenu.jsp" />
+	<c:import url="../main/miniMenu.jsp" >
+	<c:param name="main" value="2" />
+	</c:import>
 	<section>
 		<div class="noticeContainer">
 			<div class="noticeHeader">

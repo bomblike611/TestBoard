@@ -5,6 +5,23 @@
 <link type="text/css" rel="stylesheet"
 	href="<c:url value='/css/banner/miniMenu.css'/>" />
 <c:import url="../main/banner.jsp" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(function(){
+	$("#home").click(function(){
+		location.href="/main.do";
+	});
+});
+function notice(){
+	location.href="./List.do";
+}
+function community(){
+	location.href="./communityList.do"
+}
+function qna(){
+	location.href="./qnaList.do";
+}
+</script>
 <div id="miniMenu">
 
 	<c:choose>
@@ -26,7 +43,7 @@
 			</div>
 			<ul id="miniMenubar">
 				<li id="home"><img alt="home" src="./images/homes.png"></li>
-				<li class="menus">▶ 공지사항</li>	
+				<li class="menus" onclick="notice()">▶ 공지사항</li>	
 			</ul>
 		</c:when>
 		<c:otherwise>
@@ -36,8 +53,8 @@
 			</div>
 			<ul id="miniMenubar">
 				<li id="home"><img alt="home" src="./images/homes.png"></li>
-				<li class="menus">▶ 자유게시판</li>
-				<li class="menus">▶ Q&A</li>
+				<li class="menus" onclick="community()">▶ 자유게시판</li>
+				<li class="menus" onclick="qna()">▶ Q&A</li>
 			</ul>
 		</c:otherwise>
 		
