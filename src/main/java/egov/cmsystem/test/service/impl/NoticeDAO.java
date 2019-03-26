@@ -42,10 +42,13 @@ public final String namespace="egovframework.sqlmap.mappers.noticeMapper.";
     	return getSqlSession().selectOne(namespace+"selectTotalCount");
     }
     public List<?> selectReplyList(BoardDTO boardDTO) throws Exception{
-    	return getSqlSession().selectOne(namespace+"selectReplyList",boardDTO);
+    	return getSqlSession().selectList(namespace+"selectReplyList",boardDTO);
     }
     public int insertReply(NoticeReplyDTO noticeReplyDTO) throws Exception{
-    	return getSqlSession().selectOne(namespace+"selectTotalCount",noticeReplyDTO);
+    	return getSqlSession().insert(namespace+"insertReply",noticeReplyDTO);
+    }
+    public int deleteReply(NoticeReplyDTO noticeReplyDTO) throws Exception{
+    	return getSqlSession().delete(namespace+"deleteReply", noticeReplyDTO);
     }
 	
 }

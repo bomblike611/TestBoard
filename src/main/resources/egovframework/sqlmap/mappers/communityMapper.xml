@@ -44,7 +44,14 @@
 	</select>
 
 	<select id="selectList" parameterType="boardVO" resultType="boardDTO">
-	select * from (select rownum R,b.* from board b where code=2 order by boardDate) where R between #{firstIndex} and #{lastIndex} order by boardDate desc
+	SELECT *
+		FROM (
+		select row_number() over(order by boardDate desc) as rnum,t.*
+		from board t
+		where t.code=2
+		)
+		WHERE rnum between #{firstIndex} AND #{lastIndex}
+	
 	</select>
 	
 	

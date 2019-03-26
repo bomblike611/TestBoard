@@ -135,25 +135,35 @@ section{
 	width: 70%;
 }
 #textArea textarea{
-	height: 70px;
 	width: 100%;
-	line-height: 70px;
-	margin-top: 10px;
+	margin-top: 30px;
+	height: 100%;
 }
 
 #replyList{
+	width:100%;
 	margin-top: 20px;
+	border-collapse: collapse;
 }
 
-#replyList div{
+#replyList tr{
+	width:100%;
 	height:30px;
 	line-height:30px;
 	border-bottom: 1px solid #7F7F7F;
+	padding: 0;
+}
+#replyList td{
+	padding: 0;
+}
+#replyList th{
+	width: 15%;
+}
+#contents{
+	width: 65%;
 }
 
-#replyList div b{
-margin-right: 30px;	
-}
+
 /******* Modal Part ***********/
 
 .modal {

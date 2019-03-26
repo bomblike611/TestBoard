@@ -13,11 +13,33 @@
 <script type="text/javascript">
 	$(function() {
 		var boardNum =${contents.boardNum};
+		var admin="${admin}";
 		$("#update").click(function() {
 			location.href = "./Update.do?boardNum=" + boardNum;
 		});
 		$("#delete").click(function() {
 			location.href = "./Delete.do?boardNum=" + boardNum;
+		});
+		$("#submit").click(function(){
+			$("#form").submit();
+		});
+		$("#replyDelete").click(function(){
+			$("#myModal").css("display","block");
+		});
+		
+		$("#deleted").click(function(){
+			var replyNum=$("#replyDelete").attr("title");
+			var pw=$("#pw").val()+"";
+			var userPw=$("#boardPw").val()+"";
+			if(pw==userPw||admin=='관리자'){
+			location.href="./replyDelete.do?replyNum="+replyNum+"&boardNum="+boardNum;				
+			}else{
+				alert("비밀번호가 일치하지 않습니다.");
+			}
+		});
+		
+		$("#close").click(function(){
+			$("#myModal").css("display","none");
 		});
 	});
 </script>
@@ -45,29 +67,29 @@
 				<div id="contentForm">${contents.boardContents }</div>
 			</div>
 			<div id="replyContainer">
-			<form action="replyWrite.do" method="post">
+			<form action="replyWrite.do" method="post" id="form">
 			<input type="hidden" name="boardNum" value="${contents.boardNum}">
 				<table id="replyContent">
 					<tr>
 						<td class="td"><input type="text" placeholder="닉네임"
-							style="float: left; display: inline;"></td>
-						<td rowspan="2" id="textArea"><textarea></textarea></td>
+							style="float: left; display: inline;" name="replyName"></td>
+						<td rowspan="2" id="textArea"><textarea name="replyContents"></textarea></td>
 						<td rowspan="2"><div id="submit">등록</div></td>
 					</tr>
 					<tr>
 						<td class="td"><input type="password" placeholder="비밀번호"
-							style="float: left; display: inline;"></td>
+							style="float: left; display: inline;" name="replyPw"></td>
 					</tr>
 				</table>
 			</form>
-				<div id="replyList">
+				<table id="replyList">
 				<c:forEach items="${replyList}" var="re">
-					<div>
-						<b>${re.replyName}</b>${re.replycontents}<span class="date">${re.replyDate}<span style="color: red;">X</span></span>
-					</div>
+					<tr>
+						<th><input id="pw" type="hidden" value="${re.replyPw}">${re.replyName}</th><td id="contents">${re.replyContents}</td><td><span class="date">${re.replyDate}<span style="color: red;" id="replyDelete" title="${re.replyNum}">X</span></span></td>
+					</tr>
 				</c:forEach>
 
-				</div>
+				</table>
 			</div>
 		</div>
 	</section>

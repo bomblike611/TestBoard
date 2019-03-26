@@ -49,4 +49,7 @@ public class NoticeServiceImpl implements BoardService{
 	public int insertReply(NoticeReplyDTO noticeReplyDTO) throws Exception{
 		return noticeDAO.insertReply(noticeReplyDTO);
 	}
+	public int deleteReply(NoticeReplyDTO noticeReplyDTO) throws Exception{
+		return noticeDAO.deleteReply(noticeReplyDTO);
+	}
 }

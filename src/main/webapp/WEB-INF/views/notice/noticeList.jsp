@@ -63,13 +63,13 @@ $(function(){
 					<th class="tbl_col4">작성일</th>
 				</tr>
 				<c:forEach items="${list}" var="contents" varStatus="num">
-					<tr id="tbl_nt_col">
+					<tr class="tbl_nt_col">
 						 <td>${page.totalrecord - num.index -((page.pageIndex-1)*10)}</td> 
 						 <c:if test="${contents.adminDelete=='n'}">
-						<td><a href="Contents.do?boardNum=${contents.boardNum}" id="ahref">${contents.boardTitle}</a></td>
+						<td class="left"><a href="Contents.do?boardNum=${contents.boardNum}" id="ahref">${contents.boardTitle}</a></td>
 						</c:if>
-						<c:if test="">
-						
+						<c:if test="${contents.adminDelete=='y'}">
+						<td class="left"><a href="Contents.do?boardNum=${contents.boardNum}" id="ahref">삭제된 내용입니다.</a></td>
 						</c:if>
 						<td>사용자</td>
 						<td>${contents.boardDate}</td>

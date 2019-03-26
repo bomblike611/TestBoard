@@ -63,4 +63,7 @@
 		where boardNum=#{boardNum}
 		)
 	</select>
+	<delete id="deleteReply">
+	delete noticeReply where replyNum=#{replyNum}
+	</delete>
 </mapper>

@@ -3,6 +3,7 @@ package egov.cmsystem.test.control;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,10 +41,16 @@ public class NoticeController {
 		return view;
 	}
 	@RequestMapping(value = "/Write.do",method=RequestMethod.GET)
-	public ModelAndView noticeWrite() throws Exception {
+	public ModelAndView noticeWrite(HttpSession session) throws Exception {
 		ModelAndView view=new ModelAndView();
-		
-		view.setViewName("notice/noticeForm");
+		String admin=(String) session.getAttribute("admin");
+		if(admin==null){
+			view.addObject("alert", "관리자만 접근 가능합니다.");
+			view.addObject("url", "/List.do");
+			view.setViewName("main/alert");
+		}else{
+			view.setViewName("notice/noticeForm");			
+		}
 		return view;
 	}
 	@RequestMapping(value = "/Write.do",method=RequestMethod.POST)
@@ -58,11 +65,19 @@ public class NoticeController {
 		return "redirect:/List.do";
 	}
 	@RequestMapping(value = "/Update.do",method=RequestMethod.GET)
-	public ModelAndView noticeUpdate(BoardDTO boardDTO) throws Exception {
+	public ModelAndView noticeUpdate(BoardDTO boardDTO,HttpSession session) throws Exception {
 		ModelAndView view=new ModelAndView();
 		BoardDTO boardDTO2=noticeService.selectContents(boardDTO);
 		view.addObject("contents", boardDTO2);
-		view.setViewName("notice/noticeUpdate");
+		String admin=(String) session.getAttribute("admin");
+		if(admin==null){			
+			view.addObject("alert", "관리자만 접근 가능합니다.");
+			view.addObject("url", "/List.do");
+			view.setViewName("main/alert");
+		}else{
+			view.setViewName("notice/noticeUpdate");
+	
+		}
 		return view;
 	}
 	@RequestMapping(value = "/Update.do",method=RequestMethod.POST)
@@ -71,15 +86,35 @@ public class NoticeController {
 		return "redirect:/Contents.do?boardNum="+boardDTO.getBoardNum();
 	}
 	@RequestMapping(value = "/Delete.do")
-	public String noticeDelete(BoardDTO boardDTO) throws Exception {
+	public ModelAndView noticeDelete(BoardDTO boardDTO,HttpSession session) throws Exception {
 		int result=noticeService.deleteContents(boardDTO);
-		return "redirect:/List.do";
+		ModelAndView view=new ModelAndView();
+		String admin=(String) session.getAttribute("admin");
+		if(admin==null){
+			view.addObject("alert", "관리자만 접근 가능합니다.");
+			view.addObject("url", "/List.do");
+			view.setViewName("main/alert");
+		}else{
+			view.setViewName("redirect:/List.do");			
+		}
+		return view;
 	}
 	
-	@RequestMapping(value="replyWrite.do",method=RequestMethod.POST)
+	@RequestMapping(value="/replyWrite.do",method=RequestMethod.POST)
 	public String replyWrite(NoticeReplyDTO noticeReplyDTO) throws Exception{
-		ModelAndView mv=new ModelAndView();
-		noticeService.insertReply(noticeReplyDTO);
+		int result=noticeService.insertReply(noticeReplyDTO);
+		String resultText="";
+		if(result>0){
+			resultText="성공";
+		}else{
+			resultText="실패";
+		}
+		return "redirect:/Contents.do?boardNum="+noticeReplyDTO.getBoardNum();
+	}
+	
+	@RequestMapping(value="/replyDelete.do")
+	public String replyDelete(NoticeReplyDTO noticeReplyDTO) throws Exception{
+		int result=noticeService.deleteReply(noticeReplyDTO);
 		return "redirect:/Contents.do?boardNum="+noticeReplyDTO.getBoardNum();
 	}
 	
