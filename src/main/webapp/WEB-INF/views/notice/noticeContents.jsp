@@ -63,7 +63,7 @@
 				<div id="replyList">
 				<c:forEach items="${replyList}" var="re">
 					<div>
-						<b>${re.replyName}</b>${re.replycontents}<span class="date">날짜 <span style="color: red;">X</span></span>
+						<b>${re.replyName}</b>${re.replycontents}<span class="date">${re.replyDate}<span style="color: red;">X</span></span>
 					</div>
 				</c:forEach>
 
