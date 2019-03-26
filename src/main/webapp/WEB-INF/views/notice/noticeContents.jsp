@@ -21,7 +21,14 @@
 			location.href = "./Delete.do?boardNum=" + boardNum;
 		});
 		$("#submit").click(function(){
+			var replyName=$("#replyName").val()+"";
+			var replyPw=$("#replyPw").val()+"";
+			var replyContents=$("#replyContents").val()+"";
+			if(replyName==""||replyContents==""||replyPw==""){
+				alert("빈 칸이 없도록 모두 입력해주세요.");
+			}else{				
 			$("#form").submit();
+			}
 		});
 		$("#replyDelete").click(function(){
 			$("#myModal").css("display","block");
@@ -74,13 +81,13 @@
 				<table id="replyContent">
 					<tr>
 						<td class="td"><input type="text" placeholder="닉네임"
-							style="float: left; display: inline;" name="replyName"></td>
-						<td rowspan="2" id="textArea"><textarea name="replyContents"></textarea></td>
+							style="float: left; display: inline;" name="replyName" id="replyName"></td>
+						<td rowspan="2" id="textArea"><textarea name="replyContents" id="replyContents"></textarea></td>
 						<td rowspan="2"><div id="submit">등록</div></td>
 					</tr>
 					<tr>
 						<td class="td"><input type="password" placeholder="비밀번호"
-							style="float: left; display: inline;" name="replyPw"></td>
+							style="float: left; display: inline;" name="replyPw" id="replyPw"></td>
 					</tr>
 				</table>
 			</form>

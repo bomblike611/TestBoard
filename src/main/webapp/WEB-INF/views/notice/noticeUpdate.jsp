@@ -8,11 +8,18 @@
 <link type="text/css" rel="stylesheet"
 	href="<c:url value='/css/community/communityForm.css'/>" />
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript" src="<c:url value='/js/lengthCheck.js'/>"></script>
 <title>Insert title here</title>
 <script type="text/javascript">
 $(function(){
 	$("#formSubmit").click(function(){
+		var boardTitle=$("#boardTitle").val()+"";
+		var boardContents=$("#boardContents").val()+"";
+		if(boardTitle==""||boardContents==""){
+			alert("빈 칸이 없도록 모두 입력해주세요.");
+		}else{				
 		$("#form").submit();
+		}
 	});
 	$("#backList").click(function(){
 		location.href="./List.do";
@@ -35,10 +42,10 @@ $(function(){
 			<input type="hidden" name="code" value="${contents.code}">
 				<p>
 					<span class="titles">제목</span> <input type="text"
-						placeholder="게시글 제목을 작성해 주세요." name="boardTitle" value="${contents.boardTitle }">
+						placeholder="게시글 제목을 작성해 주세요." name="boardTitle" value="${contents.boardTitle }" onkeyup="lengthCheck(this,200)">
 				</p>
 				<div id="textarea">
-					<textarea name="boardContents">${contents.boardContents }</textarea>
+					<textarea name="boardContents" onkeyup="lengthCheck(this,4000)">${contents.boardContents }</textarea>
 				</div>
 				<br><ul id="buttons">
 			<li id="formSubmit">등록</li>
