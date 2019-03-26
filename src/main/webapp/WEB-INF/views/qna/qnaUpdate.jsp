@@ -14,6 +14,7 @@
 $(function(){
 	$("#formSubmit").click(function(){
 		$("#form").submit();
+		alert("수정 되었습니다.");
 	});
 	$("#backList").click(function(){
 		var num=${contents.boardNum}

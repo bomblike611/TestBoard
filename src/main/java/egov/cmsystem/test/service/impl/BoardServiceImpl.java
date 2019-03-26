@@ -33,8 +33,8 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public int deleteContents(BoardDTO boardDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		boardDTO.setAdminDelete("y");
+		return boardDAO.deleteContents(boardDTO);
 	}
 
 	@Override

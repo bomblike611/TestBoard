@@ -98,6 +98,7 @@
     <div class="writeButton updated" id="deleted">삭제</div>
   </div>
 </div>
+
 </body>
 </html>
 

@@ -62,5 +62,15 @@
 		(#{boardNum},3,#{boardTitle},#{boardPw},#{boardContents},sysdate,sysdate,1,#{boardRef},#{adminDelete},#{fileSaveName},#{fileOriginalName})
 	</insert>
 	
+	<update id="deleteContents" parameterType="boardDTO">
+		update board
+		<set>
+		<if test="adminDelete!=null">adminDelete=#{adminDelete},</if>
+		deleteDate=sysdate,
+		code=#{code}
+		</set>
+		where boardNum=#{boardNum}
+	</update>
+	
 	
 </mapper>

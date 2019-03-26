@@ -67,6 +67,7 @@ public class BoardController {
 	public ModelAndView adminMainView(HttpServletRequest request) throws Exception{
 		ModelAndView mv=new ModelAndView();
 		String ip=request.getRemoteAddr();
+		System.out.println(ip);
 		String text="";
 		if(adminIp.equals(ip)){
 			mv.addObject("adminPw", "admin0327");			
@@ -92,6 +93,7 @@ public class BoardController {
 		session.invalidate();
 		return "redirect:/admin0327Main.do";
 	}
+	
 	
 @RequestMapping(value = "/qnaList.do",method=RequestMethod.GET)
 public ModelAndView qnaList(BoardVO vo) throws Exception {
@@ -171,5 +173,12 @@ public ModelAndView qnaList(BoardVO vo) throws Exception {
 		return "redirect:/qnaContents.do?boardNum="+boardDTO.getBoardNum();
 	}
 	
+	@RequestMapping(value="/qnaDelete.do")
+	public String communityDelete(BoardDTO boardDTO) throws Exception{
+		BoardDTO dto=boardService.selectContents(boardDTO);
+		int result=boardService.deleteContents(dto);
+	
+		return "redirect:/qnaList.do";
+	}
 	
 }
