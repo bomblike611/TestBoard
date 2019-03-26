@@ -22,6 +22,11 @@
 				alert("bb");
 				location.href="./communityDelete.do?boardNum="+num;
 			});
+			${contents.boardPw != null}
+			$("#update").click(function(){
+				alert("bb");
+				location.href="./communityDelete.do?boardNum="+num;
+			});
 		}else{
 		$("#update").click(function() {
 			$("#deleted").html("수정");

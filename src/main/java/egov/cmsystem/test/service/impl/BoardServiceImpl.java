@@ -30,6 +30,10 @@ public class BoardServiceImpl implements BoardService{
 	public int updateContents(BoardDTO boardDTO) throws Exception {
 		return boardDAO.updateContents(boardDTO);
 	}
+	
+	public int relplyupdateContents(BoardDTO boardDTO) throws Exception {
+		return boardDAO.replyupdateContents(boardDTO);
+	}
 
 	@Override
 	public int deleteContents(BoardDTO boardDTO) throws Exception {

@@ -22,6 +22,11 @@ $(function(){
 </script>
 </head>
 <body>
+<div>
+	    <c:import url="../main/miniMenu.jsp">
+	    	<c:param name="main" value="3" />
+	    </c:import>
+	</div>
 	<section>
 		<div id="writeForm">
 			<div id="listHeader">
@@ -34,7 +39,7 @@ $(function(){
 						placeholder="게시글 제목을 작성해 주세요." name="boardTitle">
 				</p>
 				<p>
-					<span class="titles">PW</span> <input type="text"
+					<span class="titles">PW</span> <input type="password"
 						placeholder="비밀번호를 입력해주세요." name="boardPw">
 				</p>
 				<div id="textarea">

@@ -26,6 +26,13 @@
 				$("#reply").click(function(){
 					location.href="./qnaAdminForm.do?boardNum="+num;			
 				});
+				
+				$("#update").click(function(){
+					if(${contents.boardPw == null}){
+						location.href="./qnaAdminUpdate.do?boardNum="+num;			
+					}
+					});
+				
 			}else{
 			
 		$("#update").click(function() {
@@ -69,6 +76,11 @@
 </script>
 </head>
 <body>
+<div>
+	    <c:import url="../main/miniMenu.jsp">
+	    	<c:param name="main" value="3" />
+	    </c:import>
+	</div>
 	<section>
 		<div id="Contents">
 			<div id="contentsHeader">

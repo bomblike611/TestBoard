@@ -164,6 +164,23 @@ public ModelAndView qnaList(BoardVO vo) throws Exception {
 		mv.setViewName("qna/qnaAdminForm");
 		return mv;
 	}
+	
+	@RequestMapping(value = "/qnaAdminUpdate.do",method=RequestMethod.GET)
+	public ModelAndView qnaAdminUpdate(BoardDTO boardDTO) throws Exception{
+		ModelAndView mv=new ModelAndView();
+		BoardDTO dto=boardService.selectContents(boardDTO);
+		mv.addObject("contents", dto);
+		mv.setViewName("qna/qnaAdminUpdate");
+		return mv;
+	}
+	@RequestMapping(value = "/qnaAdminUpdate.do",method=RequestMethod.POST)
+	public String qnaAdminUpdatePost(BoardDTO boardDTO) throws Exception{
+
+		int dto=boardService.relplyupdateContents(boardDTO);
+
+		return "redirect:/qnaContents.do?boardNum="+boardDTO.getBoardNum();
+	}
+	
 	@RequestMapping(value = "/qnaAdminForm.do",method=RequestMethod.POST)
 	public String qnaAdminFormPost(BoardDTO boardDTO) throws Exception{
 		boardDTO.setAdminDelete("n");

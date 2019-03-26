@@ -24,7 +24,9 @@ $(function(){
 </head>
 <body>
 <div>
-	    <c:import url="../main/miniMenu.jsp" />
+	    <c:import url="../main/miniMenu.jsp">
+	    	<c:param name="main" value="3" />
+	    </c:import>
 	</div>
 	<section>
 		<div id="writeForm">
@@ -32,18 +34,19 @@ $(function(){
 				<h1>Q&A</h1>
 			</div>
 			<div id="formArea">
-			<form id="form" action="qnaAdminForm.do" method="post">
+			<form id="form" action="qnaAdminUpdate.do" method="post">
+			<input type="hidden" name="boardNum" value="${contents.boardNum}">
+			<input type="hidden" name="code" value="${contents.code}">
 			<input type="hidden" name="boardRef" value="${contents.boardRef}">
 			<input type="hidden" name="boardPw" value="">
 			<input type="hidden" name="boardTitle" value=" RE : ${contents.boardTitle}">
 				<p>
-					 <span class="titles">제목</span> RE : ${contents.boardTitle} 
+					 <span class="titles">제목</span>${contents.boardTitle} 
 					
 				</p>
 		
 				<div id="textarea">
-					<textarea name="boardContents">${contents.boardContents} &#10; ------------------------------------------------------------------------------------------------------------------------ &#10;</textarea>
-				</div>
+					<textarea name="boardContents">${contents.boardContents}</textarea></div>
 			</form></div>
 			<ul id="buttons">
 			<li id="formSubmit">등록</li>
