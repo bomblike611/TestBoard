@@ -12,8 +12,17 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 $(function(){
-	$("#formSubmit").click(function(){
+	$("#formSubmit").click(function() {
+		var boardTitle=$("#boardTitle").val()+"";
+		var boardPw=$("#boardPw").val()+"";
+		var boardContents=$("#boardContents").val()+"";
+		
+		if(boardTitle == "" || boardPw == "" || boardContents == ""){
+			alert("빈 칸이 없도록 모두 입력해주세요.");
+		}else{				
 		$("#form").submit();
+		}
+		
 	});
 	$("#backList").click(function(){
 		location.href="./qnaList.do";
@@ -36,14 +45,14 @@ $(function(){
 			<form id="form" action="qnaWrite.do" method="post">
 				<p>
 					<span class="titles">제목</span> <input type="text"
-						placeholder="게시글 제목을 작성해 주세요." name="boardTitle">
+						placeholder="게시글 제목을 작성해 주세요." name="boardTitle" id="boardTitle">
 				</p>
 				<p>
 					<span class="titles">PW</span> <input type="password"
-						placeholder="비밀번호를 입력해주세요." name="boardPw">
+						placeholder="비밀번호를 입력해주세요." name="boardPw" id="boardPw">
 				</p>
 				<div id="textarea">
-					<textarea name="boardContents"></textarea>
+					<textarea name="boardContents" id="boardContents"></textarea>
 				</div>
 				<br><ul id="buttons">
 			<li id="formSubmit">등록</li>

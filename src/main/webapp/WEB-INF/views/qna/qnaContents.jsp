@@ -28,7 +28,7 @@
 				});
 				
 				$("#update").click(function(){
-					if(${contents.boardPw == null}){
+					if(${contents.boardPw == null }){
 						location.href="./qnaAdminUpdate.do?boardNum="+num;			
 					}
 					});

@@ -12,8 +12,16 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 $(function(){
-	$("#formSubmit").click(function(){
+	$("#formSubmit").click(function() {
+		var boardTitle=$("#boardTitle").val()+"";
+		var boardContents=$("#boardContents").val()+"";
+
+		if(boardContents==""){
+			alert("빈 칸이 없도록 모두 입력해주세요.");
+		}else{				
 		$("#form").submit();
+		}
+
 	});
 	$("#backList").click(function(){
 		var num=${contents.boardNum}
@@ -44,7 +52,7 @@ $(function(){
 				</p>
 		
 				<div id="textarea">
-					<textarea name="boardContents">${contents.boardContents} &#10; ------------------------------------------------------------------------------------------------------------------------ &#10;</textarea>
+					<textarea name="boardContents" id="boardContents">${contents.boardContents} &#10; ------------------------------------------------------------------------------------------------------------------------ &#10;</textarea>
 				</div>
 			</form></div>
 			<ul id="buttons">
