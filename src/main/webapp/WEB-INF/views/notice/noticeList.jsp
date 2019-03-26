@@ -44,7 +44,10 @@ $(function(){
 </style>
 </head>
 <body>
-	<c:import url="../main/miniMenu.jsp" />
+	<c:import url="../main/miniMenu.jsp" >
+	<c:param name="main" value="2" />
+	</c:import>
+	
 	<section>
 		<br>
 		<div id="noticeList">
