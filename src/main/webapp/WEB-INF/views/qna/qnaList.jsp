@@ -38,7 +38,7 @@ $(function(){
 <section>
 	<div>
 	    <c:import url="../main/miniMenu.jsp">
-	    	<c:param name="main" value="2" />
+	    	<c:param name="main" value="3" />
 	    </c:import>
 	</div>
 <div id="noticeList">

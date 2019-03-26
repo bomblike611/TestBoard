@@ -198,4 +198,18 @@ public ModelAndView qnaList(BoardVO vo) throws Exception {
 		return "redirect:/qnaList.do";
 	}
 	
+	@RequestMapping(value = "/Profile.do")
+	public ModelAndView Profile() throws Exception {
+		ModelAndView view=new ModelAndView();
+		view.setViewName("main/profile");
+		return view;
+	}
+	
+	@RequestMapping(value = "/History.do")
+	public ModelAndView history() throws Exception {
+		ModelAndView view=new ModelAndView();
+		view.setViewName("main/history");
+		return view;
+	}
+	
 }

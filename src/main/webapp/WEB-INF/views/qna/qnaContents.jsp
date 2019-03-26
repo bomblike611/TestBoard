@@ -96,7 +96,7 @@
 						</div>
 						<div>
 							<span>${contents.boardDate}</span>
-							<div id="contentForm">${contents.boardContents}</div>
+							<div id="contentForm" style="white-space:pre;">${contents.boardContents}</div>
 						</div>
 					</div></li>
 			</ul>
