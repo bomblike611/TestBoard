@@ -24,7 +24,9 @@ $(function(){
 </head>
 <body>
 <div>
-	    <c:import url="../main/miniMenu.jsp" />
+	    <c:import url="../main/miniMenu.jsp">
+	    	<c:param name="main" value="3" />
+	    </c:import>
 	</div>
 	<section>
 		<div id="writeForm">
