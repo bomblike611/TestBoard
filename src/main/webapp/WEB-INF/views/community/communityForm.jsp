@@ -8,50 +8,78 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link type="text/css" rel="stylesheet"
 	href="<c:url value='/css/community/communityForm.css'/>" />
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <title>Insert title here</title>
+<script type="text/javascript" src="<c:url value='/js/lengthCheck.js'/>"></script>
 <script type="text/javascript">
-$(function(){
-	$("#formSubmit").click(function(){
-		$("#form").submit();
+	$(function() {
+		$("#formSubmit").click(function() {
+			var boardTitle=$("#boardTitle").val()+"";
+			var boardPw=$("#boardPw").val()+"";
+			var boardContents=$("#boardContents").val()+"";
+			if(!fileCheck()){
+				
+			}else{
+			if(boardTitle==""||boardPw==""||boardContents==""){
+				alert("빈 칸이 없도록 모두 입력해주세요.");
+			}else{				
+			$("#form").submit();
+			}
+			}
+		});
+		$("#backList").click(function() {
+			location.href = "./communityList.do";
+		});
 	});
-	$("#backList").click(function(){
-		location.href="./communityList.do";
-	});
-});
+	function fileCheck() {
+		var fileext = document.getElementById('file').value;
+		fileext = fileext.slice(fileext.indexOf(".") + 1).toLowerCase();
+		if (fileext != "jpg" && fileext != "png" && fileext != "gif"
+				&& fileext != "bmp") { 
+			alert('이미지 파일(jpg, png, gif, bmp)만 등록 가능합니다.');
+			return false;
+		}else{
+			return true;
+		}
+	}
 </script>
 </head>
 <body>
-<c:import url="../main/miniMenu.jsp" />
+	<c:import url="../main/miniMenu.jsp" />
 	<section>
 		<div id="writeForm">
 			<div id="listHeader">
 				<h1>자유게시판</h1>
 			</div>
 			<div id="formArea">
-			<form id="form" action="communityWrite.do" method="post" enctype="multipart/form-data">
-				<p>
-					<span class="titles">제목</span> <input type="text"
-						placeholder="게시글 제목을 작성해 주세요." name="boardTitle">
-				</p>
-				<p>
-					<span class="titles">PW</span> <input type="password"
-						placeholder="비밀번호를 입력해주세요." name="boardPw">
-				</p>
-				<div id="textarea">
-					<textarea name="boardContents"></textarea>
-				</div>
-				<ul id="fileContents">
-					<li class="fileText">파일 첨부</li>
-					<li id="filesName">
-						<div><input type="file" name="file"></div>
-					</li>
-					<li class="fileText"><div id="fileButton">파일 첨부하기</div></li>
-				</ul>
-			</form></div>
+				<form id="form" action="communityWrite.do" method="post"
+					enctype="multipart/form-data">
+					<p>
+						<span class="titles">제목</span> <input type="text"
+							placeholder="게시글 제목을 작성해 주세요." name="boardTitle" id="boardTitle" onkeyup="lengthCheck(this,200)">
+					</p>
+					<p>
+						<span class="titles">PW</span> <input type="password"
+							placeholder="비밀번호를 입력해주세요." name="boardPw" id="boardPw" onkeyup="lengthCheck(this,20)">
+					</p>
+					<div id="textarea">
+						<textarea name="boardContents" id="boardContents" onkeyup="lengthCheck(this,4000)"></textarea>
+					</div>
+					<ul id="fileContents">
+						<li class="fileText" >파일 첨부</li>
+						<li id="filesName">
+							<div>
+								<input type="file" name="file" id="file">
+							</div>
+						</li>
+						<li class="fileText"><div id="fileButton" onclick="fileCheck()">파일 첨부하기</div></li>
+					</ul>
+				</form>
+			</div>
 			<ul id="buttons">
-			<li id="formSubmit">등록</li>
-			<li id="backList">취소</li>
+				<li id="formSubmit">등록</li>
+				<li id="backList">취소</li>
 			</ul>
 		</div>
 	</section>

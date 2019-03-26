@@ -74,7 +74,6 @@ public class CommunityController {
 		MultipartFile file=multipartHttpServletRequest.getFile("file");
 		//이거 안먹힘 ㅠ,,
 		/*String uploadPath=session.getServletContext().getRealPath("resources/upload");*/
-		System.out.println(file.getOriginalFilename());
 		if(file.getOriginalFilename()!=""){
 		String uploadPath = fileUploadProperties.getProperty("file.upload.path");
 		File saveFolder = new File(uploadPath);
