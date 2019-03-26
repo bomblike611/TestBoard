@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import egov.cmsystem.test.service.BoardDTO;
 import egov.cmsystem.test.service.BoardVO;
+import egov.cmsystem.test.service.NoticeReplyDTO;
 import egov.cmsystem.test.service.impl.NoticeServiceImpl;
 
 @Controller
@@ -32,7 +33,9 @@ public class NoticeController {
 	public ModelAndView noticeContents(BoardDTO boardDTO) throws Exception {
 		ModelAndView view=new ModelAndView();
 		BoardDTO dto=noticeService.selectContents(boardDTO);
+		List<?> ar=noticeService.selectReplyList(boardDTO);
 		view.addObject("contents", dto);
+		view.addObject("replyList",ar);
 		view.setViewName("notice/noticeContents");
 		return view;
 	}
@@ -71,6 +74,13 @@ public class NoticeController {
 	public String noticeDelete(BoardDTO boardDTO) throws Exception {
 		int result=noticeService.deleteContents(boardDTO);
 		return "redirect:/List.do";
+	}
+	
+	@RequestMapping(value="replyWrite.do",method=RequestMethod.POST)
+	public String replyWrite(NoticeReplyDTO noticeReplyDTO) throws Exception{
+		ModelAndView mv=new ModelAndView();
+		noticeService.insertReply(noticeReplyDTO);
+		return "redirect:/Contents.do?boardNum="+noticeReplyDTO.getBoardNum();
 	}
 	
 }

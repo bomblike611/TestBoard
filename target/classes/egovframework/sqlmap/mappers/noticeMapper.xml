@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="egovframework.sqlmap.mappers.noticeMapper">
-<insert id="insertContents" parameterType="boardDTO">
+	<insert id="insertContents" parameterType="boardDTO">
 		<selectKey keyProperty="boardNum" resultType="int" order="BEFORE">
 			select test_seq.nextval from dual
 		</selectKey>
@@ -23,28 +23,44 @@
 	<update id="deleteContents" parameterType="boardDTO">
 		update board
 		<set>
-		<if test="adminDelete!=null">adminDelete=#{adminDelete},</if>
-		deleteDate=sysdate
+			<if test="adminDelete!=null">adminDelete=#{adminDelete},</if>
+			deleteDate=sysdate
 		</set>
 		where boardNum=#{boardNum}
 	</update>
 
 	<select id="selectContents" parameterType="boardDTO" resultType="boardDTO">
-	select * from board where boardNum=#{boardNum}
+		select * from board where boardNum=#{boardNum}
 	</select>
 
 	<select id="selectList" parameterType="boardVO" resultType="boardDTO">
-	SELECT *
-  	FROM (
-            select row_number() over(order by boardnum desc) as rnum,t.*
-            from board t
-            where t.code=1
-            )
-   WHERE rnum between #{startPage} AND #{lastPage}
+		SELECT *
+		FROM (
+		select row_number() over(order by boardnum desc) as rnum,t.*
+		from board t
+		where t.code=1
+		)
+		WHERE rnum between #{startPage} AND #{lastPage}
 	</select>
-	
-	
+
+
 	<select id="selectTotalCount" resultType="int">
-	select nvl(count(boardnum),0) totalindex from board where code=1
+		select nvl(count(boardnum),0) totalindex from board where code=1
+	</select>
+
+	<insert id="insertReply" parameterType="noticeReplyDTO">
+		<selectKey keyProperty="replyNum" resultType="int" order="BEFORE">
+			select reply_seq.nextval from dual
+		</selectKey>
+		insert into noticeReply values
+		(#{replyNum},#{boardNum},#{replyName},#{replyPw},#{replyContents},sysdate)
+	</insert>
+	<select id="selectReplyList" parameterType="boardDTO" resultType="noticeReplyDTO">
+	SELECT *
+		FROM (
+		select row_number() over(order by replyNum desc) as rnum,t.*
+		from noticeReply t
+		where boardNum=#{boardNum}
+		)
 	</select>
 </mapper>

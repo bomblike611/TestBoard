@@ -176,7 +176,7 @@ function logout(){
 					<input type="password" id="adminPw" name="adminPw"
 						placeholder="비밀번호를 입력해주세요">
 				</p>
-				<div class="writeButton updated" id="deleted">삭제</div>
+				<div class="writeButton updated" id="deleted">접속</div>
 				  </form>
 			</div>
 		</div>

@@ -1,5 +1,8 @@
 package egov.cmsystem.test.service;
 
+import java.sql.Date;
+import java.time.LocalDate;
+
 public class NoticeReplyDTO {
 	
 	private int replyNum;
@@ -7,6 +10,13 @@ public class NoticeReplyDTO {
 	private String replyName;
 	private String replyPw;
 	private String replyContents;
+	private LocalDate replyDate;
+	public LocalDate getReplyDate() {
+		return replyDate;
+	}
+	public void setReplyDate(Date replyDate) {
+		this.replyDate = replyDate.toLocalDate();
+	}
 	public int getReplyNum() {
 		return replyNum;
 	}

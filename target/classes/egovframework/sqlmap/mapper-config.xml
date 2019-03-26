@@ -5,5 +5,6 @@
    <typeAliases>
    <typeAlias type="egov.cmsystem.test.service.BoardDTO" alias="boardDTO"/>
    <typeAlias type="egov.cmsystem.test.service.BoardVO" alias="boardVO"/>
+   <typeAlias type="egov.cmsystem.test.service.NoticeReplyDTO" alias="noticeReplyDTO"/>
    </typeAliases>
 </configuration>

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import egov.cmsystem.test.service.BoardDTO;
 import egov.cmsystem.test.service.BoardVO;
+import egov.cmsystem.test.service.NoticeReplyDTO;
 import egovframework.rte.psl.dataaccess.EgovAbstractMapper;
 
 @Repository("noticeDAO")
@@ -39,6 +40,12 @@ public final String namespace="egovframework.sqlmap.mappers.noticeMapper.";
 	
     public int selectTotalCount() throws Exception{
     	return getSqlSession().selectOne(namespace+"selectTotalCount");
+    }
+    public List<?> selectReplyList(BoardDTO boardDTO) throws Exception{
+    	return getSqlSession().selectOne(namespace+"selectReplyList",boardDTO);
+    }
+    public int insertReply(NoticeReplyDTO noticeReplyDTO) throws Exception{
+    	return getSqlSession().selectOne(namespace+"selectTotalCount",noticeReplyDTO);
     }
 	
 }

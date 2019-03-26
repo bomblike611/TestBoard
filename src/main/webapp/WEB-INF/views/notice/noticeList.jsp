@@ -51,7 +51,9 @@ $(function(){
 			<div id="listHeader">
 				<h1>공지사항</h1>
 				<p>반드시 읽어 봐야 할 내용입니다.</p>
+				<c:if test="${admin=='관리자'}">
 				<div class="writeButton">글쓰기</div>
+				</c:if>
 			</div>
 			<table class="tbl_nt">
 				<tr id="tbl_nt_head">

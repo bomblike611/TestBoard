@@ -94,23 +94,55 @@ section{
 	border-top: 2px solid #1F497D;
 }
 
-#replyContainer li{
-	float: left;
-}
 
 #replyContent{
 	width: 100%;
 	height: 70px;
 	line-height: 70px;
 	padding: 0;
-	margin: 2%;
+	border-collapse: collapse;
+	border-spacing: 0;
 }
+
+#replyContent td{
+	padding: 0;
+}
+.td{
+	width: 20%;
+}
+.td input{
+	width: 90%;
+	height: 30px;
+}
+
+#submit{
+	height: 35px;
+	width: 50%;
+	border: 1px solid #7F7F7F;
+	line-height: 35px;
+	margin: 5% auto;
+	text-align: center;
+	color: #7F7F7F;
+	cursor: pointer;
+}
+
+#submit:hover{
+	background-color: #7F7F7F;
+	color: white;
+}
+
 #textArea{
 	width: 70%;
 }
 #textArea textarea{
-	height: 60px;
+	height: 70px;
 	width: 100%;
+	line-height: 70px;
+	margin-top: 10px;
+}
+
+#replyList{
+	margin-top: 20px;
 }
 
 #replyList div{
