@@ -16,8 +16,8 @@ $(function(){
 	/* CKEDITOR.replace('content'); */
 	$("#formSubmit").click(function(){
 		var boardTitle=$("#boardTitle").val()+"";
-		/* var boardContents=$("#content").val()+""; */
-		if(boardTitle==""){
+		var boardContents=$("#content").val()+"";
+		if(boardTitle==""||boardContents==""){
 			alert("빈 칸이 없도록 모두 입력해주세요.");
 		}else{				
 		$("#form").submit();
