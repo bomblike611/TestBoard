@@ -34,14 +34,19 @@
 	});
 	function fileCheck() {
 		var fileext = document.getElementById('file').value;
-		fileext = fileext.slice(fileext.indexOf(".") + 1).toLowerCase();
-		if (fileext != "jpg" && fileext != "png" && fileext != "gif"
-				&& fileext != "bmp") { 
-			alert('이미지 파일(jpg, png, gif, bmp)만 등록 가능합니다.');
-			return false;
-		}else{
+		if(fileext==""){
 			return true;
+		}else{
+			fileext = fileext.slice(fileext.indexOf(".") + 1).toLowerCase();
+			if (fileext != "jpg" && fileext != "png" && fileext != "gif"
+					&& fileext != "bmp") { 
+				alert('이미지 파일(jpg, png, gif, bmp)만 등록 가능합니다.');
+				return false;
+			}else{
+				return true;
+			}
 		}
+		
 	}
 </script>
 </head>
@@ -73,7 +78,7 @@
 								<input type="file" name="file" id="file">
 							</div>
 						</li>
-						<li class="fileText"><div id="fileButton" onclick="fileCheck()">파일 첨부하기</div></li>
+						<!-- <li class="fileText"><div id="fileButton" onclick="fileCheck()">파일 첨부하기</div></li> -->
 					</ul>
 				</form>
 			</div>

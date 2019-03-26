@@ -73,7 +73,7 @@
 					</c:if>
 				</ul>
 				<span>관리자</span> <span class="date"><b>${contents.boardDate}</b></span>
-				<div id="contentForm">${contents.boardContents }</div>
+				<div id="contentForm" style="white-space:pre;">${contents.boardContents }</div>
 			</div>
 			<div id="replyContainer">
 			<form action="replyWrite.do" method="post" id="form">

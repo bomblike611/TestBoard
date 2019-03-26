@@ -83,7 +83,7 @@
 				</c:forEach>
 			</ul>
 		</div>
-		<span id="nextPage">▼</span>
+		<div id="nextPage">▼</div>
 	</section>
 
 </body>

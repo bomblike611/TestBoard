@@ -1,5 +1,7 @@
 package egov.cmsystem.test.control;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -25,6 +27,21 @@ public class NoticeController {
 	public ModelAndView noticeList(BoardVO vo) throws Exception {
 		ModelAndView view=new ModelAndView();
 		List<?> ar=noticeService.selectList(vo);
+		
+		/*BoardDTO boardDTO=new BoardDTO();
+		for(int i=0;i<62;i++){
+			boardDTO.setBoardNum(i);
+			boardDTO.setBoardTitle("제목"+i);
+			boardDTO.setBoardPw("s"+i);
+			boardDTO.setBoardContents("내용"+i);
+			boardDTO.setBoardRef(i);
+			boardDTO.setAdminDelete("n");
+			boardDTO.setFileOriginalName("");
+			boardDTO.setFileSaveName("");
+			noticeService.insertContents(boardDTO);
+		}*/
+		
+		
 		view.addObject("list", ar);
 		view.addObject("page", vo);
 		view.setViewName("notice/noticeList");
@@ -87,6 +104,7 @@ public class NoticeController {
 	}
 	@RequestMapping(value = "/Delete.do")
 	public ModelAndView noticeDelete(BoardDTO boardDTO,HttpSession session) throws Exception {
+		boardDTO.setAdminDelete("y");
 		int result=noticeService.deleteContents(boardDTO);
 		ModelAndView view=new ModelAndView();
 		String admin=(String) session.getAttribute("admin");

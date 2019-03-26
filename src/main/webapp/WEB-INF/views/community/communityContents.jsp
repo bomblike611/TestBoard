@@ -21,9 +21,7 @@
 			$("#delete").click(function(){
 				location.href="./communityDelete.do?boardNum="+num;
 			});
-			${contents.boardPw != null}
 			$("#update").click(function(){
-				alert("bb");
 				location.href="./communityDelete.do?boardNum="+num;
 			});
 		}else{
@@ -87,7 +85,7 @@
 						</div>
 						<div>
 							<span>${contents.boardDate}</span> <span id="count">${contents.boardHits}</span>
-							<div id="contentForm">${contents.boardContents}</div>
+							<div id="contentForm" style="white-space:pre;">${contents.boardContents}</div>
 						</div>
 					</div></li>
 			</ul>

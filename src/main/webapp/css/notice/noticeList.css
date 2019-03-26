@@ -104,7 +104,13 @@ padding: 0;
 .list_n_menu {
 	margin-left: 45%;
 }
- .list_n_menu a:link { color: red; text-decoration: none;}
- .list_n_menu a:visited { color: black; text-decoration: none;}
- .list_n_menu a:hover { color: blue; text-decoration: underline;}
+.list_n_menu a{
+	text-decoration: none;
+	color: #7F7F7F;
+	cursor: pointer;
+}
+
+/*  .list_n_menu a:link { color: red; text-decoration: none;} */
+/*  .list_n_menu a:visited { color: black; text-decoration: none;} */
+ .list_n_menu a:hover { color: #4A7EBB; text-decoration: none;}
 

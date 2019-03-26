@@ -72,9 +72,9 @@ $(function(){
 						<td class="left"><a href="Contents.do?boardNum=${contents.boardNum}" id="ahref">${contents.boardTitle}</a></td>
 						</c:if>
 						<c:if test="${contents.adminDelete=='y'}">
-						<td class="left"><a href="Contents.do?boardNum=${contents.boardNum}" id="ahref">삭제된 내용입니다.</a></td>
+						<td class="left"><a href="#" id="ahref">삭제된 내용입니다.</a></td>
 						</c:if>
-						<td>사용자</td>
+						<td>운영자</td>
 						<td>${contents.boardDate}</td>
 					</tr>
 				</c:forEach>
@@ -91,7 +91,7 @@ $(function(){
 				var="text" step="1">
 				<c:choose>
 					<c:when test="${page.pageIndex == text }">
-			        	${text}
+			        	<b style="color: blue;">${text}</b>
 			        </c:when>
 					<c:otherwise>
 						<a href="List.do?pageIndex=${text}">${text}</a>

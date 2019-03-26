@@ -110,14 +110,24 @@ public class CommunityController {
 	}
 	@RequestMapping(value = "/communityUpdate.do",method=RequestMethod.POST)
 	public String communityUpdatePOST(BoardDTO boardDTO,HttpServletRequest request,HttpSession session) throws Exception{
+		String check=(String)request.getParameter("check");
 		MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest)request;
 		MultipartFile file=multipartHttpServletRequest.getFile("file");
 		//이거 안먹힘 ㅠ,,
 		/*String uploadPath=session.getServletContext().getRealPath("resources/upload");*/
-		if(file.getOriginalFilename()!=""){
+		if(check.equals("1")){
+			
+		}else if(file.getOriginalFilename()!=""){
 		String uploadPath = fileUploadProperties.getProperty("file.upload.path");
 		File saveFolder = new File(uploadPath);
 		 
+		BoardDTO boardDTO2=communityService.selectContents(boardDTO);
+		if(boardDTO2.getFileSaveName()!=null){
+			File deletefile=new File("D:\\upload\\"+boardDTO2.getFileSaveName());
+			System.out.println(boardDTO2.getFileSaveName());
+			deletefile.delete();
+		}
+		
 		if (!saveFolder.exists() || saveFolder.isFile()) {
 			saveFolder.mkdirs();
 		}
@@ -129,6 +139,12 @@ public class CommunityController {
 		file.transferTo(f);
 		boardDTO.setFileSaveName(fileName);
 		}else{
+			BoardDTO boardDTO2=communityService.selectContents(boardDTO);
+			if(boardDTO2.getFileSaveName()!=null){
+				File deletefile=new File("D:\\upload\\"+boardDTO2.getFileSaveName());
+				System.out.println(boardDTO2.getFileSaveName());
+				deletefile.delete();
+			}
 			boardDTO.setFileOriginalName("");
 			boardDTO.setFileSaveName("");
 		}
@@ -139,7 +155,6 @@ public class CommunityController {
 		}else{
 			resultText="실패";
 		}
-		System.out.println(resultText);
 		return "redirect:/communityContents.do?boardNum="+boardDTO.getBoardNum();
 	}
 	

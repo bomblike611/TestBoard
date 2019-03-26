@@ -11,8 +11,8 @@ public class BoardDTO{
 	private String boardPw;
 	private String boardContents;
 	private String boardWriter;
-	private LocalDate boardDate;
-	private LocalDate deleteDate;
+	private Date boardDate;
+	private Date deleteDate;
 	private int boardHits;
 	private int boardRef;
 	private String adminDelete;
@@ -48,17 +48,17 @@ public class BoardDTO{
 	public void setBoardContents(String boardContents) {
 		this.boardContents = boardContents;
 	}
-	public LocalDate getBoardDate() {
+	public Date getBoardDate() {
 		return boardDate;
 	}
 	public void setBoardDate(Date boardDate) {
-		this.boardDate = boardDate.toLocalDate();
+		this.boardDate = boardDate;
 	}
-	public LocalDate getDeleteDate() {
+	public Date getDeleteDate() {
 		return deleteDate;
 	}
 	public void setDeleteDate(Date deleteDate) {
-		this.deleteDate = deleteDate.toLocalDate();
+		this.deleteDate = deleteDate;
 	}
 	public int getBoardHits() {
 		return boardHits;
