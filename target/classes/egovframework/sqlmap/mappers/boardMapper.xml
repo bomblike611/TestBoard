@@ -5,7 +5,7 @@
 	<select id="selectList" parameterType="boardVO" resultType="boardDTO">
 	SELECT *
   	FROM (
-            select row_number() over(order by boardnum desc) as rnum,t.*
+            select row_number() over(order by boardref desc,boardDate) as rnum,t.*
             from board t
             where t.code=3
             )
@@ -46,13 +46,43 @@
 		where boardNum=#{boardNum}
 	</update>
 	
+	<update id="replyupdateContents" parameterType="boardDTO">
+		update board
+		<set>
+			<if test="boardTitle != null">boardTitle=#{boardTitle},</if>
+			<if test="boardContents != null">boardContents=#{boardContents},</if>
+			<if test="fileSaveName != null">fileSaveName=#{fileSaveName},</if>
+			<if test="fileOriginalName != null">fileOriginalName=#{fileOriginalName},</if>
+			code=#{code}
+		</set>
+		where boardNum=#{boardNum}
+	</update>
+	
 	<insert id="insertContents" parameterType="boardDTO">
 		<selectKey keyProperty="boardNum" resultType="int" order="BEFORE">
 			select test_seq.nextval from dual
 		</selectKey>
-		insert into board values 
-		(#{boardNum},3,#{boardTitle},"",#{boardContents},sysdate,sysdate,1,#{boardRef},'n',"","")
+		insert into board values
+		(#{boardNum},3,#{boardTitle},#{boardPw},#{boardContents},sysdate,sysdate,1,#{boardNum},#{adminDelete},#{fileSaveName},#{fileOriginalName})
 	</insert>
+	
+	<insert id="replyinsertContents" parameterType="boardDTO">
+		<selectKey keyProperty="boardNum" resultType="int" order="BEFORE">
+			select test_seq.nextval from dual
+		</selectKey>
+		insert into board values
+		(#{boardNum},3,#{boardTitle},#{boardPw},#{boardContents},sysdate,sysdate,1,#{boardRef},#{adminDelete},#{fileSaveName},#{fileOriginalName})
+	</insert>
+	
+	<update id="deleteContents" parameterType="boardDTO">
+		update board
+		<set>
+		<if test="adminDelete!=null">adminDelete=#{adminDelete},</if>
+		deleteDate=sysdate,
+		code=#{code}
+		</set>
+		where boardNum=#{boardNum}
+	</update>
 	
 	
 </mapper>

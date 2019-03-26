@@ -13,6 +13,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
 $(function(){
+	var admin="${admin}";
 	$("#search").click(function(){
 		$("#form").submit();
 	});
@@ -20,47 +21,30 @@ $(function(){
 	$(".writeButton").click(function(){
 		location.href="./qnaWrite.do";
 	});
+	$("#ahreff").click(function(){
+		if(admin=="관리자"){
+			location.href = "qnaContents.do?boardNum=" + boardNum;
+		}else{
+			alert("접근이 제한된 게시물입니다.");
+		}
+	});
+	
+	
 });
 </script>
-<style>
-.img2{
-	 width:100%;
-	 hegiht:200px;
-}
-.img2 img{
-	width:100%;
-	height:200px;
-}
-.img_text_center {
-	padding: 0px 0px;
-	text-align: center;
-	position: absolute;
-	top: 25%;
-	left: 3%;
-	line-height: 40%;
-
-}
-#font1{
-	font-size:40pt;
-	color:white;
-}
-</style>
 </head>
 <body>
-<!-- ******* ************** 관리자 삭제시 , 검색 ********************* -->
+<!-- ******* **************  ********************* -->
 <section>
 	<div>
-	    <c:import url="../main/banner.jsp" />
+	    <c:import url="../main/miniMenu.jsp">
+	    	<c:param name="main" value="2" />
+	    </c:import>
 	</div>
-	<div class="img2">
-	   <img src="./images/office.jpg" alt="cm">
-	   <div class="img_text_center"><p id="font1">커뮤니티</p>
-	   </div>
-	 </div>
 <div id="noticeList">
 			<div id="listHeader">
 			<form id="form" action="qnaList.do" method="post">
-				<h1>Q&A44</h1>
+				<h1>Q&A</h1>
 				<p>고객의 질문에 성실히 답해드리겠습니다.</p>
 				<span><img alt="" src="./images/search.jpg" id="search">
 				<input type="text" placeholder="검색" name="searchKeyword"></span>
@@ -77,8 +61,34 @@ $(function(){
 				<c:forEach items="${list}" var="contents" varStatus="num">
 					<tr id="tbl_nt_col">
 						 <td>${page.totalrecord - num.index -((page.pageIndex-1)*10)}</td> 
-						<td><a href="qnaContents.do?boardNum=${contents.boardNum}" id="ahref">${contents.boardTitle}</a></td>
-						<td>사용자</td>
+						
+						<c:choose>
+							<c:when test="${contents.adminDelete=='n'}">
+								<td><a href="qnaContents.do?boardNum=${contents.boardNum}" id="ahref">${contents.boardTitle}</a></td>
+							</c:when>
+							<c:otherwise>
+							
+							<c:choose>
+								<c:when test="${admin== '관리자' }">
+									<td><a href="qnaContents.do?boardNum=${contents.boardNum}" id="ahref">삭제된 게시글 : ${contents.boardTitle}</a></td>
+								</c:when>
+								<c:otherwise>
+									<td>삭제된 게시물입니다.</td>
+								</c:otherwise>
+							</c:choose>
+							
+							
+							</c:otherwise>
+						</c:choose>
+						
+						<c:choose>
+							<c:when test="${contents.boardPw != null}">
+								<td>사용자</td>
+							</c:when>
+							<c:otherwise>
+								<td>관리자</td>
+							</c:otherwise>
+						</c:choose>
 						<td>${contents.boardDate}</td>
 					</tr>
 				</c:forEach>

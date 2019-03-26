@@ -67,6 +67,7 @@ public class BoardController {
 	public ModelAndView adminMainView(HttpServletRequest request) throws Exception{
 		ModelAndView mv=new ModelAndView();
 		String ip=request.getRemoteAddr();
+		System.out.println(ip);
 		String text="";
 		if(adminIp.equals(ip)){
 			mv.addObject("adminPw", "admin0327");			
@@ -92,6 +93,7 @@ public class BoardController {
 		session.invalidate();
 		return "redirect:/admin0327Main.do";
 	}
+	
 	
 @RequestMapping(value = "/qnaList.do",method=RequestMethod.GET)
 public ModelAndView qnaList(BoardVO vo) throws Exception {
@@ -162,14 +164,38 @@ public ModelAndView qnaList(BoardVO vo) throws Exception {
 		mv.setViewName("qna/qnaAdminForm");
 		return mv;
 	}
-	@RequestMapping(value = "/qnaAdminForm.do",method=RequestMethod.POST)
-	public String qnaAdminFormPost(BoardDTO boardDTO) throws Exception{
-		int result=boardService.insertContents(boardDTO);
-		boardDTO.setAdminDelete("n");
-		boardDTO.setFileOriginalName("");
-		boardDTO.setFileSaveName("");
+	
+	@RequestMapping(value = "/qnaAdminUpdate.do",method=RequestMethod.GET)
+	public ModelAndView qnaAdminUpdate(BoardDTO boardDTO) throws Exception{
+		ModelAndView mv=new ModelAndView();
+		BoardDTO dto=boardService.selectContents(boardDTO);
+		mv.addObject("contents", dto);
+		mv.setViewName("qna/qnaAdminUpdate");
+		return mv;
+	}
+	@RequestMapping(value = "/qnaAdminUpdate.do",method=RequestMethod.POST)
+	public String qnaAdminUpdatePost(BoardDTO boardDTO) throws Exception{
+
+		int dto=boardService.relplyupdateContents(boardDTO);
+
 		return "redirect:/qnaContents.do?boardNum="+boardDTO.getBoardNum();
 	}
 	
+	@RequestMapping(value = "/qnaAdminForm.do",method=RequestMethod.POST)
+	public String qnaAdminFormPost(BoardDTO boardDTO) throws Exception{
+		boardDTO.setAdminDelete("n");
+		boardDTO.setFileOriginalName("");
+		boardDTO.setFileSaveName("");
+		int result=boardService.replyinsertContents(boardDTO);
+		return "redirect:/qnaContents.do?boardNum="+boardDTO.getBoardNum();
+	}
+	
+	@RequestMapping(value="/qnaDelete.do")
+	public String communityDelete(BoardDTO boardDTO) throws Exception{
+		BoardDTO dto=boardService.selectContents(boardDTO);
+		int result=boardService.deleteContents(dto);
+	
+		return "redirect:/qnaList.do";
+	}
 	
 }

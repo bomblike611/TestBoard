@@ -22,15 +22,23 @@ public class BoardServiceImpl implements BoardService{
 		return boardDAO.insertContents(boardDTO);
 	}
 
+	public int replyinsertContents(BoardDTO boardDTO) throws Exception {
+		return boardDAO.replyinsertContents(boardDTO);
+	}
+
 	@Override
 	public int updateContents(BoardDTO boardDTO) throws Exception {
 		return boardDAO.updateContents(boardDTO);
 	}
+	
+	public int relplyupdateContents(BoardDTO boardDTO) throws Exception {
+		return boardDAO.replyupdateContents(boardDTO);
+	}
 
 	@Override
 	public int deleteContents(BoardDTO boardDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		boardDTO.setAdminDelete("y");
+		return boardDAO.deleteContents(boardDTO);
 	}
 
 	@Override

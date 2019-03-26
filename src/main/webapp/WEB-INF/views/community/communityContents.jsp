@@ -21,6 +21,11 @@
 			$("#delete").click(function(){
 				location.href="./communityDelete.do?boardNum="+num;
 			});
+			${contents.boardPw != null}
+			$("#update").click(function(){
+				alert("bb");
+				location.href="./communityDelete.do?boardNum="+num;
+			});
 		}else{
 		$("#update").click(function() {
 			$("#deleted").html("수정");
@@ -97,6 +102,7 @@
     <div class="writeButton updated" id="deleted">삭제</div>
   </div>
 </div>
+
 </body>
 </html>
 

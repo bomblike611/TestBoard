@@ -13,7 +13,7 @@
       <a href="./qnaList.do">Q&A</a>
     </div>
     </li>
-   <li class="bannermn"><a href="./List.do">알림마당</a></li>
+   <li class="bannermn"><a href="List.do">알림마당</a></li>
   <li class="bannermn dropdown">
     <a href="#" class="dropbtn">회사 소개</a>
     <div class="dropdown-content">
