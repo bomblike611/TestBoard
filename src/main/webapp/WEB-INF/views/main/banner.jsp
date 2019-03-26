@@ -15,10 +15,10 @@
     </li>
    <li class="bannermn"><a href="List.do">알림마당</a></li>
   <li class="bannermn dropdown">
-    <a href="#" class="dropbtn">회사 소개</a>
+    <a href="./Profile.do" class="dropbtn">회사 소개</a>
     <div class="dropdown-content">
-      <a href="#">소개</a>
-      <a href="#">연혁</a>
+      <a href="./Profile.do">소개</a>
+      <a href="./History.do">연혁</a>
     </div>
   </li>
 </ul>

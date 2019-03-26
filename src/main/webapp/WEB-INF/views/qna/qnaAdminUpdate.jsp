@@ -39,7 +39,7 @@ $(function(){
 			<input type="hidden" name="code" value="${contents.code}">
 			<input type="hidden" name="boardRef" value="${contents.boardRef}">
 			<input type="hidden" name="boardPw" value="">
-			<input type="hidden" name="boardTitle" value=" RE : ${contents.boardTitle}">
+			<input type="hidden" name="boardTitle" value="${contents.boardTitle}">
 				<p>
 					 <span class="titles">제목</span>${contents.boardTitle} 
 					

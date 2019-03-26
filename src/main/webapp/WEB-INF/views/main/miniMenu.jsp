@@ -9,7 +9,7 @@
 <script>
 $(function(){
 	$("#home").click(function(){
-		location.href="/main.do";
+		location.href="./main.do";
 	});
 });
 function notice(){
@@ -21,6 +21,13 @@ function community(){
 function qna(){
 	location.href="./qnaList.do";
 }
+function history(){
+	location.href="./History.do";
+}
+function profile(){
+	location.href="./Profile.do";
+}
+
 </script>
 <div id="miniMenu">
 
@@ -32,8 +39,8 @@ function qna(){
 			</div>
 			<ul id="miniMenubar">
 				<li id="home"><img alt="home" src="./images/homes.png"></li>
-				<li class="menus">▶ 소개</li>
-				<li class="menus">▶ 연혁</li>
+				<li class="menus" onclick="profile()">▶ 소개</li>
+				<li class="menus" onclick="history()">▶ 연혁</li>
 			</ul>
 		</c:when>
 		<c:when test="${param.main == '2'}">
