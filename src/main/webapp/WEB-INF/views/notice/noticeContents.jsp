@@ -33,7 +33,12 @@
 			}
 		});
 		$("#replyDelete").click(function(){
-			$("#myModal").css("display","block");
+			var replyNum=$("#replyDelete").attr("title");
+			if(admin=='관리자'){
+				location.href="./replyDelete.do?replyNum="+replyNum+"&boardNum="+boardNum;				
+				}else{
+					$("#myModal").css("display","block");
+				}
 		});
 		
 		$("#deleted").click(function(){
