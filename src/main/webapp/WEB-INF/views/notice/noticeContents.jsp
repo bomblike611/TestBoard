@@ -115,7 +115,7 @@
 				<table id="replyList">
 				<c:forEach items="${replyList}" var="re">
 					<tr>
-						<th><input id="pw" type="hidden" value="${re.replyPw}">${re.replyName}</th><td id="contents">${re.replyContents}</td><td><span class="date">${re.replyDate}<span style="color: red;" id="replyDelete" title="${re.replyNum}">X</span></span></td>
+						<th><input id="pw" type="hidden" value="${re.replyPw}">${re.replyName}</th><td id="contents">${re.replyContents}</td><td><span class="date">${re.replyDate}<span style="color: red;" class="replyDelete" title="${re.replyNum}">X</span></span></td>
 					</tr>
 				</c:forEach>
 

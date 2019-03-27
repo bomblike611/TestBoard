@@ -22,7 +22,7 @@
 				location.href="./communityDelete.do?boardNum="+num;
 			});
 			$("#update").click(function(){
-				location.href="./communityDelete.do?boardNum="+num;
+				location.href="./communityUpdate.do?boardNum="+num;
 			});
 		}else{
 		$("#update").click(function() {

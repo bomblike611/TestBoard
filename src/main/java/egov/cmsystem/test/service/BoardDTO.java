@@ -36,6 +36,8 @@ public class BoardDTO{
 	public void setBoardTitle(String boardTitle) {
 		this.boardTitle = boardTitle;
 	}
+	
+	
 	public String getBoardPw() {
 		return boardPw;
 	}

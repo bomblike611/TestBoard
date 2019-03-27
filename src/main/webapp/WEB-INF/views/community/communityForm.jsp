@@ -60,16 +60,24 @@
 			<div id="formArea">
 				<form id="form" action="communityWrite.do" method="post"
 					enctype="multipart/form-data">
+					<%-- <c:choose>
+					<c:when test="${admin=='관리자'}">
+						<input type="hidden" value="관리자" name="boardUser">
+					</c:when>
+					<c:otherwise>
+							<input type="hidden" value="사용자" name="boardUser">
+					</c:otherwise>
+					</c:choose> --%>
 					<p>
 						<span class="titles">제목</span> <input type="text"
-							placeholder="게시글 제목을 작성해 주세요." name="boardTitle" id="boardTitle" onkeyup="lengthCheck(this,200)">
+							placeholder="게시글 제목을 작성해 주세요." name="boardTitle" id="boardTitle" onkeyup="lengthCheck(this,150)">
 					</p>
 					<p>
 						<span class="titles">PW</span> <input type="password"
-							placeholder="비밀번호를 입력해주세요." name="boardPw" id="boardPw" onkeyup="lengthCheck(this,20)">
+							placeholder="비밀번호를 입력해주세요." name="boardPw" id="boardPw" onkeyup="lengthCheck(this,15)">
 					</p>
 					<div id="textarea">
-						<textarea name="boardContents" id="boardContents" onkeyup="lengthCheck(this,4000)"></textarea>
+						<textarea name="boardContents" id="boardContents" onkeyup="lengthCheck(this,2000)"></textarea>
 					</div>
 					<ul id="fileContents">
 						<li class="fileText" >파일 첨부</li>

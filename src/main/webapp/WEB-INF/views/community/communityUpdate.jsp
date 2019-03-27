@@ -76,15 +76,15 @@
 					<p>
 						<span class="titles">제목</span> <input type="text"
 							placeholder="게시글 제목을 작성해 주세요." name="boardTitle"
-							value="${contents.boardTitle}" onkeyup="lengthCheck(this,200)">
+							value="${contents.boardTitle}" onkeyup="lengthCheck(this,150)">
 					</p>
 					<p>
-						<span class="titles">PW</span> <input type="text"
+						<span class="titles">PW</span> <input type="password"
 							placeholder="비밀번호를 입력해주세요." name="boardPw"
-							value="${contents.boardPw}" onkeyup="lengthCheck(this,20)">
+							value="${contents.boardPw}" onkeyup="lengthCheck(this,15)">
 					</p>
 					<div id="textarea">
-						<textarea name="boardContents" onkeyup="lengthCheck(this,4000)">${contents.boardContents}</textarea>
+						<textarea name="boardContents" onkeyup="lengthCheck(this,2000)">${contents.boardContents}</textarea>
 					</div>
 					<ul id="fileContents">
 						<li class="fileText">파일 첨부</li>

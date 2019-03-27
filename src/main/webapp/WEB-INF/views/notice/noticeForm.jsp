@@ -43,10 +43,10 @@ $(function(){
 			<form id="form" action="Write.do" method="post">
 				<p>
 					<span class="titles">제목</span> <input type="text"
-						placeholder="게시글 제목을 작성해 주세요." name="boardTitle" id="boardTitle" onkeyup="lengthCheck(this,200)">
+						placeholder="게시글 제목을 작성해 주세요." name="boardTitle" id="boardTitle" onkeyup="lengthCheck(this,150)">
 				</p>
 				<div id="textarea">
-					<textarea name="boardContents" id="content" onkeyup="lengthCheck(this,4000)"></textarea>
+					<textarea name="boardContents" id="content" onkeyup="lengthCheck(this,2000)"></textarea>
 				</div>
 				<br><ul id="buttons">
 			<li id="formSubmit">등록</li>

@@ -72,7 +72,14 @@ $(function(){
 						<td class="left"><a href="Contents.do?boardNum=${contents.boardNum}" id="ahref">${contents.boardTitle}</a></td>
 						</c:if>
 						<c:if test="${contents.adminDelete=='y'}">
-						<td class="left"><a id="ahref" style="color: red;">삭제된 내용입니다.</a></td>
+						<c:choose>
+							<c:when test="${admin== '관리자' }">
+									<td><a href="Contents.do?boardNum=${contents.boardNum}" id="ahref" style="color: red;">삭제된 게시물입니다.</a></td>
+								</c:when>
+								<c:otherwise>
+									<td><a id="ahref" style="color: red;">삭제된 게시물입니다.</a></td>
+								</c:otherwise>
+						</c:choose>
 						</c:if>
 						<td>운영자</td>
 						<td>${contents.boardDate}</td>

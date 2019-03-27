@@ -1,50 +1,55 @@
 @CHARSET "UTF-8";
 
-section{
+section {
 	width: 100%;
 	margin: 0;
 }
-.noticeContainer{
-	width:80%;
+
+.noticeContainer {
+	width: 80%;
 	margin: 0 10% 0 10%;
 	height: 900px;
 }
 
-.noticeHeader{
+.noticeHeader {
 	height: 60px;
 }
-.noticeContainer li{
+
+.noticeContainer li {
 	list-style: none;
 }
 
-#contentsHeader li{
+#contentsHeader li {
 	float: left;
 	height: 50px;
 }
-#notice{
+
+#notice {
 	width: 80%;
 }
 
-.noticeContents{
-	min-height:500px; 
-height:auto !important;
-height: 500px;
+.noticeContents {
+	min-height: 500px;
+	height: auto !important;
+	height: 500px;
 }
 
-.prev{
+.prev {
 	width: 20%;
 	text-align: center;
 	line-height: 50px;
 }
-.prev span{
+
+.prev span {
 	margin-right: 50px;
 	cursor: pointer;
 }
-.prev span:hover{
+
+.prev span:hover {
 	color: #1F497D;
 }
 
-#titles{
+#titles {
 	width: 100%;
 	height: 40px;
 	line-height: 40px;
@@ -53,32 +58,33 @@ height: 500px;
 	margin-bottom: 1%;
 }
 
-#titles li{
+#titles li {
 	float: left;
 }
 
-#title{
+#title {
 	width: 5%;
 }
-#boardTitle{
+
+#boardTitle {
 	width: 75%;
 }
-.date{
+
+.date {
 	float: right;
 }
 
-#contentForm{
+#contentForm {
 	padding-top: 50px;
 	height: 400px;
-	min-height:400px; 
-height:auto !important;
+	min-height: 400px;
+	height: auto !important;
+	overflow: auto;
 }
 
-
-
 /**********버튼***********/
-.writeButton{
-	margin-top:5px;
+.writeButton {
+	margin-top: 5px;
 	color: white;
 	border: 1px solid #95B3D7;
 	background-color: #95B3D7;
@@ -90,24 +96,23 @@ height:auto !important;
 	line-height: 25px;
 	float: right;
 	cursor: pointer;
-	-webkit-transition: color 1s, background-color 1s; /* For Safari 3.1 to 6.0 */
+	-webkit-transition: color 1s, background-color 1s;
+	/* For Safari 3.1 to 6.0 */
 	transition: color 1s, background-color 1s;
 }
 
-.writeButton:hover{
+.writeButton:hover {
 	border: 1px solid #95B3D7;
 	color: blue;
 	background-color: white;
 }
 
-
 /************* 댓글다는 곳 ****************/
-#replyContainer{
+#replyContainer {
 	border-top: 2px solid #1F497D;
 }
 
-
-#replyContent{
+#replyContent {
 	width: 100%;
 	height: 70px;
 	line-height: 70px;
@@ -116,18 +121,20 @@ height:auto !important;
 	border-spacing: 0;
 }
 
-#replyContent td{
+#replyContent td {
 	padding: 0;
 }
-.td{
+
+.td {
 	width: 20%;
 }
-.td input{
+
+.td input {
 	width: 90%;
 	height: 30px;
 }
 
-#submit{
+#submit {
 	height: 35px;
 	width: 50%;
 	border: 1px solid #7F7F7F;
@@ -138,98 +145,104 @@ height:auto !important;
 	cursor: pointer;
 }
 
-#submit:hover{
+#submit:hover {
 	background-color: #7F7F7F;
 	color: white;
 }
 
-#textArea{
+#textArea {
 	width: 70%;
 }
-#textArea textarea{
+
+#textArea textarea {
 	width: 100%;
 	margin-top: 30px;
 	height: 100%;
 }
 
-#replyList{
-	width:100%;
+#replyList {
+	width: 100%;
 	margin-top: 20px;
 	border-collapse: collapse;
 }
 
-#replyList tr{
-	width:100%;
-	height:30px;
-	line-height:30px;
+#replyList tr {
+	width: 100%;
+	height: 30px;
+	line-height: 30px;
 	border-bottom: 1px solid #7F7F7F;
 	padding: 0;
 }
-#replyList td{
+
+#replyList td {
 	padding: 0;
 }
-#replyList th{
+
+#replyList th {
 	width: 15%;
 }
-#contents{
+
+#contents {
+/* 	overflow: hidden;
+	white-space: nowrap; */
+	/* text-overflow: clip; */
 	width: 65%;
+	overflow: auto;
 }
 
-
 /******* Modal Part ***********/
-
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
- /*  overflow: auto; Enable scroll if needed
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	padding-top: 100px; /* Location of the box */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	/*  overflow: auto; Enable scroll if needed
   background-color: rgb(0,0,0); Fallback color
   background-color: rgba(0,0,0,0.4); Black w/ opacity */
 }
 
 /* Modal Content */
 .modal-content {
-  background-color: #fefefe;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 20%;
-  height: 150px;
+	background-color: #fefefe;
+	margin: auto;
+	padding: 20px;
+	border: 1px solid #888;
+	width: 20%;
+	height: 150px;
 }
 
 /* The Close Button */
 #close {
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
+	color: #aaaaaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
 }
 
-#close:hover,
-#close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
+#close:hover, #close:focus {
+	color: #000;
+	text-decoration: none;
+	cursor: pointer;
 }
 
-.modal-content p{
+.modal-content p {
 	color: #4A7EBB;
 	font-weight: bold;
 	font-size: 18px;
 	margin: 3% 0;
 }
-.modal-content input{
+
+.modal-content input {
 	border: 1px solid #EAEAEA;
 	width: 100%;
 	margin: 0 auto;
 }
 
-#deleted{
+#deleted {
 	display: block;
 	margin: 0 50%;
 	width: 20%;

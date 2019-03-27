@@ -30,7 +30,6 @@ public class NoticeController {
 		
 		/*BoardDTO boardDTO=new BoardDTO();
 		for(int i=0;i<62;i++){
-			boardDTO.setBoardNum(i);
 			boardDTO.setBoardTitle("제목"+i);
 			boardDTO.setBoardPw("s"+i);
 			boardDTO.setBoardContents("내용"+i);
