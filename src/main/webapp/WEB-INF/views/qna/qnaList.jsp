@@ -117,7 +117,7 @@ $(function(){
         	
         	<c:choose>
         	<c:when test="${admin== '관리자' }">
-        		<div>글쓰기</div>
+        		
 	        </c:when>
 	        <c:otherwise>
 	        	<div class="writeButton">글쓰기</div>
