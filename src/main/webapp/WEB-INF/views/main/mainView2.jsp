@@ -128,7 +128,7 @@ $(function(){
 	});
 	$(".updated").click(function(){
 		var pw= $("#adminPw").val()+"";
-		alert(adminPw);
+		/* alert(adminPw); */
 		if(pw == adminPw){
 			alert("관리자모드가 10분간 유지됩니다.");
 			$("#frm").submit();
