@@ -78,11 +78,16 @@
 	</resultMap>
 
 	<select id="selectPrevNext" parameterType="boardDTO" resultMap="setting">
-		select t.prev_b prev,t.next_b next from (select LAG(boardNum,
-		1, 0) OVER (ORDER BY real.r) AS prev_b,lead(boardNum,1,0) over (order
-		by real.r) as next_b,real.*
-		from (select ROW_NUMBER() OVER (ORDER BY boardnum asc) as r,b.* from board
-		b where code=1) real) t
+		select t.prev_b prev,t.next_b next 
+		from (
+				select 
+					LAG(boardNum, 1, 0) OVER (ORDER BY real.r) AS prev_b,
+					lead(boardNum,1,0) over (order by real.r) as next_b, real.*
+				from (
+					select ROW_NUMBER() OVER (ORDER BY boardnum asc) as r,b.* 
+					from board b 
+					where code=1) real
+			 ) t
 		where boardnum=#{boardNum}
 	</select>
 </mapper>
