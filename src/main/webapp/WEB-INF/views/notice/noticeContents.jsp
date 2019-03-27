@@ -16,6 +16,8 @@
 		var admin="${admin}";
 		var prevNum=${prev};
 		var nextNum=${next};
+		var replyNum="";
+		var replyPw="";
 		$("#update").click(function() {
 			location.href = "./Update.do?boardNum=" + boardNum;
 		});
@@ -32,8 +34,9 @@
 			$("#form").submit();
 			}
 		});
-		$("#replyDelete").click(function(){
-			var replyNum=$("#replyDelete").attr("title");
+		$(".replyDelete").on('click',function(){
+			replyNum=$(this).attr("title");
+			replyPw=$(this).attr("id");
 			if(admin=='관리자'){
 				location.href="./replyDelete.do?replyNum="+replyNum+"&boardNum="+boardNum;				
 				}else{
@@ -42,14 +45,18 @@
 		});
 		
 		$("#deleted").click(function(){
-			var replyNum=$("#replyDelete").attr("title");
-			var pw=$("#pw").val()+"";
+			$(".pw").each(function(){
+				if($(this).attr("id")==replyNum){
+					var pw=$(this).val()+"";
 			var userPw=$("#boardPw").val()+"";
 			if(pw==userPw||admin=='관리자'){
 			location.href="./replyDelete.do?replyNum="+replyNum+"&boardNum="+boardNum;				
 			}else{
 				alert("비밀번호가 일치하지 않습니다.");
 			}
+				}
+			});
+			/* var pw=$(".pw").val()+""; */
 		});
 		
 		$("#close").click(function(){
@@ -115,7 +122,7 @@
 				<table id="replyList">
 				<c:forEach items="${replyList}" var="re">
 					<tr>
-						<th><input id="pw" type="hidden" value="${re.replyPw}">${re.replyName}</th><td id="contents">${re.replyContents}</td><td><span class="date">${re.replyDate}<span style="color: red;" class="replyDelete" title="${re.replyNum}">X</span></span></td>
+						<th><input id="${re.replyNum}" class="pw" type="hidden" value="${re.replyPw}" >${re.replyName}</th><td id="contents">${re.replyContents}</td><td><span class="date">${re.replyDate}<span style="color: red;" class="replyDelete" title="${re.replyNum}" id="${re.replyPw}">X</span></span></td>
 					</tr>
 				</c:forEach>
 
