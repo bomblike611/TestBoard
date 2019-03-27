@@ -114,9 +114,15 @@ $(function(){
 	        <c:if test="${page.next}">
         	 <a href="qnaList.do?pageIndex=${page.lastIndex2 +1}"> 다음 ▶ </a>
         	</c:if>
-        	<c:if test="${admin != '관리자' }">
-	        <div class="writeButton">글쓰기</div>
-	        </c:if>
+        	
+        	<c:choose>
+        	<c:when test="${admin== '관리자' }">
+        		<div>글쓰기</div>
+	        </c:when>
+	        <c:otherwise>
+	        	<div class="writeButton">글쓰기</div>
+	        </c:otherwise>
+	        </c:choose>
 </div>
 
 </section>
