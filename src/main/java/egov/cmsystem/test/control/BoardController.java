@@ -1,6 +1,8 @@
 package egov.cmsystem.test.control;
 
+import java.net.InetAddress;
 import java.util.List;
+import java.util.StringTokenizer;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -22,8 +24,7 @@ import egov.cmsystem.test.service.impl.BoardServiceImpl;
 @Controller
 public class BoardController {
 	
-	String adminIp="0:0:0:0:0:0:0:1";
-	String adminMy="192.168.0.29";
+	String adminIp="192.168.0.29";
 	/*******************
 	 주소 통일합시다!
 	 ---자유게시판----
@@ -70,9 +71,13 @@ public class BoardController {
 	public ModelAndView adminMainView(HttpServletRequest request) throws Exception{
 		ModelAndView mv=new ModelAndView();
 		String ip=request.getRemoteAddr();
+		if(ip.equalsIgnoreCase("0:0:0:0:0:0:0:1")){
+		    InetAddress inetAddress=InetAddress.getLocalHost();
+		    ip=inetAddress.getHostAddress();
+		}
 		System.out.println(ip);
 		String text="";
-		if(adminIp.equals(ip)||adminMy.equals(ip)){
+		if(adminIp.equals(ip)){
 			mv.addObject("adminPw", "admin0327");			
 		}else{
 			text="관리자 ip주소가 아닙니다.";
