@@ -72,7 +72,7 @@ $(function(){
 						<td class="left"><a href="Contents.do?boardNum=${contents.boardNum}" id="ahref">${contents.boardTitle}</a></td>
 						</c:if>
 						<c:if test="${contents.adminDelete=='y'}">
-						<td class="left"><a href="#" id="ahref">삭제된 내용입니다.</a></td>
+						<td class="left"><a id="ahref" style="color: red;">삭제된 내용입니다.</a></td>
 						</c:if>
 						<td>운영자</td>
 						<td>${contents.boardDate}</td>
