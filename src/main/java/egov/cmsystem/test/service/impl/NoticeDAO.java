@@ -50,5 +50,7 @@ public final String namespace="egovframework.sqlmap.mappers.noticeMapper.";
     public int deleteReply(NoticeReplyDTO noticeReplyDTO) throws Exception{
     	return getSqlSession().delete(namespace+"deleteReply", noticeReplyDTO);
     }
-	
+    public BoardDTO selectPrevNext(BoardDTO boardDTO) throws Exception{
+    	return getSqlSession().selectOne(namespace+"selectPrevNext", boardDTO);
+    }
 }

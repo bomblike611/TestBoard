@@ -36,16 +36,19 @@
 	<select id="selectList" parameterType="boardVO" resultType="boardDTO">
 		SELECT *
 		FROM (
-		select row_number() over(order by boardnum desc) as rnum,t.*
+		select row_number() over(order by boardnum desc) as
+		rnum,t.*
 		from board t
 		where t.code=1
 		)
-		WHERE rnum between #{startPage} AND #{lastPage}
+		WHERE rnum between #{startPage} AND
+		#{lastPage}
 	</select>
 
 
 	<select id="selectTotalCount" resultType="int">
-		select nvl(count(boardnum),0) totalindex from board where code=1
+		select
+		nvl(count(boardnum),0) totalindex from board where code=1
 	</select>
 
 	<insert id="insertReply" parameterType="noticeReplyDTO">
@@ -55,15 +58,31 @@
 		insert into noticeReply values
 		(#{replyNum},#{boardNum},#{replyName},#{replyPw},#{replyContents},sysdate)
 	</insert>
-	<select id="selectReplyList" parameterType="boardDTO" resultType="noticeReplyDTO">
-	SELECT *
+	<select id="selectReplyList" parameterType="boardDTO"
+		resultType="noticeReplyDTO">
+		SELECT *
 		FROM (
-		select row_number() over(order by replyNum desc) as rnum,t.*
+		select row_number() over(order by replyNum
+		desc) as rnum,t.*
 		from noticeReply t
 		where boardNum=#{boardNum}
 		)
 	</select>
 	<delete id="deleteReply">
-	delete noticeReply where replyNum=#{replyNum}
+		delete noticeReply where replyNum=#{replyNum}
 	</delete>
+	
+	<resultMap type="boardDTO" id="setting">
+	<result property="boardNum" column="prev"/>
+	<result property="boardRef" column="next"/>
+	</resultMap>
+
+	<select id="selectPrevNext" parameterType="boardDTO" resultMap="setting">
+		select t.prev_b prev,t.next_b next from (select LAG(boardNum,
+		1, 0) OVER (ORDER BY real.r) AS prev_b,lead(boardNum,1,0) over (order
+		by real.r) as next_b,real.*
+		from (select ROW_NUMBER() OVER (ORDER BY boardnum asc) as r,b.* from board
+		b where code=1) real) t
+		where boardnum=#{boardNum}
+	</select>
 </mapper>

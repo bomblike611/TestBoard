@@ -38,6 +38,10 @@ height: 500px;
 }
 .prev span{
 	margin-right: 50px;
+	cursor: pointer;
+}
+.prev span:hover{
+	color: #1F497D;
 }
 
 #titles{

@@ -13,10 +13,10 @@ import egov.cmsystem.test.service.NoticeReplyDTO;
 
 @Service("noticeService")
 public class NoticeServiceImpl implements BoardService{
-	
+
 	@Resource(name="noticeDAO")
 	private NoticeDAO noticeDAO;
-	
+
 	@Override
 	public int deleteContents(BoardDTO boardDTO) throws Exception {
 		return noticeDAO.deleteContents(boardDTO);
@@ -42,7 +42,7 @@ public class NoticeServiceImpl implements BoardService{
 		// TODO Auto-generated method stub
 		return noticeDAO.updateContents(boardDTO);
 	}
-	
+
 	public List<?> selectReplyList(BoardDTO boardDTO) throws Exception{
 		return noticeDAO.selectReplyList(boardDTO);
 	}
@@ -51,5 +51,8 @@ public class NoticeServiceImpl implements BoardService{
 	}
 	public int deleteReply(NoticeReplyDTO noticeReplyDTO) throws Exception{
 		return noticeDAO.deleteReply(noticeReplyDTO);
+	}
+	public BoardDTO selectPrevNext(BoardDTO boardDTO) throws Exception{
+		return noticeDAO.selectPrevNext(boardDTO);
 	}
 }

@@ -39,6 +39,7 @@ public class NoticeController {
 			boardDTO.setFileOriginalName("");
 			boardDTO.setFileSaveName("");
 			noticeService.insertContents(boardDTO);
+			System.out.println(i);
 		}*/
 		
 		
@@ -52,6 +53,9 @@ public class NoticeController {
 		ModelAndView view=new ModelAndView();
 		BoardDTO dto=noticeService.selectContents(boardDTO);
 		List<?> ar=noticeService.selectReplyList(boardDTO);
+		BoardDTO nextPre=noticeService.selectPrevNext(boardDTO);
+		view.addObject("next", nextPre.getBoardRef());
+		view.addObject("prev", nextPre.getBoardNum());
 		view.addObject("contents", dto);
 		view.addObject("replyList",ar);
 		view.setViewName("notice/noticeContents");

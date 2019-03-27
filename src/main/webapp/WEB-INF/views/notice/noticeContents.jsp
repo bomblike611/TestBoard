@@ -14,6 +14,8 @@
 	$(function() {
 		var boardNum =${contents.boardNum};
 		var admin="${admin}";
+		var prevNum=${prev};
+		var nextNum=${next};
 		$("#update").click(function() {
 			location.href = "./Update.do?boardNum=" + boardNum;
 		});
@@ -48,6 +50,13 @@
 		$("#close").click(function(){
 			$("#myModal").css("display","none");
 		});
+		
+		$("#prev_contents").click(function(){
+			location.href="./Contents.do?boardNum="+prevNum;
+		});
+		$("#next_contents").click(function(){
+			location.href="./Contents.do?boardNum="+nextNum;
+		});
 	});
 </script>
 </head>
@@ -60,7 +69,14 @@
 			<div class="noticeHeader">
 				<ul id="contentsHeader">
 					<li id="notice"><h1>공지사항</h1></li>
-					<li class="prev"><span>&lt; 이전</span><span>다음 ></span></li>
+					<li class="prev">
+					<c:if test="${prev!=0}">
+					<span id="prev_contents">&lt; 이전</span>
+					</c:if>
+					<c:if test="${next!=0}">
+					<span id="next_contents">다음 ></span>
+					</c:if>
+					</li>
 				</ul>
 			</div>
 			<div class="noticeContents">
