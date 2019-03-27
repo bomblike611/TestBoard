@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link type="text/css" rel="stylesheet"
 	href="<c:url value='/css/banner/profile.css'/>" />
-<title>회사소개</title>
+<title>천명시스템</title>
 </head>
 <body>
 <div>

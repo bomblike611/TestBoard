@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link type="text/css" rel="stylesheet" href="<c:url value='/css/qna/qnaList.css'/>"/>
 
-<title>Insert title here</title>
+<title>천명시스템</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
@@ -59,7 +59,7 @@ $(function(){
 					</tr>
 					
 				<c:forEach items="${list}" var="contents" varStatus="num">
-					<tr id="tbl_nt_col">
+					<tr class="tbl_nt_col">
 						 <td>${page.totalrecord - num.index -((page.pageIndex-1)*10)}</td> 
 						
 						<c:choose>
@@ -103,7 +103,7 @@ $(function(){
 	       <c:forEach begin="${page.firstIndex}" end="${page.lastIndex2}" var="text" step="1">
 		        <c:choose>
 			        <c:when test="${page.pageIndex == text }">
-			        	${text}
+			        	<b style="color: blue;">${text}</b>
 			        </c:when>
 			        <c:otherwise>
 			        	<a href="qnaList.do?pageIndex=${text}">${text}</a>

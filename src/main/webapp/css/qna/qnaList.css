@@ -74,15 +74,22 @@ padding: 0;
 	border-bottom: 1px solid #4A7EBB;
 
 }
- 
+ .tbl_nt_col a{
+	text-decoration: none;
+	color: black;
+}
+
 #tbl_nt_head{
 	border-bottom: 1px solid #B2CCFF;
 	line-height: 300%;
 }
-#tbl_nt_col{
+.tbl_nt_col{
 	 border-bottom: 1px solid #D8D8D8;
 	 line-height: 240%;
 	
+}
+.tbl_nt_col:hover{
+	background-color: #E7E7E7;
 }
 .tbl_col1{
 	width:15%;
