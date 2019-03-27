@@ -8,7 +8,6 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 alert("${alert}");
-alert("${pageContext.request.contextPath}/${url}");
 location.href='<c:out value="${pageContext.request.contextPath}"/>${url}';
 </script>
 </head>

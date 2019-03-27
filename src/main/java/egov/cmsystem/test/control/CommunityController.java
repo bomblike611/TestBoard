@@ -50,11 +50,24 @@ public class CommunityController {
 	}
 	
 	@RequestMapping(value = "/communityContents.do")
-	public ModelAndView communityContents(BoardDTO boardDTO) throws Exception {
+	public ModelAndView communityContents(BoardDTO boardDTO,HttpSession session) throws Exception {
 		ModelAndView view=new ModelAndView();
 		BoardDTO dto=communityService.selectContents(boardDTO);
-		view.addObject("contents", dto);
-		view.setViewName("community/communityContents");
+		String delete=dto.getAdminDelete();
+		String admin=(String)session.getAttribute("admin");
+		if(admin==null){
+			if(delete.equals("y")){
+				view.addObject("alert", "관리자만 접근 가능합니다.");
+				view.addObject("url", "/communityList.do");
+				view.setViewName("main/alert");
+			}else{
+				view.addObject("contents", dto);
+				view.setViewName("community/communityContents");
+			}
+		}else if(admin.equals("관리자")){
+			view.addObject("contents", dto);
+			view.setViewName("community/communityContents");		
+		}
 		return view;
 	}
 	@RequestMapping(value = "/communityWrite.do",method=RequestMethod.GET)
