@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>천명시스템</title>
 <link type="text/css" rel="stylesheet"
 	href="<c:url value='/css/notice/noticeContents.css'/>" />
 <script

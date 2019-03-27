@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import egov.cmsystem.test.service.BoardDTO;
 import egov.cmsystem.test.service.BoardVO;
@@ -105,6 +106,7 @@ public ModelAndView qnaList(BoardVO vo) throws Exception {
 		view.addObject("list", ar);
 		view.addObject("page", vo);
 		view.setViewName("qna/qnaList");
+		
 		return view;
 	}
 	@RequestMapping(value = "/qnaList.do",method=RequestMethod.POST)
@@ -119,11 +121,27 @@ public ModelAndView qnaList(BoardVO vo) throws Exception {
 	
 	
 	@RequestMapping(value = "/qnaContents.do")
-	public ModelAndView qnaContents(BoardDTO boardDTO) throws Exception {
+	public ModelAndView qnaContents(BoardDTO boardDTO,HttpSession session) throws Exception {
 		ModelAndView view=new ModelAndView();
 		BoardDTO dto=boardService.selectContents(boardDTO);
 		view.addObject("contents", dto);
-		view.setViewName("qna/qnaContents");
+		
+		String AdminDelete = dto.getAdminDelete();
+		
+		if(AdminDelete.equals("n")){
+			view.setViewName("qna/qnaContents");	
+		}else{
+			String admin=(String) session.getAttribute("admin");
+			if(admin==null){
+				view.addObject("alert", "관리자만 접근 가능합니다.");
+				view.addObject("url", "/qnaList.do");
+				view.setViewName("main/alert");
+			}else{
+				view.setViewName("qna/qnaContents");			
+			}
+			
+		}
+		
 		return view;
 	}
 	
@@ -160,12 +178,20 @@ public ModelAndView qnaList(BoardVO vo) throws Exception {
 	}
 	
 	@RequestMapping(value = "/qnaAdminForm.do",method=RequestMethod.GET)
-	public ModelAndView qnaAdminForm(BoardDTO boardDTO) throws Exception{
-		ModelAndView mv=new ModelAndView();
+	public ModelAndView qnaAdminForm(BoardDTO boardDTO,HttpSession session) throws Exception{
+		ModelAndView view=new ModelAndView();
 		BoardDTO dto=boardService.selectContents(boardDTO);
-		mv.addObject("contents", dto);
-		mv.setViewName("qna/qnaAdminForm");
-		return mv;
+		view.addObject("contents", dto);
+		
+		String admin=(String) session.getAttribute("admin");
+		if(admin==null){
+			view.addObject("alert", "관리자만 접근 가능합니다.");
+			view.addObject("url", "/qnaList.do");
+			view.setViewName("main/alert");
+		}else{
+			view.setViewName("qna/qnaAdminForm");			
+		}
+		return view;
 	}
 	
 	@RequestMapping(value = "/qnaAdminUpdate.do",method=RequestMethod.GET)
