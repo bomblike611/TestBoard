@@ -1,7 +1,5 @@
 package egov.cmsystem.test.service;
 
-import org.stringtemplate.v4.compiler.CodeGenerator.list_return;
-
 public class BoardVO {
 
 	/****** 검색Keyword ******/
