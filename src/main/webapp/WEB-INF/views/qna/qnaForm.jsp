@@ -9,7 +9,7 @@
 <link type="text/css" rel="stylesheet"
 	href="<c:url value='/css/community/communityForm.css'/>" />
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<title>Insert title here</title>
+<title>천명시스템</title>
 <script type="text/javascript">
 $(function(){
 	$("#formSubmit").click(function() {
