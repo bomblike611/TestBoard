@@ -46,10 +46,10 @@ $(function(){
 			<form id="form" action="qnaAdminForm.do" method="post">
 			<input type="hidden" name="boardRef" value="${contents.boardRef}">
 			<input type="hidden" name="boardPw" value="">
-			<input type="hidden" name="boardTitle" value=" RE : ${contents.boardTitle}">
+			<input type="hidden" name="boardTitle" value=" ㄴ RE : ${contents.boardTitle}">
 			<input type="hidden" name="boardWriter" value="관리자">
 				<p>
-					 <span class="titles">제목</span> RE : ${contents.boardTitle} 
+					 <span class="titles">제목</span> ㄴ RE : ${contents.boardTitle} 
 					
 				</p>
 		

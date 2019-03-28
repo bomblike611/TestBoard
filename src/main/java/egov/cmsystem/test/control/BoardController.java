@@ -26,6 +26,7 @@ import egov.cmsystem.test.service.impl.BoardServiceImpl;
 public class BoardController {
 	
 	String adminIp="192.168.0.29";
+	String adminIp2="192.168.0.6";
 	/*******************
 	 주소 통일합시다!
 	 ---자유게시판----
@@ -78,7 +79,7 @@ public class BoardController {
 		}
 		System.out.println(ip);
 		String text="";
-		if(adminIp.equals(ip)){
+		if(adminIp.equals(ip) || adminIp2.equals(ip)){
 			mv.addObject("adminPw", "admin0327");			
 		}else{
 			text="관리자 ip주소가 아닙니다.";

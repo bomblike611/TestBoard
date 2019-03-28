@@ -64,7 +64,7 @@ $(function(){
 						
 						<c:choose>
 							<c:when test="${contents.adminDelete=='n'}">
-								<td><a href="qnaContents.do?boardNum=${contents.boardNum}" id="ahref">${contents.boardTitle}</a></td>
+								<td id="titleleft"><a href="qnaContents.do?boardNum=${contents.boardNum}" id="ahref">${contents.boardTitle}</a></td>
 							</c:when>
 							<c:otherwise>
 							
