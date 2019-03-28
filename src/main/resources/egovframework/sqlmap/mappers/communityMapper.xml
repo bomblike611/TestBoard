@@ -8,7 +8,7 @@
 			select test_seq.nextval from dual
 		</selectKey>
 		insert into board values
-		(#{boardNum},2,#{boardTitle},#{boardPw},#{boardContents},sysdate,sysdate,1,#{boardRef},#{adminDelete},#{fileSaveName},#{fileOriginalName})
+		(#{boardNum},2,#{boardTitle},#{boardWriter},#{boardPw},#{boardContents},sysdate,sysdate,1,#{boardRef},#{adminDelete},#{fileSaveName},#{fileOriginalName})
 	</insert>
 
 	<update id="updateContents" parameterType="boardDTO">

@@ -60,14 +60,14 @@
 			<div id="formArea">
 				<form id="form" action="communityWrite.do" method="post"
 					enctype="multipart/form-data">
-					<%-- <c:choose>
+					<c:choose>
 					<c:when test="${admin=='관리자'}">
-						<input type="hidden" value="관리자" name="boardUser">
+						<input type="hidden" name="boardWriter" value="관리자">
 					</c:when>
 					<c:otherwise>
-							<input type="hidden" value="사용자" name="boardUser">
+							<input type="hidden" name="boardWriter" value="사용자" >
 					</c:otherwise>
-					</c:choose> --%>
+					</c:choose> 
 					<p>
 						<span class="titles">제목</span> <input type="text"
 							placeholder="게시글 제목을 작성해 주세요." name="boardTitle" id="boardTitle" onkeyup="lengthCheck(this,100)">

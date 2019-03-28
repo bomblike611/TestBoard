@@ -41,6 +41,7 @@ $(function(){
 			</div>
 			<div id="formArea">
 			<form id="form" action="Write.do" method="post">
+			<input type="hidden" name="boardWriter" value="관리자">
 				<p>
 					<span class="titles">제목</span> <input type="text"
 						placeholder="게시글 제목을 작성해 주세요." name="boardTitle" id="boardTitle" onkeyup="lengthCheck(this,100)">

@@ -63,7 +63,7 @@
 			select test_seq.nextval from dual
 		</selectKey>
 		insert into board values
-		(#{boardNum},3,#{boardTitle},#{boardPw},#{boardContents},sysdate,sysdate,1,#{boardNum},#{adminDelete},#{fileSaveName},#{fileOriginalName})
+		(#{boardNum},3,#{boardTitle},#{boardWriter},#{boardPw},#{boardContents},sysdate,sysdate,1,#{boardNum},#{adminDelete},#{fileSaveName},#{fileOriginalName})
 	</insert>
 	
 	<insert id="replyinsertContents" parameterType="boardDTO">
@@ -71,7 +71,7 @@
 			select test_seq.nextval from dual
 		</selectKey>
 		insert into board values
-		(#{boardNum},3,#{boardTitle},#{boardPw},#{boardContents},sysdate,sysdate,1,#{boardRef},#{adminDelete},#{fileSaveName},#{fileOriginalName})
+		(#{boardNum},3,#{boardTitle},#{boardWriter},#{boardPw},#{boardContents},sysdate,sysdate,1,#{boardRef},#{adminDelete},#{fileSaveName},#{fileOriginalName})
 	</insert>
 	
 	<update id="deleteContents" parameterType="boardDTO">
