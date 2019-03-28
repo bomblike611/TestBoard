@@ -65,7 +65,22 @@
 		<div id="Contents">
 			<div id="contentsHeader">
 				<p>자유게시판</p>
-				<div class="writeButton" id="update">수정</div>
+				<c:choose>
+					<c:when test="${admin=='관리자'}">
+						<c:choose>
+							<c:when test="${contents.boardWriter == '관리자'}">
+								<div class="writeButton" id="update">수정</div>
+							</c:when>
+							<c:otherwise>
+								<div class="writeButton">수정</div>
+							</c:otherwise>
+						</c:choose>
+					</c:when>
+					<c:otherwise>
+							<div class="writeButton" id="update">수정</div>
+					</c:otherwise>
+				</c:choose>
+				
 				<div class="writeButton" id="delete">삭제</div>
 			</div>
 			<ul id="ulContents">
