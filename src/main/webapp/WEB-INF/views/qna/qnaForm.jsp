@@ -43,6 +43,7 @@ $(function(){
 			</div>
 			<div id="formArea">
 			<form id="form" action="qnaWrite.do" method="post">
+			<input type="hidden" name="boardWriter" value="사용자">
 				<p>
 					<span class="titles">제목</span> <input type="text"
 						placeholder="게시글 제목을 작성해 주세요." name="boardTitle" id="boardTitle">

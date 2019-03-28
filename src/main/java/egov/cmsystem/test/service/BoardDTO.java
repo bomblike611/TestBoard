@@ -8,9 +8,9 @@ public class BoardDTO{
 	private int boardNum;
 	private int code;
 	private String boardTitle;
+	private String boardWriter;
 	private String boardPw;
 	private String boardContents;
-	private String boardWriter;
 	private Date boardDate;
 	private Date deleteDate;
 	private int boardHits;

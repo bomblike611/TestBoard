@@ -81,14 +81,8 @@ $(function(){
 							</c:otherwise>
 						</c:choose>
 						
-						<c:choose>
-							<c:when test="${contents.boardPw != null}">
-								<td>사용자</td>
-							</c:when>
-							<c:otherwise>
-								<td>관리자</td>
-							</c:otherwise>
-						</c:choose>
+								<td>${contents.boardWriter}</td>
+				
 						<td>${contents.boardDate}</td>
 					</tr>
 				</c:forEach>
