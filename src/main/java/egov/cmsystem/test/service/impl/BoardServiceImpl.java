@@ -45,6 +45,11 @@ public class BoardServiceImpl implements BoardService{
 	public BoardDTO selectContents(BoardDTO boardDTO) throws Exception {
 		return boardDAO.selectContents(boardDTO);
 	}
+	
+	public int selectCount(BoardDTO boardDTO) throws Exception {
+		return boardDAO.selectCount(boardDTO);
+	}
+	
 
 	@Override
 	public List<?> selectList(BoardVO vo) throws Exception {

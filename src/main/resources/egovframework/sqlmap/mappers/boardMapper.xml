@@ -12,12 +12,16 @@
    WHERE rnum between #{startPage} AND #{lastPage}
 	</select>
 	
+	<select id="selectCount" parameterType="boardDTO" resultType="int">
+		select count(*) from board where boardref = #{boardRef} and adminDelete = 'n'
+	</select>
+	
 	<select id="selectListSearch" parameterType="boardVO" resultType="boardDTO">
 	SELECT *
   	FROM (
-            select row_number() over(order by boardnum desc) as rnum,t.*
+            select row_number() over(order by boardref desc) as rnum,t.*
             from board t
-            where t.code=3 and t.boardTitle like '%' || #{searchKeyword} || '%' 
+            where t.code=3 and (t.boardTitle like '%' || #{searchKeyword} || '%') and t.adminDelete = 'n'
             )									
    WHERE rnum between #{startPage} AND #{lastPage}
 	</select>

@@ -101,7 +101,14 @@
 					</div></li>
 			</ul>
 		</div>
-		<div id="reply">답변 달기 </div>
+			<c:if test="${admin== '관리자' }">
+				<c:choose>
+					<c:when test="${count < 2}">
+						<div id="reply">답변 달기 </div>
+					</c:when>
+				</c:choose>
+			</c:if>
+						
 	</section>
 
 <div id="myModal" class="modal">

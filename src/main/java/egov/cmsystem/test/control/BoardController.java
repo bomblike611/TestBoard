@@ -130,8 +130,10 @@ public ModelAndView qnaList(BoardVO vo) throws Exception {
 	public ModelAndView qnaContents(BoardDTO boardDTO,HttpSession session) throws Exception {
 		ModelAndView view=new ModelAndView();
 		BoardDTO dto=boardService.selectContents(boardDTO);
-		view.addObject("contents", dto);
+		int count =boardService.selectCount(boardDTO);
 		
+		view.addObject("contents", dto);
+		view.addObject("count",count);
 		String AdminDelete = dto.getAdminDelete();
 		
 		if(AdminDelete.equals("n")){

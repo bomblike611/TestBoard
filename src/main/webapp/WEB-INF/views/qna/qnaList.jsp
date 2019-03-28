@@ -64,13 +64,13 @@ $(function(){
 						
 						<c:choose>
 							<c:when test="${contents.adminDelete=='n'}">
-								<td id="titleleft"><a href="qnaContents.do?boardNum=${contents.boardNum}" id="ahref">${contents.boardTitle}</a></td>
+								<td id="titleleft"><a href="qnaContents.do?boardNum=${contents.boardNum}&boardRef=${contents.boardRef}" id="ahref">${contents.boardTitle}</a></td>
 							</c:when>
 							<c:otherwise>
 							
 							<c:choose>
 								<c:when test="${admin== '관리자' }">
-									<td><a href="qnaContents.do?boardNum=${contents.boardNum}" id="ahref" style="color: red;">삭제된 게시글 : ${contents.boardTitle}</a></td>
+									<td><a href="qnaContents.do?boardNum=${contents.boardNum}&boardRef=${contents.boardRef}" id="ahref" style="color: red;">삭제된 게시글 : ${contents.boardTitle}</a></td>
 								</c:when>
 								<c:otherwise>
 									<td><a id="ahref" style="color: red;">삭제된 게시물입니다.</a></td>
