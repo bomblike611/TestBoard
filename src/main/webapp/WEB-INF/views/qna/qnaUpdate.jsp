@@ -9,6 +9,7 @@
 <link type="text/css" rel="stylesheet"
 	href="<c:url value='/css/community/communityForm.css'/>" />
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script type="text/javascript" src="<c:url value='/js/lengthCheck.js'/>"></script>
 <title>천명시스템</title>
 <script type="text/javascript">
 $(function(){
@@ -49,14 +50,14 @@ $(function(){
 			<input type="hidden" name="code" value="${contents.code}">
 				<p>
 					<span class="titles">제목</span> <input type="text"
-						placeholder="게시글 제목을 작성해 주세요." name="boardTitle" id="boardTitle" value="${contents.boardTitle}">
+						placeholder="게시글 제목을 작성해 주세요." name="boardTitle" id="boardTitle" value="${contents.boardTitle}" onkeyup="lengthCheck(this,100)">
 				</p>
 				<p>
 					<span class="titles">PW</span> <input type="password"
-						placeholder="비밀번호를 입력해주세요." name="boardPw" id="boardPw" value="${contents.boardPw}">
+						placeholder="비밀번호를 입력해주세요." name="boardPw" id="boardPw" value="${contents.boardPw}" onkeyup="lengthCheck(this,50)">
 				</p>
 				<div id="textarea">
-					<textarea name="boardContents" id="boardContents">${contents.boardContents}</textarea>
+					<textarea name="boardContents" id="boardContents" onkeyup="lengthCheck(this,2000)">${contents.boardContents}</textarea>
 				</div>
 			</form></div>
 			<ul id="buttons">

@@ -9,6 +9,7 @@
 <link type="text/css" rel="stylesheet"
 	href="<c:url value='/css/community/communityForm.css'/>" />
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script type="text/javascript" src="<c:url value='/js/lengthCheck.js'/>"></script>
 <title>천명시스템</title>
 <script type="text/javascript">
 $(function(){
@@ -53,7 +54,7 @@ $(function(){
 				</p>
 		
 				<div id="textarea">
-					<textarea name="boardContents" id="boardContents">${contents.boardContents}</textarea></div>
+					<textarea name="boardContents" id="boardContents" onkeyup="lengthCheck(this,2000)">${contents.boardContents}</textarea></div>
 			</form></div>
 			<ul id="buttons">
 			<li id="formSubmit">등록</li>

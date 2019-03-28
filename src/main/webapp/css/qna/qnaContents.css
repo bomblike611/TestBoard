@@ -57,12 +57,15 @@ section{
 	margin-top: 5px;
 }
 
-#comContents{
+.comContents{
 	min-height:500px; 
 	height:auto !important;
 	height: 500px;
 	border-bottom: 2px solid gray;
 	
+}
+#date{
+	float:right;
 }
 #contentForm{
 	min-height:350px; 
@@ -90,10 +93,6 @@ section{
 
 #count{
 	float: right;
-}
-
-#contentForm{
-	margin-top: 5%;
 }
 
 #reply{

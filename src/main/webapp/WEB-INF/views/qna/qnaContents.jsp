@@ -89,13 +89,13 @@
 				<div class="writeButton" id="delete">삭제</div>
 			</div>
 			<ul id="ulContents">
-				<li><div id="comContents">
+				<li><div class="comContents">
 						<div id="contentTitle">
 							<b>제목</b>
 							<p>${contents.boardTitle}</p>
 						</div>
 						<div>
-							<span>${contents.boardDate}</span>
+							<div id="date">${contents.boardDate}</div><br>
 							<div id="contentForm" style="white-space:pre;">${contents.boardContents}</div>
 						</div>
 					</div></li>
