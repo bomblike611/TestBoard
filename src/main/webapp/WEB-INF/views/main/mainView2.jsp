@@ -121,6 +121,11 @@
 </style>
 <script type="text/javascript">
 $(function(){
+	document.addEventListener('keydown', function(event){
+		if(event.keyCode === 13){
+		event.preventDefault();
+		}
+		})
 	var adminPw="${adminPw}";
 	var admin="${admin}";
 	$("#close").click(function(){
