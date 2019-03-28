@@ -67,14 +67,20 @@
 			</div>
 			<ul id="listContents">
 				<c:forEach items="${list}" var="contents">
-					<li class="listContent"><c:if
-							test="${not empty contents.fileSaveName}">
-							<img alt="image" src="/upload/${contents.fileSaveName}"
+					<li class="listContent">
+					<c:choose>
+					<c:when test="${contents.adminDelete=='y'}">
+					<img alt="image" src="./images/delete.png"
 								class="detail" title="${contents.boardNum}" name="${contents.adminDelete}">
-						</c:if> <c:if test="${empty contents.fileSaveName}">
-							<img alt="image" src="./images/office.jpg" class="detail"
-								title="${contents.boardNum}" name="${contents.adminDelete}">
-						</c:if> <c:if test="${contents.adminDelete=='n'}">
+					</c:when>
+					<c:when test="${not empty contents.fileSaveName}"><img alt="image" src="/upload/${contents.fileSaveName}"
+								class="detail" title="${contents.boardNum}" name="${contents.adminDelete}"></c:when>
+					<c:otherwise><img alt="image" src="./images/office.jpg" class="detail"
+								title="${contents.boardNum}" name="${contents.adminDelete}"></c:otherwise>
+					</c:choose>
+					
+						
+						<c:if test="${contents.adminDelete=='n'}">
 							<p class="detail" title="${contents.boardNum}" name="${contents.adminDelete}">${contents.boardTitle}</p>
 						</c:if> <c:if test="${contents.adminDelete=='y'}">
 							<p class="detail" title="${contents.boardNum}"
