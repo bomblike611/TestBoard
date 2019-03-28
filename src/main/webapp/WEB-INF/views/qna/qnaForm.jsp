@@ -51,7 +51,7 @@ $(function(){
 				</p>
 				<p>
 					<span class="titles">PW</span> <input type="password"
-						placeholder="비밀번호를 입력해주세요." name="boardPw" id="boardPw" onkeyup="lengthCheck(this,50)">
+						placeholder="비밀번호를 입력해주세요." name="boardPw" id="boardPw" onkeyup="lengthCheck(this,10)">
 				</p>
 				<div id="textarea">
 					<textarea name="boardContents" id="boardContents" onkeyup="lengthCheck(this,2000)"></textarea>

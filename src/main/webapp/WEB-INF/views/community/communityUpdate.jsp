@@ -81,7 +81,7 @@
 					<p>
 						<span class="titles">PW</span> <input type="password"
 							placeholder="비밀번호를 입력해주세요." name="boardPw"
-							value="${contents.boardPw}" onkeyup="lengthCheck(this,15)">
+							value="${contents.boardPw}" onkeyup="lengthCheck(this,10)">
 					</p>
 					<div id="textarea">
 						<textarea name="boardContents" onkeyup="lengthCheck(this,2000)">${contents.boardContents}</textarea>
