@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE form-validation PUBLIC 
+    "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.1//EN" 
+    "http://jakarta.apache.org/commons/dtds/validator_1_1.dtd">
+
+<form-validation>
+
+    <formset>
+        <form name="boardDTO">
+        	<field property="boardTitle" depends="required,maxlength,htmltag">
+        		<arg0 key="게시글 제목"/>
+        		<arg1 key="30" resource="false"/>
+        		<arg2 key="ㅎㅎ"/>
+        		<var>
+        		<var-name>maxlength</var-name>
+        		<var-value>30</var-value>
+        		</var>
+			</field>
+			<!-- <field property="boardPw" depends="required">
+                <arg0 key="w" />
+            </field>
+        	<field property="boardContents" depends="required">
+        		<arg0 key="E" />
+			</field> -->
+        </form>
+    </formset>
+
+</form-validation>

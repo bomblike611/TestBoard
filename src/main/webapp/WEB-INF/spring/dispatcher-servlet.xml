@@ -61,7 +61,7 @@
 		<property name="defaultEncoding" value="UTF-8"/>
 	</bean>
 
-	<!-- <mvc:view-controller path="/cmmn/validator.do"
-		view-name="cmmn/validator" /> -->
+	<mvc:view-controller path="/test/validator.do"
+		view-name="test/validator" />
 
 </beans>

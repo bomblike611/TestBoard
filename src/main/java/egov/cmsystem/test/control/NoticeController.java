@@ -8,9 +8,12 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import egov.cmsystem.test.service.BoardDTO;
 import egov.cmsystem.test.service.BoardVO;
@@ -22,6 +25,9 @@ public class NoticeController {
 
 	@Resource(name="noticeService")
 	private NoticeServiceImpl noticeService;
+	
+	@Resource(name="beanValidator")
+	protected DefaultBeanValidator beanValidator;
 
 	@RequestMapping(value = "/List.do")
 	public ModelAndView noticeList(BoardVO vo) throws Exception {
@@ -62,7 +68,7 @@ public class NoticeController {
 		return view;
 	}
 	@RequestMapping(value = "/Write.do",method=RequestMethod.GET)
-	public ModelAndView noticeWrite(HttpSession session) throws Exception {
+	public ModelAndView noticeWrite(@ModelAttribute("boardDTO") BoardDTO boardDTO,HttpSession session) throws Exception {
 		ModelAndView view=new ModelAndView();
 		String admin=(String) session.getAttribute("admin");
 		if(admin==null){
@@ -75,15 +81,30 @@ public class NoticeController {
 		return view;
 	}
 	@RequestMapping(value = "/Write.do",method=RequestMethod.POST)
-	public String noticeWrite(BoardDTO boardDTO) throws Exception {
+	public ModelAndView noticeWrite(@ModelAttribute("boardDTO") BoardDTO boardDTO,BindingResult bindingResult) throws Exception {
 		boardDTO.setBoardPw("");
 		boardDTO.setAdminDelete("n");
 		boardDTO.setFileOriginalName("");
 		boardDTO.setFileSaveName("");
-		ModelAndView view=new ModelAndView();
+		ModelAndView mv=new ModelAndView();
+		
+		beanValidator.validate(boardDTO, bindingResult);
+		
+		if(bindingResult.hasErrors()){
+			mv.addObject("alert", "내용에 Html태그가 포함되었는지 또는 글자수를 확인해주세요.");
+			mv.addObject("url", "/Write.do");
+			mv.setViewName("main/alert");
+			/*bindingResult.getAllErrors().forEach(obj -> {
+			    System.out.println(obj.getCode() + " " + obj.getObjectName() + " " + obj.getDefaultMessage().toString());
+			});*/
+			return mv;
+		}
+		
 		int result=noticeService.insertContents(boardDTO);
-		view.setViewName("notice/noticeForm");
-		return "redirect:/List.do";
+		
+		mv.setViewName("redirect:/List.do");
+		
+		return mv;
 	}
 	@RequestMapping(value = "/Update.do",method=RequestMethod.GET)
 	public ModelAndView noticeUpdate(BoardDTO boardDTO,HttpSession session) throws Exception {
