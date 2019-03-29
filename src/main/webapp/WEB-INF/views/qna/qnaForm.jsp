@@ -43,6 +43,7 @@ $(function(){
 			</div>
 			<div id="formArea">
 			<form id="form" action="qnaWrite.do" method="post">
+			<form:form commandName="BoardDTO"> 
 			<input type="hidden" name="boardWriter" value="사용자">
 				<p>
 					<span class="titles">제목</span> <input type="text"
@@ -59,8 +60,9 @@ $(function(){
 			<li id="formSubmit">등록</li>
 			<li id="backList">취소</li>
 			</ul>
-			</form></div>
-			
+			</div>
+			</form:form>
+			</form>
 		</div>
 	</section>
 </body>
