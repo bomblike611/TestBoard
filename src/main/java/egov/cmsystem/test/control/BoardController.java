@@ -21,6 +21,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import egov.cmsystem.test.service.BoardDTO;
 import egov.cmsystem.test.service.BoardVO;
 import egov.cmsystem.test.service.impl.BoardServiceImpl;
+import org.springframework.validation.BindingResult;
 
 @Controller
 public class BoardController {
@@ -176,13 +177,30 @@ public ModelAndView qnaList(BoardVO vo) throws Exception {
 	}
 	
 	@RequestMapping(value = "/qnaWrite.do", method=RequestMethod.POST)
-	public String qnaFrom(BoardDTO boardDTO) throws Exception {
+	public String qnaFrom(BoardDTO boardDTO,BindingResult bindingResult) throws Exception {
 		boardDTO.setAdminDelete("n");
 		boardDTO.setFileOriginalName("");
 		boardDTO.setFileSaveName("");
-		int result=boardService.insertContents(boardDTO);
-
+		
+		ModelAndView mv=new ModelAndView();
+		mv.addObject("url","/qnaList.do");
+		mv.setViewName("qna/qnaForm");
+		
+		boardService.validate(boardDTO, bindingResult);
+		
+		System.out.println();
+		
+		if(bindingResult.hasErrors()){
+			return "qna/qnaForm";
+			}
+		else {
+			boardService.insertContents(boardDTO);
+			mv.setViewName("redirect:/qnaList.do");
+			} 
+		
 		return "redirect:/qnaList.do";
+		
+	
 	}
 	
 	@RequestMapping(value = "/qnaAdminForm.do",method=RequestMethod.GET)
@@ -208,6 +226,9 @@ public ModelAndView qnaList(BoardVO vo) throws Exception {
 		BoardDTO dto=boardService.selectContents(boardDTO);
 		mv.addObject("contents", dto);
 		mv.setViewName("qna/qnaAdminUpdate");
+		
+		
+		
 		return mv;
 	}
 	@RequestMapping(value = "/qnaAdminUpdate.do",method=RequestMethod.POST)

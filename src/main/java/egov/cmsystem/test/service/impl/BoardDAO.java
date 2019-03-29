@@ -19,7 +19,6 @@ public class BoardDAO extends EgovAbstractMapper{
     }
     
     public List<?> selectListSearch(BoardVO vo) throws Exception{
-    	System.out.println(vo.getSearchKeyword());
     	return getSqlSession().selectList(namespace+"selectListSearch", vo);
     }
 	

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE html>
 <html>
@@ -18,11 +19,9 @@ $(function(){
 		var boardPw=$("#boardPw").val()+"";
 		var boardContents=$("#boardContents").val()+"";
 		
-		if(boardTitle == "" || boardPw == "" || boardContents == ""){
-			alert("빈 칸이 없도록 모두 입력해주세요.");
-		}else{				
+				
 		$("#form").submit();
-		}
+		
 		
 	});
 	$("#backList").click(function(){
@@ -40,21 +39,21 @@ $(function(){
 	<section>
 		<div id="writeForm">
 			<div id="listHeader">
-				<h1>Q&A</h1>
+				<h1>Q&A</h1><form:errors path="lengthsizeT" />
 			</div>
 			<div id="formArea">
 			<form id="form" action="qnaWrite.do" method="post">
 			<input type="hidden" name="boardWriter" value="사용자">
 				<p>
 					<span class="titles">제목</span> <input type="text"
-						placeholder="게시글 제목을 작성해 주세요." name="boardTitle" id="boardTitle" onkeyup="lengthCheck(this,100)">
+						placeholder="게시글 제목을 작성해 주세요." name="boardTitle" id="boardTitle" >
 				</p>
 				<p>
 					<span class="titles">PW</span> <input type="password"
-						placeholder="비밀번호를 입력해주세요." name="boardPw" id="boardPw" onkeyup="lengthCheck(this,50)">
+						placeholder="비밀번호를 입력해주세요." name="boardPw" id="boardPw" >
 				</p>
 				<div id="textarea">
-					<textarea name="boardContents" id="boardContents" onkeyup="lengthCheck(this,2000)"></textarea>
+					<textarea name="boardContents" id="boardContents"></textarea>
 				</div>
 				<br><ul id="buttons">
 			<li id="formSubmit">등록</li>
