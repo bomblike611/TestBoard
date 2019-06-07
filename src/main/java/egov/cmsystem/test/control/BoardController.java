@@ -25,7 +25,7 @@ import egov.cmsystem.test.service.impl.BoardServiceImpl;
 @Controller
 public class BoardController {
 	
-	String adminIp="192.168.0.29";
+	String adminIp="192.168.0.3";
 	String adminIp2="192.168.0.6";
 	/*******************
 	 주소 통일합시다!
