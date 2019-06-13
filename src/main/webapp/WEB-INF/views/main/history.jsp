@@ -41,6 +41,7 @@
  <strong>03</strong>㈜투비소프트 Maintenance & Technical Support Partner 인증<br>
  <strong>03</strong>연구개발전담부서 설립<br>
  <strong>02</strong>㈜천명시스템 설립<br>
+ 		<br>
 		<br>
 		</div>
 	</section>
