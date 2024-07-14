@@ -27,7 +27,7 @@ public class NoticeController {
 	public ModelAndView noticeList(BoardVO vo) throws Exception {
 		ModelAndView view=new ModelAndView();
 		List<?> ar=noticeService.selectList(vo);
-		
+		String s = "10";
 		/*BoardDTO boardDTO=new BoardDTO();
 		for(int i=0;i<62;i++){
 			boardDTO.setBoardTitle("제목"+i);
